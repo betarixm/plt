@@ -3,7 +3,6 @@ from django.contrib.auth import get_user_model
 
 Team = get_user_model()
 
-
 class Item(models.Model):
     title = models.CharField()
     description = models.TextField()
@@ -19,13 +18,10 @@ class Item(models.Model):
 
 
 class SqliItem(Item):
-    def add_sqli_filter(self, team: Team):
-        # Todo: add MySql Link
-        self.teams.add(team)
-
     class Meta:
         verbose_name = 'SQLi 아이템'
         verbose_name_plural = 'SQLi 아이템들'
+
 
 
 class SSTIItem(Item):
