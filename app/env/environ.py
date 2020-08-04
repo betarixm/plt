@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 from env.credential import SQLI_CREDENTIAL_USER, SQLI_CREDENTIAL_PASSWD
 from env.credential import FILTER_CREDENTIAL_USER, FILTER_CREDENTIAL_PASSWD
+from django.contrib.auth import get_user_model
 
+Team = get_user_model()
 
 @dataclass
 class MySQLConnectionInfo:
@@ -20,3 +22,16 @@ FILTER_DB = MySQLConnectionInfo("", 0000, FILTER_CREDENTIAL_USER, FILTER_CREDENT
 ITEM_CATEGORY_SQLI = 'sqli'
 ITEM_CATEGORY_SSTI = 'ssti'
 ITEM_CATEGORY_XSS = 'xss'
+
+
+def team_list():
+    return Team.objects.values_list('id', flat=True)
+
+
+def team_choices():
+    beta = team_list()
+    beka = []
+    for i in beta:
+        beka.append((i, i))
+
+    return tuple(beka)
