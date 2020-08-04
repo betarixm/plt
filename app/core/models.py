@@ -47,6 +47,14 @@ class MaxLenRule(Rule):
         verbose_name_plural = "길이 제한 규칙들"
 
 
+class CspRule(Rule):
+    csp = models.CharField()
+
+    class Meta:
+        verbose_name = "CSP"
+        verbose_name_plural = "CSP들"
+
+
 class Filter(models.Model):
     name = models.CharField()
     description = models.TextField()
@@ -79,13 +87,13 @@ class SstiFilter(Filter):
         return self.name
 
     class Meta:
-        verbose_name = "SQLi 필터"
-        verbose_name_plural = "SQLi 필터들"
+        verbose_name = "SSTI 필터"
+        verbose_name_plural = "SSTI 필터들"
 
 
 class XssFilter(Filter):
     Filter.name = "XSS Filter"
-    csp_rule_list = models.ManyToManyField(RegexRule, blank=True)
+    csp_rule_list = models.ManyToManyField(CspRule, blank=True)
 
     def __str__(self):
         return self.name
