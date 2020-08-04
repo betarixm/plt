@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-from core.models import RegexRule
+from core.models import RegexRule, MaxLenRule, CspRule
 from env.environ import ITEM_CATEGORY_SQLI, ITEM_CATEGORY_SSTI, ITEM_CATEGORY_XSS
 Team = get_user_model()
 
@@ -68,3 +68,14 @@ class MaxLenItem(Item):
     class Meta:
         verbose_name = "길이 제한 아이템"
         verbose_name_plural = "길이 제한 아이템들"
+
+
+class CspItem(Item):
+    csp_rule = models.ManyToManyField('core.CspRule', blank=True)
+
+    def action(slef, team: Team):
+        self.get_filter(team).csp_rule = self.csp_rule.csp
+
+    class Meta:
+        verbose_name = "CSP 아이템"
+        verbose_name_plural = "CSP 아이템들"
