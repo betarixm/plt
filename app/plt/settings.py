@@ -18,7 +18,7 @@ try:
 except ImportError:
     SECRET_KEY = get_random_secret_key()
     with open("env/credential.py","a") as f:
-        f.write(f"SECRET_KEY = {SECRET_KEY}")
+        f.write(f"\nSECRET_KEY = '{SECRET_KEY}'\n")
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
