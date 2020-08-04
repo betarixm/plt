@@ -1,4 +1,17 @@
-/.idea/
-/app/env/credential.py
-/app/plt/secret.key
-/.env
+# intellij IDEA
+.idea/
+
+# virtualenv
+.env/
+
+# django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+media
+
+# secret file
+app/env/credential.py
