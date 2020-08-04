@@ -2,18 +2,15 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 from core.models import RegexRule
-
+from env.environ import ITEM_CATEGORY_SQLI, ITEM_CATEGORY_SSTI, ITEM_CATEGORY_XSS
 Team = get_user_model()
 
 
 class Item(models.Model):
-    category_sqli = 'sqli'
-    category_xss = 'xss'
-    category_ssti = 'ssti'
     CATEGORY_CHOICES = (
-        (category_sqli, 'SQLi'),
-        (category_xss, 'XSS'),
-        (category_ssti, 'SSTI')
+        (ITEM_CATEGORY_SQLI, 'SQLi'),
+        (ITEM_CATEGORY_XSS, 'XSS'),
+        (ITEM_CATEGORY_SSTI, 'SSTI')
     )
 
     title = models.CharField()
@@ -23,11 +20,11 @@ class Item(models.Model):
     price = models.BigIntegerField()
 
     def get_filter(self, team: Team):
-        if self.category is self.category_xss:
+        if self.category is ITEM_CATEGORY_XSS:
             return team.xss_filter
-        elif self.category is self.category_ssti:
+        elif self.category is ITEM_CATEGORY_SSTI:
             return team.ssti_filter
-        elif self.category is self.category_sqli:
+        elif self.category is ITEM_CATEGORY_SQLI:
             return team.sqli_filter
 
     def check_balance(self, team: Team):
