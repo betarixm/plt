@@ -1,3 +1,4 @@
 /.idea/
 /app/env/credential.py
 /app/plt/secret.key
+/.env
