@@ -1,6 +1,7 @@
 from dataclasses import dataclass
-from credential import SQLI_CREDENTIAL_USER, SQLI_CREDENTIAL_PASSWD
-from credential import FILTER_CREDENTIAL_USER, FILTER_CREDENTIAL_PASSWD
+from env.credential import SQLI_CREDENTIAL_USER, SQLI_CREDENTIAL_PASSWD
+from env.credential import FILTER_CREDENTIAL_USER, FILTER_CREDENTIAL_PASSWD
+
 
 @dataclass
 class MySQLConnectionInfo:

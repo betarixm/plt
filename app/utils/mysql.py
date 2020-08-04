@@ -1,5 +1,5 @@
 import pymysql
-from environ import *
+from env.environ import *
 
 
 def sqli_db() -> pymysql.connections.Connection:
