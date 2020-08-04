@@ -13,6 +13,14 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from django.core.management.utils import get_random_secret_key
 
+try:
+    from env.credential import SECRET_KEY
+except ImportError:
+    SECRET_KEY = get_random_secret_key()
+    with open("env/credential.py","a") as f:
+        f.write(f"SECRET_KEY = {SECRET_KEY}")
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,10 +28,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_random_secret_key()
-with open("secret.key","w") as f:
-    f.write(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
