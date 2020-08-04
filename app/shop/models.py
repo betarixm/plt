@@ -1,13 +1,15 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from core.models import Rule
+
 Team = get_user_model()
+
 
 class Item(models.Model):
     title = models.CharField()
     description = models.TextField()
     teams = models.ManyToManyField(Team)
-    query = models.CharField()
 
     class Meta:
         verbose_name = '아이템'
@@ -17,26 +19,16 @@ class Item(models.Model):
         return self.title
 
 
-class SqliItem(Item):
-    class Meta:
-        verbose_name = 'SQLi 아이템'
-        verbose_name_plural = 'SQLi 아이템들'
-
-
-
-class SSTIItem(Item):
-    def add_sqli_filter(self, team: Team):
-        self.teams.add(team)
+class RuleItem(Item):
 
     class Meta:
-        verbose_name = 'SSTI 아이템'
-        verbose_name_plural = 'SSTI 아이템'
+        verbose_name = "차단 규칙 아이템"
+        verbose_name_plural = "차단 규칙 아이템들"
 
 
-class XSSItem(Item):
-    def add_xss_filter(self, team: Team):
-        self.teams.add(team)
+class LengthItem(Item):
+    max_len = models.BigIntegerField()
 
     class Meta:
-        verbose_name = 'XSS 아이템'
-        verbose_name_plural = 'SSTI 아이템'
+        verbose_name = "길이 제한 아이템"
+        verbose_name_plural = "길이 제한 아이템들"

@@ -2,8 +2,21 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django import forms
 from django.views import View
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 from core.models import Team
 from utils.validator import unique_team_id
+
+# use for check login...
+# if needed something else, wonderful(ex. check login and also email?),,, use latter.
+from django.contrib.auth.mixins import LoginRequiredMixin
+from utils.validator import LoginCheckMixin
+
+
+class HomeView(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'index.html', {})
 
 
 class RegisterForm(forms.Form):
