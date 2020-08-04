@@ -5,7 +5,9 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
-from core.models import Team
+from django.contrib.auth import get_user_model
+Team = get_user_model()
+
 from utils.validator import unique_team_id
 
 # use for check login...

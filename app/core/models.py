@@ -1,13 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 
 
-class Team(AbstractUser):
-    id = models.CharField(max_length=20)
+class Team(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=20)
 
-    sqli_filter = models.OneToOneField('core.SqliFilter', on_delete=models.CASCADE)
-    ssti_filter = models.OneToOneField('core.SstiFilter', on_delete=models.CASCADE)
-    xss_filter = models.OneToOneField('core.XssFilter', on_delete=models.CASCADE)
+    sqli_filter = models.OneToOneField('core.SqliFilter', related_name="SQLi_Filter", on_delete=models.CASCADE)
+    ssti_filter = models.OneToOneField('core.SstiFilter', related_name="SSTI_Filter", on_delete=models.CASCADE)
+    xss_filter = models.OneToOneField('core.XssFilter', related_name="XSS_Filter", on_delete=models.CASCADE)
 
     balance = models.BigIntegerField()
     score = models.BigIntegerField()
@@ -17,11 +18,11 @@ class Team(AbstractUser):
         verbose_name_plural = '팀들'
 
     def __str__(self):
-        return self.id
+        return self.name
 
 
 class Rule(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=20)
     description = models.TextField()
 
     class Meta:
@@ -33,23 +34,26 @@ class Rule(models.Model):
 
 
 class RegexRule(Rule):
-    regexp = models.CharField()
+    Rule.name = "Reg Exp Rule"
+    regexp = models.TextField()
 
     class Meta:
         verbose_name = "정규식 차단 규칙"
         verbose_name_plural = "정규식 차단 규칙들"
 
 
-class MaxLenRule(Rule):
-    max_len = models.BigIntegerField()
+class LenRule(Rule):
+    Rule.name = "Max Length Rule"
+    value = models.BigIntegerField()
 
     class Meta:
-        verbose_name = "길이 제한 규칙"
-        verbose_name_plural = "길이 제한 규칙들"
+        verbose_name = "길이 제한 엄격화 규칙"
+        verbose_name_plural = "길이 제한 엄격화 규칙들"
 
 
 class CspRule(Rule):
-    csp = models.CharField()
+    Rule.name = "CSP Rule"
+    csp = models.TextField()
 
     class Meta:
         verbose_name = "CSP"
@@ -57,9 +61,9 @@ class CspRule(Rule):
 
 
 class Filter(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=20)
     description = models.TextField()
-    block_rule_list = models.ManyToManyField(RegexRule, blank=True)
+    regex_rule_list = models.ManyToManyField(RegexRule, blank=True)
     max_len = models.BigIntegerField()
 
     def __str__(self):
