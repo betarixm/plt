@@ -10,6 +10,7 @@ class Team(AbstractUser):
     xss_filter = models.OneToOneField('core.XssFilter', on_delete=models.CASCADE)
 
     balance = models.BigIntegerField()
+    score = models.BigIntegerField()
 
     class Meta:
         verbose_name = '팀'
