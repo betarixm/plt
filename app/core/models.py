@@ -9,6 +9,8 @@ class Team(AbstractUser):
     ssti_filter = models.OneToOneField('core.SstiFilter', on_delete=models.CASCADE)
     xss_filter = models.OneToOneField('core.XssFilter', on_delete=models.CASCADE)
 
+    balance = models.BigIntegerField()
+
     class Meta:
         verbose_name = '팀'
         verbose_name_plural = '팀들'
@@ -20,7 +22,6 @@ class Team(AbstractUser):
 class Rule(models.Model):
     name = models.CharField()
     description = models.TextField()
-    regexp = models.CharField()
 
     class Meta:
         verbose_name = "차단 규칙"
@@ -30,11 +31,27 @@ class Rule(models.Model):
         return self.name
 
 
+class RegexRule(Rule):
+    regexp = models.CharField()
+
+    class Meta:
+        verbose_name = "정규식 차단 규칙"
+        verbose_name_plural = "정규식 차단 규칙들"
+
+
+class MaxLenRule(Rule):
+    max_len = models.BigIntegerField()
+
+    class Meta:
+        verbose_name = "길이 제한 규칙"
+        verbose_name_plural = "길이 제한 규칙들"
+
+
 class Filter(models.Model):
     name = models.CharField()
     description = models.TextField()
-    block_rule_list = models.ManyToManyField(Rule, blank=True)
-    length_limit = models.BigIntegerField()
+    block_rule_list = models.ManyToManyField(RegexRule, blank=True)
+    max_len = models.BigIntegerField()
 
     def __str__(self):
         return self.name
@@ -68,7 +85,7 @@ class SstiFilter(Filter):
 
 class XssFilter(Filter):
     Filter.name = "XSS Filter"
-    csp_rule_list = models.ManyToManyField(Rule, blank=True)
+    csp_rule_list = models.ManyToManyField(RegexRule, blank=True)
 
     def __str__(self):
         return self.name
