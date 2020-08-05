@@ -18,11 +18,12 @@ from utils.validator import LoginCheckMixin
 
 class HomeView(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, 'index.html', {})
+        return render(request, 'core/index.html', {})
 
 
 class RegisterForm(forms.Form):
-    id = forms.CharField(validators=[unique_team_id])
+    username = forms.CharField(validators=[unique_team_id])
+    name = forms.CharField()
     password = forms.CharField(min_length=8)
     email = forms.EmailField()
 
@@ -30,22 +31,23 @@ class RegisterForm(forms.Form):
 class RegisterView(View):
     def get(self, request):
         form = RegisterForm()
-        return render(request, 'register.html', {
+        return render(request, 'registration/register.html', {
             'form': form
         })
 
     def post(self, request):
         form = RegisterForm(request.POST)
         if not form.is_valid():
-            return render(request, 'register.html', {
+            return render(request, 'registration/register.html', {
                 'form': form
             })
 
         team = Team.objects.create_user(
-            form.cleaned_data['id'],
+            username=form.cleaned_data['username'],
+            password=form.cleaned_data['password'],
             email=form.cleaned_data['email'],
-            password=form.cleaned_data['password']
         )
+        team.name=form.cleaned_data['name']
 
         login(request, team)
         return redirect('/')

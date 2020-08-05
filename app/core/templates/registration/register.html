@@ -1,0 +1,51 @@
+{% extends '../core/base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block head %}
+    <script>
+        document.forms[0].reset();
+    </script>
+{% endblock %}
+
+{% block body %}
+{% if form.errors %}
+    <h2>회원가입 실패</h2>
+    <h3>{% for k, v in form.errors.items %}
+        {% if forloop.first %}
+            {{ v|first }}
+        {% endif %}
+    {% endfor %}
+    </h3>
+{% else %}
+    <h2>회원가입</h2>
+{% endif %}
+
+<form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    <h4>username</h4>
+    <div class="field">
+        <input type="text" name="username" placeholder="username"
+            value="{{ form.username.data|default_if_none:'' }}">
+    </div>
+    <h4>Team Name</h4>
+    <div class="field">
+        <input type="text" name="name" placeholder="Team Name"
+            value="{{ form.name.data|default_if_none:'' }}">
+    </div>
+    <h4>Password</h4>
+    <div class="field">
+        <input type="password" name="password" placeholder="Password">
+    </div>
+    <h4>Confirm Password</h4>
+    <div class="field">
+        <input type="password" name="confirm" placeholder="confirm password">
+    </div>
+    <h4>email</h4>
+    <div class="field">
+        <input type="text" name="email" placeholder="Email"
+            value="{{ form.email.data|default_if_none:'' }}">
+    </div>
+    <button type="submit">Register</button>
+</form>
+{% endblock %}

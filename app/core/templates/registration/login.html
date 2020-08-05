@@ -1,0 +1,35 @@
+{% extends '../core/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block head %}
+    <script>
+        document.forms[0].reset();
+    </script>
+{% endblock %}
+
+{% block body %}
+{% if form.errors %}
+    <h2>로그인 실패</h2>
+{% else %}
+    <h2>로그인</h2>
+{% endif %}
+
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <h4>username</h4>
+    <div class="field">
+        <input type="text" name="username" placeholder="username">
+    </div>
+    <h4>Password</h4>
+    <div class="field">
+        <input type="password" name="password" placeholder="Password">
+    </div>
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ next }}">
+    <button type="submit">Login</button>
+</form>
+
+<div>
+    새로운 팀 등록하기 <a href="{% url 'register' %}">Go</a>
+</div>
+{% endblock %}

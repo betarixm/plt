@@ -17,5 +17,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.XssView.as_view(), name='xssview'),
+    path('', views.XssView.as_view(), name='xss'),
 ]
