@@ -2,17 +2,11 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 from core.models import RegexRule, LenRule, CspRule
-from env.environ import ITEM_CATEGORY_SQLI, ITEM_CATEGORY_SSTI, ITEM_CATEGORY_XSS
+from env.environ import ITEM_CATEGORY_SQLI, ITEM_CATEGORY_SSTI, ITEM_CATEGORY_XSS, CATEGORY_CHOICES
 Team = get_user_model()
 
 
 class Item(models.Model):
-    CATEGORY_CHOICES = (
-        (ITEM_CATEGORY_SQLI, 'SQLi'),
-        (ITEM_CATEGORY_XSS, 'XSS'),
-        (ITEM_CATEGORY_SSTI, 'SSTI')
-    )
-
     name = models.CharField(max_length=40)
     description = models.TextField()
     teams = models.ManyToManyField(Team)
