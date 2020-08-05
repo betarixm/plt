@@ -22,4 +22,3 @@ class ItemListView(LoginRequiredMixin, View):
             'xss': xss_items,
             'ssti': ssti_items
         })
-
