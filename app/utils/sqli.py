@@ -15,3 +15,5 @@ def score(flag_input: str) -> int:
         return 0
     else:
         return result[0][1]
+
+
