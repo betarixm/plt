@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from . import views
+
 urlpatterns = [
+    path('', views.HomeView.as_view(), name='homeview'),
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('shop/', include('shop.urls')),
     path('sqli/', include('sqli.urls')),
     path('ssti/', include('ssti.urls')),

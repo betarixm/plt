@@ -17,5 +17,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.SstiView, name='sstiview'),
+    path('', views.SstiView.as_view(), name='sstiview'),
 ]

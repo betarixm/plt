@@ -6,4 +6,4 @@ from django.views import View
 
 class SstiView(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, 'ssti.html', {})
+        return render(request, 'ssti/ssti.html', {})

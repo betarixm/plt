@@ -15,7 +15,7 @@ class SqlQueryForm(forms.Form):
 class SqliView(LoginRequiredMixin, View):
     def get(self, request):
         form = SqlQueryForm()
-        return render(request, 'sqli.html', {
+        return render(request, 'sql/sqli.html', {
             'form': form
         })
 
@@ -23,11 +23,11 @@ class SqliView(LoginRequiredMixin, View):
         form = SqlQueryForm(request.POST)
 
         if not form.is_valid():
-            return render(request, 'sqli.html', {
+            return render(request, 'sql/sqli.html', {
                 'form': form
             })
 
         db = sqli_db()
         raw_query(db, form.cleaned_data['query'])
 
-        return render(request, 'sqli.html', {})
+        return render(request, 'sql/sqli.html', {})

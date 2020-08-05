@@ -17,5 +17,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.SqliView, name='sqliview'),
+    path('', views.SqliView.as_view(), name='sqliview'),
 ]
