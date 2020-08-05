@@ -15,7 +15,7 @@ media
 
 # secret file
 app/env/credential.py
-app/env/sqli_flags.py
+app/env/flag/flag.py
 
 # db
 app/db.sqlite3
