@@ -3,11 +3,7 @@ from env.flag.dummy import rand
 import random
 from flag.models import Flag
 from env.environ import ITEM_CATEGORY_SQLI
-
-MYSQL_HOST = "localhost"
-MYSQL_PORT = 37500
-MYSQL_USER = 'beta'
-MYSQL_PASS = 'kawai'
+from env.credential import MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASS
 
 NUM_TEAM = 5
 NUM_TABLE_FLAG = 2
@@ -125,8 +121,6 @@ class DB(Element):
             conn.commit()
         finally:
             conn.close()
-
-# con = pymysql.connect(host=MYSQL_HOST, port=MYSQL_PORT, user='beta', passwd='kawai')
 
 
 def get_flag_set():
