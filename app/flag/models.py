@@ -6,7 +6,7 @@ Team = get_user_model()
 
 
 class Flag(models.Model):
-    flag = models.TextField()
+    flag = models.TextField(unique=True)
     score = models.BigIntegerField()
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     teams = models.ManyToManyField(Team, blank=True)

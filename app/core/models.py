@@ -20,6 +20,9 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
+    def add_score(self, d_score: int):
+        self.score += d_score
+
 
 class Rule(models.Model):
     name = models.CharField(max_length=20)

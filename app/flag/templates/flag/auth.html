@@ -1,8 +1,43 @@
-{% extends 'base.html' %}
+{% extends '../core/base.html' %}
 
-{% block title %}Auth Flag{% endblock %}
+{% block title %}Register{% endblock %}
+
+{% block head %}
+    <script>
+        document.forms[0].reset();
+    </script>
+{% endblock %}
 
 {% block body %}
-    <h4>body!</h4>
-    <a href="{% url 'logout' %}">Logout</a>
+    {% if form.errors %}
+        <h2>인증 실패</h2>
+        <h3>{% for k, v in form.errors.items %}
+            {% if forloop.first %}
+                {{ v|first }}
+            {% endif %}
+        {% endfor %}
+        </h3>
+    {% else %}
+        <h2>Flag 인증</h2>
+    {% endif %}
+
+    {% if is_solved is not None %}
+    {% if is_solved %}
+        <h2>인증 성공!</h2>
+        <h3>
+            얻은 점수: {{ d_score }}
+        </h3>
+    {% else %}
+        <h2>인증 실패 :(</h2>
+    {% endif %}
+    {% endif %}
+    <form action="{% url 'flag' %}" method="post">
+        {% csrf_token %}
+        <h4>FLAG</h4>
+        <div class="field">
+            <input type="text" name="flag" placeholder="flag"
+                   value="{{ form.flag.data|default_if_none:'' }}">
+        </div>
+        <button type="submit">Auth</button>
+    </form>
 {% endblock %}
