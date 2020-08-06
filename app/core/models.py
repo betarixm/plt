@@ -96,9 +96,9 @@ class TeamManager(BaseUserManager):
 
     use_in_migrations = True
 
-    def create_user(self, name, email, password=None):
-        if not name:
-            raise ValueError('no name')
+    def create_user(self, username, email, password=None):
+        if not username:
+            raise ValueError('no username')
 
         filter_list = [SqliFilter(), SstiFilter(), XssFilter()]
         for f in filter_list:
@@ -106,7 +106,7 @@ class TeamManager(BaseUserManager):
 
         team = self.model(
             email = self.normalize_email(email),
-            name = name,
+            username = username,
             sqli_filter = filter_list[0],
             ssti_filter = filter_list[1],
             xss_filter = filter_list[2],
@@ -115,10 +115,10 @@ class TeamManager(BaseUserManager):
         team.save(using=self._db)
         return team
     
-    def create_superuser(self, name, email, password=None):
+    def create_superuser(self, username, email, password=None):
         team = self.create_user(
             email = self.normalize_email(email),
-            name = name,
+            username = username,
             password = password
         )
         team.is_admin = True
@@ -131,7 +131,7 @@ class TeamManager(BaseUserManager):
 class Team(AbstractUser, PermissionsMixin):
     objects = TeamManager()
 
-    name = models.CharField(max_length=20, unique=True)
+    username = models.CharField(max_length=20, unique=True)
     balance = models.BigIntegerField(default=0)
     score = models.BigIntegerField(default=0)
 
@@ -145,7 +145,7 @@ class Team(AbstractUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)     
     date_joined = models.DateTimeField(auto_now_add=True)   
 
-    USERNAME_FIELD = 'name'
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
     class Meta:
@@ -153,7 +153,7 @@ class Team(AbstractUser, PermissionsMixin):
         verbose_name_plural = '팀들'
 
     def __str__(self):
-        return self.name
+        return self.username
 
     def add_score(self, d_score: int):
         self.score += d_score

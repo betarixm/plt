@@ -9,7 +9,7 @@ Team = get_user_model()
 
 def init_sqli_db(team: Team):
     conn = pymysql.connect(host=SQLI_DB.HOST, port=SQLI_DB.PORT, user=SQLI_DB.USER, password=SQLI_DB.PASSWD, charset=SQLI_DB.CHARSET)
-    generate_db(conn, team.name)
+    generate_db(conn, team.username)
 
 
 class CoreConfig(AppConfig):

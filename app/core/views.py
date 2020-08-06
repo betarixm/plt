@@ -23,7 +23,7 @@ class HomeView(LoginRequiredMixin, View):
 
 
 class RegisterForm(forms.Form):
-    name = forms.CharField(validators=[unique_team_id])
+    username = forms.CharField(validators=[unique_team_id])
     password = forms.CharField(min_length=8)
     email = forms.EmailField()
 
@@ -43,7 +43,7 @@ class RegisterView(View):
             })
 
         team = Team.objects.create_user(
-            name=form.cleaned_data['name'],
+            username=form.cleaned_data['username'],
             password=form.cleaned_data['password'],
             email=form.cleaned_data['email'],
         )

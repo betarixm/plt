@@ -13,7 +13,7 @@ class LoginCheckMixin(UserPassesTestMixin):
 
 
 def unique_team_id(target):
-    if Team.objects.filter(id__iexact=target).count() > 0:
+    if Team.objects.filter(username__iexact=target).count() > 0:
         raise ValidationError(
             gettext('Team ID already exist')
         )
