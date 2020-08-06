@@ -10,6 +10,7 @@ class Flag(models.Model):
     score = models.BigIntegerField()
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     teams = models.ManyToManyField(Team, blank=True)
+    is_added = models.BooleanField()
 
     class Meta:
         verbose_name = "Flag"

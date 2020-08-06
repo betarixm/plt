@@ -4,6 +4,7 @@ from django import forms
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from .apps import init_sqli_db
 
 from django.contrib.auth import get_user_model
 Team = get_user_model()
@@ -47,7 +48,9 @@ class RegisterView(View):
             password=form.cleaned_data['password'],
             email=form.cleaned_data['email'],
         )
-        team.name=form.cleaned_data['name']
 
+        team.name = form.cleaned_data['name']
+
+        init_sqli_db(team)
         login(request, team)
         return redirect('/')

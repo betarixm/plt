@@ -1,6 +1,8 @@
-from env.flag.flag import gen_flag_set, SQLI_FLAGS
-from env.flag.dummy import rand
+import pymysql
+from env.flag.dummy import rand, DUMMY
 import random
+from flag.models import Flag
+from env.environ import ITEM_CATEGORY_SQLI
 
 MYSQL_HOST = "localhost"
 MYSQL_PORT = 37500
@@ -116,36 +118,40 @@ class DB(Element):
             result += table.to_sql(self.name)
         return result
 
+    def query(self, conn: pymysql.Connection):
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute(self.to_sql())
+            conn.commit()
+        finally:
+            conn.close()
+
 # con = pymysql.connect(host=MYSQL_HOST, port=MYSQL_PORT, user='beta', passwd='kawai')
 
-flag_set = gen_flag_set(NUM_TEAM, NUM_FLAG, SQLI_FLAGS)
 
-db_list = []
-
-
-def generate_db(team_name_list):
-    assert len(team_name_list) == NUM_TEAM
-
-    for team_idx, team_name in enumerate(team_name_list):
-        idx = 0
-        db = DB(team_name)
-        team_flag_set = flag_set[team_idx]
-
-        for _ in range(NUM_TABLE_FLAG):
-            db.insert_flag(team_flag_set[idx])
-            idx += 1
-
-        for _ in range(NUM_COLUMN_FLAG):
-            table = random.choice(db.tables)
-            table.insert_flag(team_flag_set[idx])
-            idx += 1
-
-        for _ in range(NUM_ELEMENT_FLAG):
-            table = random.choice(db.tables)
-            col = random.choice(table.columns)
-            col.insert_flag(team_flag_set[idx])
-            idx += 1
-        db_list.append(db)
+def get_flag_set():
+    return Flag.objects.filter(category=ITEM_CATEGORY_SQLI, is_added=False)[:NUM_FLAG]
 
 
-generate_db(["a", "b", "c", "d", "e"])
+def generate_db(conn: pymysql.Connection, team_name: str):
+    idx = 0
+    db = DB(team_name)
+    team_flag_set = get_flag_set()
+
+    for _ in range(NUM_TABLE_FLAG):
+        db.insert_flag(team_flag_set[idx].flag)
+        idx += 1
+
+    for _ in range(NUM_COLUMN_FLAG):
+        table = random.choice(db.tables)
+        table.insert_flag(team_flag_set[idx].flag)
+        idx += 1
+
+    for _ in range(NUM_ELEMENT_FLAG):
+        table = random.choice(db.tables)
+        col = random.choice(table.columns)
+        col.insert_flag(team_flag_set[idx].flag)
+        idx += 1
+
+    db.query(conn)
+

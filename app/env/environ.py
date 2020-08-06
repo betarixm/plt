@@ -29,6 +29,7 @@ CATEGORY_CHOICES = (
     (ITEM_CATEGORY_SSTI, 'SSTI')
 )
 
+
 def team_list():
     return Team.objects.values_list('id', flat=True)
 
