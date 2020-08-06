@@ -1,0 +1,42 @@
+{% extends 'core/base.html'%}
+
+{% block title %} SQL Injection {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+    {% if is_valid is not None %}
+        {% if is_valid %}
+            {% if result is not None %}
+                <div>
+                    {{ result }}
+                </div>
+            {% else %}
+                <div>
+                    There was an error.
+                </div>
+            {% endif %}
+        {% else %}
+            <div>
+                Query is not Valid! (because of filter of other team, team name in query, etc,...)
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <form action="{% url 'sqli' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="query" placeholder="sql query" value="{{ form.query.data|default_if_none:'' }}">
+        {% for choice in form.team.field.choices %}
+            <li>
+                <input type="radio" name="team" value="{{choice.0}}"
+                        {% ifequal form.team.data choice.0 %}
+                       checked="checked"
+                        {% endifequal %}/>
+                <label for="">{{choice.1}}</label>
+            </li>
+        {% endfor %}
+        <button type="submit">query!</button>
+    </form>
+{% endblock %}

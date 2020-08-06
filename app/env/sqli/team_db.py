@@ -1,5 +1,5 @@
 import pymysql
-from env.flag.dummy import rand, DUMMY
+from env.flag.dummy import rand
 import random
 from flag.models import Flag
 from env.environ import ITEM_CATEGORY_SQLI

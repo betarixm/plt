@@ -31,7 +31,7 @@ CATEGORY_CHOICES = (
 
 
 def team_list():
-    return Team.objects.values_list('email', flat=True)
+    return Team.objects.values_list('username', flat=True)
 
 
 def team_choices():
