@@ -10,12 +10,13 @@
 *.pyc
 __pycache__/
 local_settings.py
-db.sqlite3
+app/db.sqlite3
 media
 
 # secret file
 app/env/credential.py
 app/env/flag/flag.py
 
-# db
-app/db.sqlite3
+# docker
+app/env/sqli/plt-mysql-data/
+app/env/sqli/init/

@@ -23,14 +23,9 @@
 
 <form action="{% url 'register' %}" method="post">
     {% csrf_token %}
-    <h4>username</h4>
+    <h4>name</h4>
     <div class="field">
-        <input type="text" name="username" placeholder="username"
-            value="{{ form.username.data|default_if_none:'' }}">
-    </div>
-    <h4>Team Name</h4>
-    <div class="field">
-        <input type="text" name="name" placeholder="Team Name"
+        <input type="text" name="name" placeholder="name"
             value="{{ form.name.data|default_if_none:'' }}">
     </div>
     <h4>Password</h4>

@@ -3,11 +3,12 @@ from django.contrib.auth import get_user_model
 from env.environ import SQLI_DB
 import pymysql
 import re
+
 Team = get_user_model()
 
 
 def get_sql_query(target_team_name: str, query: str):
-    target_team_list = Team.objects.filter(username=target_team_name)
+    target_team_list = Team.objects.filter(name=target_team_name)
 
     if len(target_team_list) != 1:
         return False, None
@@ -17,7 +18,7 @@ def get_sql_query(target_team_name: str, query: str):
     if not is_valid_query(target_team, query):
         return False, None
 
-    conn = pymysql.connect(port=SQLI_DB.PORT, user=SQLI_DB.USER, password=SQLI_DB.PASSWD, database=target_team_name)
+    conn = pymysql.connect(port=SQLI_DB.PORT, user=SQLI_DB.USER, password=SQLI_DB.PASS, database=target_team_name)
 
     try:
         with conn.cursor() as cur:
@@ -31,10 +32,10 @@ def get_sql_query(target_team_name: str, query: str):
 
 def is_valid_query(target_team: Team, query: str):
 
-    if len(Team.objects.filter(username=target_team.username)) == 0:
+    if len(Team.objects.filter(name=target_team.name)) == 0:
         return False
 
-    teams_in_query = [t for t in Team.objects.all() if t.username in query]
+    teams_in_query = [t for t in Team.objects.all() if t.name in query]
 
     if len(teams_in_query) > 0:
         return False

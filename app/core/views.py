@@ -5,8 +5,8 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .apps import init_sqli_db
-
 from django.contrib.auth import get_user_model
+from .models import SqliFilter
 Team = get_user_model()
 
 from utils.validator import unique_team_id
@@ -23,8 +23,7 @@ class HomeView(LoginRequiredMixin, View):
 
 
 class RegisterForm(forms.Form):
-    username = forms.CharField(validators=[unique_team_id])
-    name = forms.CharField()
+    name = forms.CharField(validators=[unique_team_id])
     password = forms.CharField(min_length=8)
     email = forms.EmailField()
 
@@ -44,12 +43,10 @@ class RegisterView(View):
             })
 
         team = Team.objects.create_user(
-            username=form.cleaned_data['username'],
+            name=form.cleaned_data['name'],
             password=form.cleaned_data['password'],
             email=form.cleaned_data['email'],
         )
-
-        team.name = form.cleaned_data['name']
 
         init_sqli_db(team)
         login(request, team)

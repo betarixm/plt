@@ -3,19 +3,11 @@
 {% block title %} XSS {% endblock %}
 
 {% block head %}
-
+    <meta http-equiv="Content-Security-Policy"
+        content="{% form.query %}">
 {% endblock %}
 
 {% block body %}
-    {% if succeed is not None %}
-        {% if succeed %}
-            <h2>Successfully Injected Script!!!</h2>
-        {% else %}
-            <h2>Failed</h2>
-        {% endif %}
-    {% else %}
-        <h2>Type your query to another Team!</h2>
-    {% endif %}
     <form action="{% url 'xss' %}" method="post">
         {% csrf_token %}
         <input type="text" name="query" placeholder="xss query" value="{{ form.query.data|default_if_none:'' }}">
