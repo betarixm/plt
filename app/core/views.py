@@ -7,14 +7,13 @@ from django.utils.decorators import method_decorator
 from .apps import init_sqli_db
 from django.contrib.auth import get_user_model
 from .models import SqliFilter
-Team = get_user_model()
-
 from utils.validator import unique_team_id
 
 # use for check login...
 # if needed something else, wonderful(ex. check login and also email?),,, use latter.
 from django.contrib.auth.mixins import LoginRequiredMixin
 from utils.validator import LoginCheckMixin
+from .apps import create_team
 
 
 class HomeView(LoginRequiredMixin, View):
@@ -42,12 +41,11 @@ class RegisterView(View):
                 'form': form
             })
 
-        team = Team.objects.create_user(
-            username=form.cleaned_data['username'],
-            password=form.cleaned_data['password'],
-            email=form.cleaned_data['email'],
+        team = create_team(
+            form_username=form.cleaned_data['username'],
+            form_password=form.cleaned_data['password'],
+            form_email=form.cleaned_data['email'],
         )
 
-        init_sqli_db(team)
         login(request, team)
         return redirect('/')

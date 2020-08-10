@@ -4,7 +4,6 @@ from django.views import View
 from django import forms
 from .apps import get_sql_query
 from env.environ import team_choices
-from utils.mysql import sqli_db, raw_query
 
 
 class SqlQueryForm(forms.Form):
