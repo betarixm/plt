@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
 
 
-
 class Rule(models.Model):
     name = models.CharField(max_length=20)
     description = models.TextField()
@@ -90,10 +89,7 @@ class XssFilter(Filter):
         verbose_name_plural = "XSS 필터들"
 
 
-
-
 class TeamManager(BaseUserManager):
-
     use_in_migrations = True
 
     def create_user(self, username, email, password=None):
@@ -105,21 +101,21 @@ class TeamManager(BaseUserManager):
             f.save()
 
         team = self.model(
-            email = self.normalize_email(email),
-            username = username,
-            sqli_filter = filter_list[0],
-            ssti_filter = filter_list[1],
-            xss_filter = filter_list[2],
+            email=self.normalize_email(email),
+            username=username,
+            sqli_filter=filter_list[0],
+            ssti_filter=filter_list[1],
+            xss_filter=filter_list[2],
         )
         team.set_password(password)
         team.save(using=self._db)
         return team
-    
+
     def create_superuser(self, username, email, password=None):
         team = self.create_user(
-            email = self.normalize_email(email),
-            username = username,
-            password = password
+            email=self.normalize_email(email),
+            username=username,
+            password=password
         )
         team.is_admin = True
         team.is_superuser = True
@@ -139,11 +135,11 @@ class Team(AbstractUser, PermissionsMixin):
     ssti_filter = models.OneToOneField('core.SstiFilter', related_name="SSTI_Filter", on_delete=models.CASCADE)
     xss_filter = models.OneToOneField('core.XssFilter', related_name="XSS_Filter", on_delete=models.CASCADE)
 
-    is_active = models.BooleanField(default=True)    
-    is_admin = models.BooleanField(default=False)    
-    is_superuser = models.BooleanField(default=False)    
-    is_staff = models.BooleanField(default=False)     
-    date_joined = models.DateTimeField(auto_now_add=True)   
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
@@ -157,4 +153,3 @@ class Team(AbstractUser, PermissionsMixin):
 
     def add_score(self, d_score: int):
         self.score += d_score
-

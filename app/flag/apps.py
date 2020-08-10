@@ -12,6 +12,11 @@ def check_flag(team: Team, flag_str: str):
 
     f = f[0]
 
+    result = f.objects.filter(teams__username=team.username)
+
+    if len(result) != 0:
+        return False, None
+
     team.add_score(f.score)
     f.teams.add(team)
 
