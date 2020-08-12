@@ -10,4 +10,5 @@ WORKDIR /app
 ADD requirements.txt /app/
 RUN pip install -r requirements.txt
 ADD app/ /app/
+RUN python manage.py collectstatic
 ENTRYPOINT ["python", "manage.py", "runserver", "0.0.0.0:8000"]
