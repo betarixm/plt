@@ -3,6 +3,15 @@
 {% block title %}Main Page{% endblock %}
 
 {% block body %}
+    <h2>head!</h2>
     <h4>body!</h4>
-    <a href="{% url 'logout' %}">Logout</a>
+    <a href="{% url 'sqli' %}">SQL injection</a><br>
+    <a href="{% url 'ssti' %}">SSTI</a><br>
+    <a href="{% url 'xss' %}">XSS</a><br>
+    <br>
+    <a href="{% url 'shop' %}">Shop</a><br>
+    <br>
+    <a href="{% url 'flag' %}">Auth Flag</a><br>
+    <br>
+    <a href="{% url 'logout' %}">Logout</a><br>
 {% endblock %}

@@ -1,0 +1,27 @@
+#-*- coding:utf-8 -*- 
+import sys
+from selenium import webdriver
+import time
+
+def check_alert(URL):
+    try:
+        options = webdriver.ChromeOptions()
+        options.add_argument('headless')    # 웹 브라우저를 띄우지 않는 headless chrome 옵션 적용
+        options.add_argument('disable-gpu')    # GPU 사용 안함
+        options.add_argument('lang=ko_KR')    # 언어 설정
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+
+        driver = webdriver.Chrome("location", options=options)
+        driver.get(URL)
+        driver.implicitly_wait(2)
+        try:
+            driver.switch_to_alert()
+            driver.quit()
+            return True
+        except:
+            driver.quit()
+            return False
+
+    except Exception as ex:
+        print(ex)

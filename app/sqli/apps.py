@@ -8,7 +8,7 @@ Team = get_user_model()
 
 
 def get_sql_query(target_team_name: str, query: str):
-    target_team_list = Team.objects.filter(name=target_team_name)
+    target_team_list = Team.objects.filter(username=target_team_name)
 
     if len(target_team_list) != 1:
         return False, None
@@ -32,10 +32,10 @@ def get_sql_query(target_team_name: str, query: str):
 
 def is_valid_query(target_team: Team, query: str):
 
-    if len(Team.objects.filter(name=target_team.name)) == 0:
+    if len(Team.objects.filter(username=target_team.username)) == 0:
         return False
 
-    teams_in_query = [t for t in Team.objects.all() if t.name in query]
+    teams_in_query = [t for t in Team.objects.all() if t.username in query]
 
     if len(teams_in_query) > 0:
         return False
@@ -45,9 +45,9 @@ def is_valid_query(target_team: Team, query: str):
     if max_len < len(query):
         return False
 
-    regex_filter_list = target_team.sqli_filter.regex_rule_list
+    regex_filter_list = target_team.sqli_filter.regex_rule_list.all()
 
-    for r in regex_filter_list.objects.all():
+    for r in regex_filter_list.regexp:
         p = re.compile(r.regexp)
         if p.match(query):
             return False

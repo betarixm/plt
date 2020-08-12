@@ -1,0 +1,12 @@
+{% extends 'core/base.html'%}
+
+{% block title %} XSS test {% endblock %}
+
+{% block head %}
+    <meta http-equiv="Content-Security-Policy"
+        content="{{ csp }}">
+{% endblock %}
+
+{% block body %}
+    {{ query }}
+{% endblock %}
