@@ -1,5 +1,100 @@
+@font-face {
+    font-family: 'sdnr';
+    src: url("font/sdnr_b.otf") format('opentype');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'sdnr';
+    src: url("font/sdnr_m.otf") format('opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+*:focus {
+    outline: none;
+}
+
 body{
     width: 100vw;
     height: 100vh;
     background: linear-gradient(#6EAEF4, #AFECFB);
+    font-family: 'sdnr', sans-serif;
+    margin: 0;
+}
+
+.app{
+    margin: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: calc(100vw - 10vh);
+    height: calc(100vh - 10vh);
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+form > input {
+
+}
+
+.vertical{
+    flex-direction: column;
+}
+
+.row{
+    flex-direction: row;
+}
+.color-white{
+    background-color: white;
+
+}
+
+.shadow-small{
+    box-shadow: 0 4px 0 #DB8532;
+}
+.shadow-big{
+    box-shadow: 0 7px 0 #DB8532;
+}
+
+.push:hover{
+    box-shadow: 0 1px 0 #DB8532;
+    position: relative;
+    top: 3px;
+}
+.color-light{
+    background-color: #FFF8E4;
+
+}
+.color-dark{
+    background-color: #ff9a3b;
+    color: white;
+}
+.margin-big{
+    margin: 5vh;
+}
+
+.padding-big{
+    padding: 2vh;
+}
+.margin-small{
+    margin: 1vh;
+
+}
+.padding-small{
+    padding: 1.5vh;
+}
+.box{
+    border-radius: 2vh;
+    border: none;
+    font-family: 'sdnr', sans-serif;
 }
