@@ -1,6 +1,7 @@
 # intellij IDEA
 .idea/
 
+
 # virtualenv
 .env/
 
@@ -19,5 +20,5 @@ app/env/flag/flag.py
 app/utils/flag.py
 
 # docker
-app/env/sqli/plt-mysql-data/
-app/env/sqli/init/
+plt-mysql-data/
+init/

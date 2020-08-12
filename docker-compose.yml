@@ -2,11 +2,11 @@ version: '3.3'
 
 services:
   db:
-    image: mysql
+    image: mysql:latest
     container_name: plt-mysql
     volumes:
       - "./plt-mysql-data:/var/lib/mysql"
-      - "./init/:/docker-entrypoint-initdb.d"
+      - "./init:/docker-entrypoint-initdb.d"
     restart: always
     ports:
       - 37500:3306
@@ -17,7 +17,13 @@ services:
       MYSQL_ROOT_PASSWORD: "betaiskawai"
 
   adminer:
-    image: adminer
+    image: adminer:latest
     container_name: plt-mysql-adminer
     ports:
       - 37501:8080
+
+  web:
+    build: .
+    container_name: plt-django
+    ports:
+      - 17534:8000
