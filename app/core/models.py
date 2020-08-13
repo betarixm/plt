@@ -92,7 +92,7 @@ class XssFilter(Filter):
 class TeamManager(BaseUserManager):
     use_in_migrations = True
 
-    def create_user(self, username, email, password=None):
+    def create_user(self, username, email=None, password=None):
         if not username:
             raise ValueError('no username')
 
@@ -100,20 +100,21 @@ class TeamManager(BaseUserManager):
         for f in filter_list:
             f.save()
 
-        team = self.model(
-            email=self.normalize_email(email),
-            username=username,
-            sqli_filter=filter_list[0],
-            ssti_filter=filter_list[1],
-            xss_filter=filter_list[2],
-        )
+        team = self.model(username = username)
+        team.sqli_filter = filter_list[0]
+        team.ssti_filter = filter_list[1]
+        team.xss_filter = filter_list[2]
+        
+        team.email = self.normalize_email(email)
         team.set_password(password)
         team.save(using=self._db)
         return team
 
-    def create_superuser(self, username, email, password=None):
+    def create_superuser(self, username, password, email=None):
+        if not password:
+            raise ValueError('no password')
+
         team = self.create_user(
-            email=self.normalize_email(email),
             username=username,
             password=password
         )
@@ -127,6 +128,7 @@ class TeamManager(BaseUserManager):
 class Team(AbstractUser, PermissionsMixin):
     objects = TeamManager()
 
+    email = models.EmailField(max_length=255, unique=True)
     username = models.CharField(max_length=20, unique=True)
     balance = models.BigIntegerField(default=0)
     score = models.BigIntegerField(default=0)

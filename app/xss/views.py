@@ -60,8 +60,8 @@ class XssView(LoginRequiredMixin, View):
 
 class XssTestView(View):
     def get(self, request, hash):
-        
+        data = XssTrial.objects.filter(hash = hash)
         return render(request, 'xss/xss_test.html', {
-            'csp': target_team.xss_filter.csp_rule_list.all(),
-            'query': query,
+            'csp': data.csp,
+            'query': data.query,
         })

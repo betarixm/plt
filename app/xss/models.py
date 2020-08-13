@@ -7,7 +7,7 @@ class XssTrial(models.Model):
     to_team = models.CharField(max_length=20)
     csp = models.CharField(max_length=10000)
     query = models.CharField(max_length=10000)
-    hash = models.CharField(max_length=32)
+    hash = models.CharField(max_length=32, unique=True)
     checked = models.BooleanField(default=False)
     succeed = models.BooleanField(default=False)
     
