@@ -7,12 +7,12 @@ class XssTrial(models.Model):
     to_team = models.CharField(max_length=20)
     csp = models.CharField(max_length=10000)
     query = models.CharField(max_length=10000)
-    hash = models.CharField(max_length=32, unique=True)
+    hash = models.CharField(max_length=64, unique=True)
     checked = models.BooleanField(default=False)
     succeed = models.BooleanField(default=False)
     
     def __str__(self):
-        return f"query from {from_team} to {to_team}"
+        return f"query from {self.from_team} to {self.to_team}"
 
     class Meta:
         verbose_name = "XSS 공격 시도"

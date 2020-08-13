@@ -18,5 +18,5 @@ from . import views
 
 urlpatterns = [
     path('', views.XssView.as_view(), name='xss'),
-    re_path(r'^(?P<hash>[\w-]+)/$', views.XssTestView.as_view(), name='test_xss'),
+    re_path(r'^(?P<hash>[0-9a-f]+)/$', views.XssTestView.as_view(), name='test_xss'),
 ]

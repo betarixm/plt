@@ -1,4 +1,5 @@
-from secrets import token_urlsafe
+import os
+import binascii
 
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -39,17 +40,16 @@ class XssView(LoginRequiredMixin, View):
         
         res, csp = prepare_xss(form.cleaned_data['team'], form.cleaned_data['query'])
         if res:
-            hash = token_urlsafe(30)
+            hash = str(binascii.hexlify(os.urandom(64)),'utf8')
             xss_trial = XssTrial.objects.create(hash=hash)
             xss_trial.from_team = request.user.username
             xss_trial.to_team = form.cleaned_data['team']
             xss_trial.csp = csp
             xss_trial.query = form.cleaned_data['query']
                                     
-
             if check_alert('http://'+get_current_site(request).domain+'/xss/'+hash):
                 succeed = True
-                flag = getFlag(form.cleaned_data['team'])
+                flag = get_flag()
 
         return render(request, 'xss/xss.html', {
             'form': form,
@@ -61,7 +61,14 @@ class XssView(LoginRequiredMixin, View):
 class XssTestView(View):
     def get(self, request, hash):
         data = XssTrial.objects.filter(hash = hash)
-        return render(request, 'xss/xss_test.html', {
-            'csp': data.csp,
-            'query': data.query,
-        })
+        print(data[0])
+        if data[0]:
+            return render(request, 'xss/xss_test.html', {
+                'csp': data[0].csp,
+                'query': data[0].query,
+            })
+        else:
+            return render(request, 'xss/xss_test.html', {
+                'csp': None,
+                'query': None,
+            })
