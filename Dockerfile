@@ -10,7 +10,6 @@ WORKDIR /app
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 COPY app/ /app/
-RUN rm -r static
-RUN python manage.py collectstatic
+RUN python manage.py collectstatic --noinput
 
 ENTRYPOINT ["python", "manage.py", "runserver", "0.0.0.0:8000"]

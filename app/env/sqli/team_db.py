@@ -6,7 +6,7 @@ from flag.models import Flag
 from env.environ import ITEM_CATEGORY_SQLI
 from env.credential import MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASS
 
-INIT_SCORE = 500
+SQLI_INIT_SCORE = 500
 
 NUM_TEAM = 5
 NUM_TABLE_FLAG = 2
@@ -138,11 +138,9 @@ class DB(Element):
 
 
 def add_flag():
-    while True:
-        flag = random_flag()
-        if len(Flag.objects.filter(flag=flag)) == 0:
-            Flag.objects.create(flag=flag, score=INIT_SCORE, category=ITEM_CATEGORY_SQLI)
-            return flag
+    flag = random_flag()
+    Flag.objects.create(flag=flag, score=SQLI_INIT_SCORE, category=ITEM_CATEGORY_SQLI)
+    return flag
 
 
 def get_flag_set():

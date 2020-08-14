@@ -1,4 +1,5 @@
 from random import choice as _
+from flag.models import Flag
 
 SUBJECT = [
     "admiral",
@@ -1675,4 +1676,7 @@ OBJECT = [
 
 
 def random_flag():
-    return "PLUS{" + f"{_(SUBJECT)}_and_{_(SUBJECT)}_{_(VERB)}_{_(SUBJECTIVE)}_{_(OBJECT)}_with_{_(SUBJECT)}" + "}"
+    while True:
+        flag = "PLUS{" + f"{_(SUBJECT)}_and_{_(SUBJECT)}_{_(VERB)}_{_(SUBJECTIVE)}_{_(OBJECT)}_with_{_(SUBJECT)}" + "}"
+        if len(Flag.objects.filter(flag=flag)) == 0:
+            return flag

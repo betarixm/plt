@@ -1,5 +1,10 @@
 from flag.models import Flag
 from env.environ import ITEM_CATEGORY_XSS
+from utils.flag import random_flag
+
+XSS_INIT_SCORE = 400
 
 def get_flag():
-    return Flag.objects.filter(category=ITEM_CATEGORY_XSS, is_added=False)[0]
+    flag = random_flag()
+    Flag.objects.create(flag=flag, score=XSS_INIT_SCORE, category=ITEM_CATEGORY_XSS)
+    return flag

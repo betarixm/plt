@@ -24,6 +24,12 @@ services:
     ports:
       - 37501:8080
 
+  ssti:
+    build: ./app/env/ssti/
+    container_name: plt-ssti
+    ports:
+      - 37502:8080
+
   web:
     build: .
     image: plt-django:0.1
