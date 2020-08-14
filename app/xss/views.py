@@ -68,7 +68,7 @@ class XssView(LoginRequiredMixin, View):
         if not succeed:
             return render(request, 'xss/xss.html', {
                 'form': form,
-                'failed': "blocked by Content-Security-Policy! (or maybe your script is not alerting anything? you need to alert message.)",
+                'failed': "blocked by Content-Security-Policy!<br>(or maybe your script is not alerting anything? you need to alert message.)",
             })
 
         flag = get_flag()

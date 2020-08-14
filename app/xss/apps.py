@@ -55,7 +55,7 @@ def get_time_passed_after_last_attack(attack_team, target_team):
         last_attack = XssTrial.objects.filter(from_team=attack_team,
                                             to_team=target_team,
                                             succeed=True).latest()
-        last_attack_time = int(past_trial.created_at.strftime("%Y%m%d%H%M%S"))
+        last_attack_time = int(last_attack.created_at.strftime("%Y%m%d%H%M%S"))
     except XssTrial.DoesNotExist:
         pass
     
