@@ -7,12 +7,13 @@
 {% endblock %}
 
 {% block body %}
-    {% if succeed is not None %}
-        {% if succeed %}
+    {% if failed is not None %}
+        {% if not failed %}
             <h2>Successfully Injected and Executed Script!!!</h2>
             <h3>here is your flag > {{ flag }}</h3>
         {% else %}
             <h2>Failed to execute script...</h2>
+            <h3>FAILED BY: {{ failed|safe }}</h3>
         {% endif %}
     {% else %}
         <h2>Type your query to another Team!</h2>

@@ -10,8 +10,7 @@ WORKDIR /app
 ADD requirements.txt /app/
 RUN pip install -r requirements.txt
 ADD app/ /app/
-RUN rm -r static
-RUN python manage.py collectstatic --noinput
+RUN python manage.py collectstatic
 
 #install google chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -

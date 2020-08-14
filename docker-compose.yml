@@ -1,12 +1,14 @@
 version: '3.3'
 
+volumes:
+  plt-mysql-data:
+
 services:
   db:
     image: mysql:latest
     container_name: plt-mysql
     volumes:
-      - "./plt-mysql-data:/var/lib/mysql"
-      - "./init:/docker-entrypoint-initdb.d"
+      - "plt-mysql-data:/var/lib/mysql"
     restart: always
     ports:
       - 37500:3306
