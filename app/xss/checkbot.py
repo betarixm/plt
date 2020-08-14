@@ -18,10 +18,11 @@ def check_alert(URL):
         try:
             driver.switch_to_alert()
             driver.quit()
-            return True
+            return True, True
         except:
             driver.quit()
-            return False
+            return True, False
 
     except Exception as ex:
         print(ex)
+        return False, False

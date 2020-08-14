@@ -3,10 +3,17 @@
 {% block title %} XSS test {% endblock %}
 
 {% block head %}
+    {% if not data.checked %}
     <meta http-equiv="Content-Security-Policy"
-        content="{{ csp }}">
+        content="{% for csp in data.csp.all %}csp{% endfor %}">
+    {% endif %}
 {% endblock %}
 
 {% block body %}
-    {{ query }}
+    {{ data.checked }}
+    {% if not data.checked %}
+        {{ data.query|safe }}
+    {% else %}
+        Forbidden
+    {% endif %}
 {% endblock %}
