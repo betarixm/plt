@@ -1,9 +1,12 @@
 import pymysql
 from utils.dummy import rand
+from utils.flag import random_flag
 import random
 from flag.models import Flag
 from env.environ import ITEM_CATEGORY_SQLI
 from env.credential import MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASS
+
+INIT_SCORE = 500
 
 NUM_TEAM = 5
 NUM_TABLE_FLAG = 2
@@ -58,6 +61,16 @@ class Table(Element):
         self.child = self.columns
         self.size: int = NUM_COLUMN
 
+        names = []
+
+        for c in self.columns:
+            while True:
+                name = rand()
+                if name not in names:
+                    c.name = name
+                    names.append(name)
+                    break
+
     def __repr__(self):
         return self.name
 
@@ -109,9 +122,10 @@ class DB(Element):
             t.show()
 
     def to_sql(self):
-        result = f"CREATE DATABASE '{self.name}';\n"
+        result = f"CREATE DATABASE `{self.name}`;\n"
         for table in self.tables:
             result += table.to_sql(self.name)
+        print(result)
         return result
 
     def query(self, conn: pymysql.Connection):
@@ -123,8 +137,16 @@ class DB(Element):
             conn.close()
 
 
+def add_flag():
+    while True:
+        flag = random_flag()
+        if len(Flag.objects.filter(flag=flag)) == 0:
+            Flag.objects.create(flag=flag, score=INIT_SCORE, category=ITEM_CATEGORY_SQLI)
+            return flag
+
+
 def get_flag_set():
-    return Flag.objects.filter(category=ITEM_CATEGORY_SQLI, is_added=False)[:NUM_FLAG]
+    return [add_flag() for _ in range(NUM_FLAG)]
 
 
 def generate_db(conn: pymysql.Connection, team_name: str):
@@ -133,18 +155,18 @@ def generate_db(conn: pymysql.Connection, team_name: str):
     team_flag_set = get_flag_set()
 
     for _ in range(NUM_TABLE_FLAG):
-        db.insert_flag(team_flag_set[idx].flag)
+        db.insert_flag(team_flag_set[idx])
         idx += 1
 
     for _ in range(NUM_COLUMN_FLAG):
         table = random.choice(db.tables)
-        table.insert_flag(team_flag_set[idx].flag)
+        table.insert_flag(team_flag_set[idx])
         idx += 1
 
     for _ in range(NUM_ELEMENT_FLAG):
         table = random.choice(db.tables)
         col = random.choice(table.columns)
-        col.insert_flag(team_flag_set[idx].flag)
+        col.insert_flag(team_flag_set[idx])
         idx += 1
 
     db.query(conn)
