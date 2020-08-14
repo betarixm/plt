@@ -19,11 +19,10 @@
 }
 
 body{
-    width: 100vw;
-    height: 100vh;
     background: linear-gradient(#6EAEF4, #AFECFB);
     font-family: 'sdnr', sans-serif;
-    margin: 0;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .app{
@@ -43,8 +42,8 @@ form{
 
 }
 
-form > input {
-
+.formInput{
+    width: 40vw;
 }
 
 .vertical{
@@ -61,15 +60,21 @@ form > input {
 
 .shadow-small{
     box-shadow: 0 4px 0 #DB8532;
+    border: 1px solid #DB8532;
 }
 .shadow-big{
     box-shadow: 0 7px 0 #DB8532;
+    border: 1px solid #DB8532
 }
 
 .push:hover{
     box-shadow: 0 1px 0 #DB8532;
     position: relative;
     top: 3px;
+}
+
+.color-white{
+    background-color: white;
 }
 .color-light{
     background-color: #FFF8E4;
@@ -79,6 +84,12 @@ form > input {
     background-color: #ff9a3b;
     color: white;
 }
+
+.color-red{
+    background-color: #ff3b3b;
+    color: white;
+}
+
 .margin-big{
     margin: 5vh;
 }
@@ -90,11 +101,49 @@ form > input {
     margin: 1vh;
 
 }
+
+
 .padding-small{
     padding: 1.5vh;
 }
 .box{
     border-radius: 2vh;
-    border: none;
     font-family: 'sdnr', sans-serif;
 }
+
+.padding-tiny{
+    padding: 1vh;
+}
+
+.flex{
+    display: flex;
+}
+
+.listItem{
+    width: 30vw;
+    text-align: center;
+    cursor: pointer;
+}
+
+.center{
+    justify-content: center;
+    align-items: center;
+}
+a {
+    text-decoration-line: none;
+}
+
+input[type=radio]{
+	width: 0;
+    height: 0;
+    position: absolute;
+    left: -9999px;
+}
+input[type=radio] + label{
+    transition: border-color .15s ease-out,  color .25s ease-out,  background-color .15s ease-out, box-shadow .15s ease-out;
+    cursor: pointer;
+}
+input[type=radio]:checked + label{
+    background-color: #ff3b3b;
+    color: white;
+} 

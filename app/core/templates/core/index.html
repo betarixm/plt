@@ -3,13 +3,19 @@
 {% block title %}Main Page{% endblock %}
 
 {% block body %}
-    <a href="{% url 'sqli' %}">SQL injection</a><br>
-    <a href="{% url 'ssti' %}">SSTI</a><br>
-    <a href="{% url 'xss' %}">XSS</a><br>
-    <br>
-    <a href="{% url 'shop' %}">Shop</a><br>
-    <br>
-    <a href="{% url 'flag' %}">Auth Flag</a><br>
-    <br>
-    <a href="{% url 'logout' %}">Logout</a><br>
+    <div class="box vertical color-light shadow-big padding-big margin-small">
+        <div class="listItem box color-white shadow-small padding-small margin-small push" onclick="location.href={% url 'sqli' %}">SQL injection</div>
+        <div class="listItem box color-white shadow-small padding-small margin-small push" onclick="location.href={% url 'ssti' %}">SSTI</div>
+        <div class="listItem box color-white shadow-small padding-small margin-small push" onclick="location.href={% url 'xss' %}">XSS</div>
+    </div>
+
+    <div class="box vertical color-light shadow-big padding-big margin-small">
+        <div class="listItem box color-white shadow-small padding-small margin-small push" onclick="location.href={% url 'shop' %}">Shop</div>
+        <div class="listItem box color-white shadow-small padding-small margin-small push" onclick="location.href={% url 'flag' %}">Auth Flag</div>
+    </div>
+        
+        <a class="listItem box color-red shadow-small padding-small margin-big push" href="{% url 'logout' %}">Logout</a><br>
+    
+
+    
 {% endblock %}

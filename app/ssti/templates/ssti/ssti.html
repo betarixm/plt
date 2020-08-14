@@ -15,21 +15,9 @@
             <h2>Failed to execute script...</h2>
             <h3>FAILED BY: {{ failed|safe }}</h3>
         {% endif %}
-    {% else %}
-        <h2>Type your query to another Team!</h2>
     {% endif %}
-    <form action="{% url 'xss' %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="query" placeholder="xss query" value="{{ form.query.data|default_if_none:'' }}">
-        {% for choice in form.team.field.choices %}
-            <li>
-                <input type="radio" name="team" value="{{choice.0}}"
-                        {% ifequal form.team.data choice.0 %}
-                       checked="checked"
-                        {% endifequal %}/>
-                <label for="">{{choice.1}}</label>
-            </li>
-        {% endfor %}
-        <button type="submit">query!</button>
-    </form>
+    {% url 'ssti' as action_url %}
+    {% include "core/attack_form.html" with form=form action=action_url%}
+
+    
 {% endblock %}
