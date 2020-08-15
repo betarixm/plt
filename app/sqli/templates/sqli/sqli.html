@@ -1,5 +1,5 @@
 {% extends 'core/base.html'%}
-
+{% load static %}
 {% block title %} SQL Injection {% endblock %}
 
 {% block head %}
@@ -7,25 +7,32 @@
 {% endblock %}
 
 {% block body %}
-{% if is_valid is not None %}
-{% if is_valid %}
-{% if result is not None %}
-<div>
-    {{ result }}
-</div>
-{% else %}
-<div>
-    There was an error.
-</div>
-{% endif %}
-{% else %}
-<div>
-    Query is not Valid! (because of filter of other team, team name in query, etc,...)
-</div>
-{% endif %}
-{% endif %}
 
-{% url 'sqli' as action_url %}
-{% include "core/attack_form.html" with form=form action=action_url%}
+<div class="flex center">
+    <img class="titleImg" src="{% static 'img/isabelle.png' %}">
+    <div class="box margin-big padding-big color-white shadow-big arrow_box">
+        {% if is_valid is not None %}
+            {% if is_valid %}
+                {% if result is not None %}
+                    결과가 왔어요! <br>
+                    {{ result }}
+                {% else %}
+                    에러가 있었어요ㅠ
+                {% endif %}
+            {% else %}
+                엥? 그건 올바르지 않은 쿼리잖아요! <br>
+                우리가 모르는 필터가 있는걸까요..?<br>
+            {% endif %}
+        {% else %}
+            SQL Injection을 해보자구요!
+        {% endif %}
+    </div>
+</div>
 
-{% endblock %}
+
+
+
+    {% url 'sqli' as action_url %}
+    {% include "core/attack_form.html" with form=form action=action_url%}
+
+    {% endblock %}

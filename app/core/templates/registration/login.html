@@ -1,8 +1,9 @@
 {% extends 'core/base.html' %}
-
+{% load static %}
 {% block title %}Login{% endblock %}
 
 {% block body %}
+    <img class="title margin-small" src="{% static 'img/title.png' %}">
     <div class="box color-light shadow-big margin-big padding-big vertical">
         <div class="margin-small">
             {% if form.errors %}
@@ -22,8 +23,5 @@
 
         </form>
     </div>
-    <div>
-        새로운 팀 등록하기 <a href="{% url 'register' %}">Go</a>&nbsp;&nbsp;
-        <a href="https://www.rust-lang.org/">Rust</a>
-    </div>
+    <a class="listItem box color-dark shadow-big padding-small push" href="{% url 'register' %}">새로운 팀 등록하기</a>
 {% endblock %}

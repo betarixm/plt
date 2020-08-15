@@ -43,7 +43,7 @@ form{
 }
 
 .formInput{
-    width: 40vw;
+    flex: 1;
 }
 
 .vertical{
@@ -146,4 +146,53 @@ input[type=radio] + label{
 input[type=radio]:checked + label{
     background-color: #ff3b3b;
     color: white;
-} 
+}
+
+.title{
+    width: 40vh;
+}
+
+.balloon {
+    position:relative;
+    margin: 50px;
+    width:400px;
+    height:100px;
+    background:#333333;
+    border-radius: 10px;
+}
+
+.arrow_box {
+	position: relative;
+	background: #ffffff;
+    border: 1px solid #ff9a3b;
+    max-width: 30vmin;
+    transition: all .2s ease-in-out;
+
+}
+.arrow_box:after, .arrow_box:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-right-color: #ffffff;
+	border-width: 1vmin;
+	margin-top: -1vmin;
+}
+.arrow_box:before {
+	border-color: rgba(255, 154, 59, 0);
+	border-right-color: #ff9a3b;
+	border-width: 1.2vmin;
+    margin-top: -0.7vmin;
+}
+
+.titleImg{
+    width: 15vmin;
+}

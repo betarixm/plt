@@ -1,5 +1,5 @@
 {% extends '../core/base.html' %}
-
+{% load static %}
 {% block title %}Register{% endblock %}
 
 {% block head %}
@@ -9,35 +9,36 @@
 {% endblock %}
 
 {% block body %}
-    {% if form.errors %}
-        <h2>인증 실패</h2>
-        <h3>{% for k, v in form.errors.items %}
-            {% if forloop.first %}
-                {{ v|first }}
+<div class="flex center">
+    <img class="titleImg" style="width: 13vmin;" src="{% static 'img/neogul.png' %}">
+    <div class="box margin-big padding-big color-white shadow-big arrow_box">
+        {% if is_solved is not None %}
+            {% if is_solved %}
+                오오 플래그를 찾아왔구리! {{ d_score }}벨을 드리겠구리!
+            {% else %}
+                올바른 플래그가 아니다구리! <br>빨리 다른 플래그를 가져와라구리!
             {% endif %}
-        {% endfor %}
-        </h3>
-    {% else %}
-        <h2>Flag 인증</h2>
-    {% endif %}
+        {% else %}
+            {% if form.errors %}
+                형식에 맞지 않는 플래그다구리! <br>플래그 형식은 ^(PLUS)\{.*\}이다구리..
+            {% else %}
+                어서 플래그를 인증하고 <br>빚을 갚아라구리!
+            {% endif %}      
+        {% endif %}
+    </div>
+</div>
+    
 
-    {% if is_solved is not None %}
-    {% if is_solved %}
-        <h2>인증 성공!</h2>
-        <h3>
-            얻은 점수: {{ d_score }}
-        </h3>
-    {% else %}
-        <h2>인증 실패 :(</h2>
-    {% endif %}
-    {% endif %}
-    <form action="{% url 'flag' %}" method="post">
-        {% csrf_token %}
-        <h4>FLAG</h4>
-        <div class="field">
-            <input type="text" name="flag" placeholder="flag"
-                   value="{{ form.flag.data|default_if_none:'' }}">
-        </div>
-        <button type="submit">Auth</button>
-    </form>
+
+    <div class="box color-light shadow-big margin-big padding-big vertical">
+        <form action="{% url 'flag' %}" method="post">
+            {% csrf_token %}
+            <div class="flex vertical">
+                <input class="formInput box margin-small padding-small color-white shadow-small push listItem" type="text"
+                name="flag" placeholder="플래그를 여기에 입력해라구리!" value="{{ form.flag.data|default_if_none:'' }}">
+            </div>
+            <button class="box color-dark shadow-small padding-small push" style="margin-left: 1.5vw;" type="submit">Auth</button>
+        </form>
+    </div>
+    
 {% endblock %}

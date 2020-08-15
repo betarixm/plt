@@ -1,20 +1,22 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block title %}Main Page{% endblock %}
 
 {% block body %}
+    <img class="title margin-big" src="{% static 'img/title.png' %}">
     <div class="box vertical color-light shadow-big padding-big margin-small">
-        <div class="listItem box color-white shadow-small padding-small margin-small push" onclick="location.href={% url 'sqli' %}">SQL injection</div>
-        <div class="listItem box color-white shadow-small padding-small margin-small push" onclick="location.href={% url 'ssti' %}">SSTI</div>
-        <div class="listItem box color-white shadow-small padding-small margin-small push" onclick="location.href={% url 'xss' %}">XSS</div>
+        <div class="listItem box color-dark shadow-small padding-small margin-small push" onclick="location.href={% url 'sqli' %}">SQL injection</div>
+        <div class="listItem box color-dark shadow-small padding-small margin-small push" onclick="location.href={% url 'ssti' %}">SSTI</div>
+        <div class="listItem box color-dark shadow-small padding-small margin-small push" onclick="location.href={% url 'xss' %}">XSS</div>
     </div>
 
     <div class="box vertical color-light shadow-big padding-big margin-small">
-        <div class="listItem box color-white shadow-small padding-small margin-small push" onclick="location.href={% url 'shop' %}">Shop</div>
-        <div class="listItem box color-white shadow-small padding-small margin-small push" onclick="location.href={% url 'flag' %}">Auth Flag</div>
+        <div class="listItem box color-dark shadow-small padding-small margin-small push" onclick="location.href={% url 'shop' %}">Shop</div>
+        <div class="listItem box color-dark shadow-small padding-small margin-small push" onclick="location.href={% url 'flag' %}">Auth Flag</div>
     </div>
         
-        <a class="listItem box color-red shadow-small padding-small margin-big push" href="{% url 'logout' %}">Logout</a><br>
+        <a class="listItem box color-red shadow-big margin-big padding-small push" href="{% url 'logout' %}">Logout</a><br>
     
 
     
