@@ -43,12 +43,13 @@ class CspRule(Rule):
 
 class Filter(models.Model):
     name = models.CharField(max_length=20)
+    teamname = models.CharField(max_length=20, default="NONAME")
     description = models.TextField()
     regex_rule_list = models.ManyToManyField(RegexRule, blank=True)
     max_len = models.BigIntegerField(default=10000)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} of Team {self.teamname}"
 
     class Meta:
         verbose_name = "필터"
@@ -96,14 +97,15 @@ class TeamManager(BaseUserManager):
         if not username:
             raise ValueError('no username')
 
-        filter_list = [SqliFilter(), SstiFilter(), XssFilter()]
-        for f in filter_list:
+        filters = (SqliFilter(), SstiFilter(), XssFilter())
+        for f in filters:
+            f.teamname = username
             f.save()
 
         team = self.model(username = username)
-        team.sqli_filter = filter_list[0]
-        team.ssti_filter = filter_list[1]
-        team.xss_filter = filter_list[2]
+        team.sqli_filter = filters[0]
+        team.ssti_filter = filters[1]
+        team.xss_filter = filters[2]
         
         team.email = self.normalize_email(email)
         team.set_password(password)
@@ -149,6 +151,12 @@ class Team(AbstractUser, PermissionsMixin):
     class Meta:
         verbose_name = '팀'
         verbose_name_plural = '팀들'
+
+    def delete(self, *args, **kwargs):
+        self.sqli_filter.delete()
+        self.ssti_filter.delete()
+        self.xss_filter.delete()
+        super(Team, self).delete(*args, **kwargs)
 
     def __str__(self):
         return self.username
