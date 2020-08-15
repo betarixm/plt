@@ -4,7 +4,6 @@ from django import forms
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from .apps import init_sqli_db
 from django.contrib.auth import get_user_model
 from .models import SqliFilter
 from utils.validator import unique_team_id

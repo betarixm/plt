@@ -1,8 +1,11 @@
 from django.apps import AppConfig
 from django.contrib.auth import get_user_model
-from env.environ import SQLI_DB
+
 import pymysql
 import re
+
+from utils.mysql import sqli_db
+from utils.mysql import raw_query
 
 Team = get_user_model()
 
@@ -18,16 +21,8 @@ def get_sql_query(target_team_name: str, query: str):
     if not is_valid_query(target_team, query):
         return False, None
 
-    conn = pymysql.connect(port=SQLI_DB.PORT, user=SQLI_DB.USER, password=SQLI_DB.PASS, database=target_team_name)
+    return raw_query(sqli_db(), query)
 
-    try:
-        with conn.cursor() as cur:
-            cur = conn.cursor()
-            cur.execute(query)
-            result = cur.fetchone()
-            return True, result
-    finally:
-        conn.close()
 
 
 def is_valid_query(target_team: Team, query: str):

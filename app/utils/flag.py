@@ -402,12 +402,10 @@ VERB = [
     "do",
     "say",
     "go",
-    "can",
     "get",
     "would",
     "make",
     "know",
-    "will",
     "think",
     "take",
     "see",
@@ -421,7 +419,6 @@ VERB = [
     "tell",
     "work",
     "may",
-    "should",
     "call",
     "try",
     "ask",
@@ -439,7 +436,6 @@ VERB = [
     "talk",
     "turn",
     "start",
-    "might",
     "show",
     "hear",
     "play",
@@ -487,7 +483,6 @@ VERB = [
     "buy",
     "wait",
     "serve",
-    "die",
     "send",
     "expect",
     "build",
@@ -495,7 +490,6 @@ VERB = [
     "fall",
     "cut",
     "reach",
-    "kill",
     "remain",
 ]
 SUBJECTIVE = [
@@ -1675,8 +1669,28 @@ OBJECT = [
 ]
 
 
-def random_flag():
+def random_flag(max_len=100):
     while True:
         flag = "PLUS{" + f"{_(SUBJECT)}_and_{_(SUBJECT)}_{_(VERB)}_{_(SUBJECTIVE)}_{_(OBJECT)}_with_{_(SUBJECT)}" + "}"
+        if len(flag) > max_len: break
+        if len(Flag.objects.filter(flag=flag)) == 0:
+            return flag
+    
+    while True:
+        flag = "PLUS{" + f"{_(SUBJECT)}_and_{_(SUBJECT)}_{_(VERB)}_{_(SUBJECTIVE)}_{_(OBJECT)}" + "}"
+        if len(flag) > max_len: break
+        if len(Flag.objects.filter(flag=flag)) == 0:
+            return flag
+
+    while True:
+        flag = "PLUS{" + f"{_(SUBJECT)}_and_{_(SUBJECT)}_{_(VERB)}_{_(OBJECT)}" + "}"
+        if len(flag) > max_len: break
+        if len(Flag.objects.filter(flag=flag)) == 0:
+            return flag
+    
+    while True:
+        flag = "PLUS{" + f"{_(SUBJECT)}_loves_{_(OBJECT)}" + "}"
+        if len(flag) > max_len: 
+            print("something wrong")
         if len(Flag.objects.filter(flag=flag)) == 0:
             return flag
