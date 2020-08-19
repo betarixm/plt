@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'sdnr';
-    src: url("font/sdnr_b.otf") format('opentype');
+    src: url("../font/sdnr_b.otf") format('opentype');
     font-weight: bold;
     font-style: normal;
 
@@ -8,7 +8,7 @@
 
 @font-face {
     font-family: 'sdnr';
-    src: url("font/sdnr_m.otf") format('opentype');
+    src: url("../font/sdnr_m.otf") format('opentype');
     font-weight: normal;
     font-style: normal;
 
@@ -90,8 +90,21 @@ form{
     color: white;
 }
 
+.color-grey{
+    background-color: #333333;
+    color: white;
+}
+
 .margin-big{
     margin: 5vh;
+}
+
+margin-middle{
+    margin: 3vh;
+}
+
+.margin-tiny{
+    margin: 0.5vh;
 }
 
 .padding-big{

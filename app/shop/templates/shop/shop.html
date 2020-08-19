@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Shop{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+    {% for item in items %}
+        {% include "shop/item_block.html" with item=item %}
+    {% endfor %}
+
+{% endblock %}

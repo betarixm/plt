@@ -3,8 +3,8 @@
   <component name="FacetManager">
     <facet type="django" name="Django">
       <configuration>
-        <option name="rootFolder" value="$MODULE_DIR$" />
-        <option name="settingsModule" value="plt/settings.py" />
+        <option name="rootFolder" value="$MODULE_DIR$/plt" />
+        <option name="settingsModule" value="settings.py" />
         <option name="manageScript" value="manage.py" />
         <option name="environment" value="&lt;map/&gt;" />
         <option name="doNotUseTestRunner" value="false" />
@@ -22,8 +22,13 @@
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/core/templates" />
-        <option value="$MODULE_DIR$/flag/templates" />
+        <option value="$MODULE_DIR$/xss/templates/xss" />
+        <option value="$MODULE_DIR$/core/templates/core" />
+        <option value="$MODULE_DIR$/core/templates/registration" />
+        <option value="$MODULE_DIR$/flag/templates/flag" />
+        <option value="$MODULE_DIR$/shop/templates/shop" />
+        <option value="$MODULE_DIR$/sqli/templates/sqli" />
+        <option value="$MODULE_DIR$/ssti/templates/ssti" />
       </list>
     </option>
   </component>

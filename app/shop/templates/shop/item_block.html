@@ -1,0 +1,8 @@
+<div class="flex box row color-light shadow-small push padding-small margin-small" style="justify-content: space-between; min-width: 15vw;" onclick="location.href='{% url 'item' item.id %}'">
+    <div class="flex padding-tiny box shadow-small color-dark" style="padding-left: 3vw; padding-right: 3vw; margin-right: 2vw">
+        {{ item.name }}
+    </div>
+    <div class="flex margin-small">
+        {{ item.price }}벨
+    </div>
+</div>

@@ -14,6 +14,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from utils.validator import LoginCheckMixin
 from .apps import create_team
 
+from shop.models import LenItem, CspItem, RegexItem, Item
+
 
 class HomeView(LoginRequiredMixin, View):
     def get(self, request):

@@ -18,4 +18,5 @@ from . import views
 
 urlpatterns = [
     path('', views.ShopView.as_view(), name='shop'),
+    path('<int:item_id>', views.ItemView.as_view(), name='item')
 ]
