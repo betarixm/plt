@@ -40,9 +40,7 @@ def get_sql_query(attack_team_name: str, target_team_name: str, query: str):
     return succeed, res
 
 
-
 def is_valid_query(target_team: Team, query: str):
-
     if len(Team.objects.filter(username=target_team.username)) == 0:
         return False, "그런 이름을 가진 팀은 제 목록에는 없네요..."
 

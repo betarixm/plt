@@ -36,5 +36,5 @@ class SqliView(LoginRequiredMixin, View):
             'form': form,
             'result': result,
             'is_valid': is_valid,
-            'size': len(result) if result is not None else None
+            'size': len(result) if hasattr(result, '__len__') else None
         })
