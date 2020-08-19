@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from django.contrib.auth import get_user_model
 
+from env.credential import MYSQL_USER
+
 Team = get_user_model()
 
 ITEM_CATEGORY_SQLI = 'sqli'
@@ -15,13 +17,9 @@ CATEGORY_CHOICES = (
 
 
 def team_list():
-    return Team.objects.values_list('username', flat=True)
+    return Team.objects.exclude(username=MYSQL_USER).values_list('username', flat=True)
 
 
 def team_choices():
-    beta = team_list()
-    beka = []
-    for i in beta:
-        beka.append((i, i))
-
-    return tuple(beka)
+    teams = team_list()
+    return zip(teams, teams)

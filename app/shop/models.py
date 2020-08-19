@@ -9,7 +9,7 @@ Team = get_user_model()
 class Item(models.Model):
     name = models.CharField(max_length=40)
     description = models.TextField()
-    teams = models.ManyToManyField(Team)
+    teams = models.ManyToManyField(Team, blank=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     price = models.BigIntegerField()
 

@@ -11,7 +11,7 @@ def check_flag(team: Team, flag_str: str):
         return False, None
 
     f = f[0]
-
+    print(team.username)
     result = f.objects.filter(teams__username=team.username)
 
     if len(result) != 0:

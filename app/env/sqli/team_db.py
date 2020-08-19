@@ -24,7 +24,7 @@ NUM_ROW = 100
 
 TABLE_SHOW_INTERVAL = 10
 
-FLAG_MAX_LEN = 100
+FLAG_MAX_LEN = 50
 
 
 class Element:
@@ -167,6 +167,6 @@ def generate_db(conn: pymysql.connections.Connection, team_name: str):
 
     raw_query(sqli_db(), f"CREATE DATABASE {team_name};\n"
                         + f"CREATE USER {team_name}@'%' IDENTIFIED BY '{MYSQL_PASS}';\n"
-                        + f"GRANT ALL PRIVILEGES ON {team_name}.* TO {team_name}@'%';\n"
+                        + f"GRANT SELECT ON {team_name}.* TO {team_name}@'%';\n"
                         + f"FLUSH privileges;")
     raw_query(sqli_db(team_name, MYSQL_PASS), db.to_sql())

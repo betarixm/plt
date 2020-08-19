@@ -3,7 +3,6 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager, Permission
 
 
 class Rule(models.Model):
-    name = models.CharField(max_length=20)
     description = models.TextField()
 
     class Meta:
@@ -15,7 +14,7 @@ class Rule(models.Model):
 
 
 class RegexRule(Rule):
-    Rule.name = "Reg Exp Rule"
+    name = models.CharField(max_length=20, default="regexrule")
     regexp = models.TextField()
 
     class Meta:
@@ -24,7 +23,7 @@ class RegexRule(Rule):
 
 
 class LenRule(Rule):
-    Rule.name = "Max Length Rule"
+    name = models.CharField(max_length=20, default="lenrule")
     value = models.BigIntegerField()
 
     class Meta:
@@ -33,7 +32,7 @@ class LenRule(Rule):
 
 
 class CspRule(Rule):
-    Rule.name = "CSP Rule"
+    name = models.CharField(max_length=20, default="csprule")
     csp = models.TextField()
 
     class Meta:
@@ -42,14 +41,16 @@ class CspRule(Rule):
 
 
 class Filter(models.Model):
-    name = models.CharField(max_length=20)
     teamname = models.CharField(max_length=20, default="NONAME")
     description = models.TextField()
     regex_rule_list = models.ManyToManyField(RegexRule, blank=True)
     max_len = models.BigIntegerField(default=10000)
 
     def __str__(self):
-        return f"{self.name} of Team {self.teamname}"
+        try:
+            return f"{self.name} of Team {self.teamname}"
+        except:
+            return f"Some Filter of Team {self.teamname}"
 
     class Meta:
         verbose_name = "필터"
@@ -57,10 +58,7 @@ class Filter(models.Model):
 
 
 class SqliFilter(Filter):
-    Filter.name = "SQLi Filter"
-
-    def __str__(self):
-        return self.name
+    name = models.CharField(max_length=20, default="SQLi_filter")
 
     class Meta:
         verbose_name = "SQLi 필터"
@@ -68,10 +66,7 @@ class SqliFilter(Filter):
 
 
 class SstiFilter(Filter):
-    Filter.name = "SSTI Filter"
-
-    def __str__(self):
-        return self.name
+    name = models.CharField(max_length=20, default="SSTI_filter")
 
     class Meta:
         verbose_name = "SSTI 필터"
@@ -79,11 +74,8 @@ class SstiFilter(Filter):
 
 
 class XssFilter(Filter):
-    Filter.name = "XSS Filter"
+    name = models.CharField(max_length=20, default="XSS_filter")
     csp_rule_list = models.ManyToManyField(CspRule, blank=True)
-
-    def __str__(self):
-        return self.name
 
     class Meta:
         verbose_name = "XSS 필터"
@@ -151,12 +143,6 @@ class Team(AbstractUser, PermissionsMixin):
     class Meta:
         verbose_name = '팀'
         verbose_name_plural = '팀들'
-
-    def delete(self, *args, **kwargs):
-        self.sqli_filter.delete()
-        self.ssti_filter.delete()
-        self.xss_filter.delete()
-        super(Team, self).delete(*args, **kwargs)
 
     def __str__(self):
         return self.username

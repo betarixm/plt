@@ -14,8 +14,12 @@ from .checkbot import check_alert
 # Create your views here.
 
 class XssQueryForm(forms.Form):
+    def __init__(self,*args,**kwargs):
+        super(XssQueryForm,self).__init__(*args,**kwargs)
+        self.fields['team'].choices = team_choices()
+
     query = forms.CharField()
-    team = forms.ChoiceField(choices=team_choices())
+    team = forms.CharField()
 
 
 class XssView(LoginRequiredMixin, View):

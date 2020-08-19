@@ -7,8 +7,12 @@ from env.environ import team_choices
 
 
 class SqlQueryForm(forms.Form):
+    def __init__(self,*args,**kwargs):
+        super(SqlQueryForm,self).__init__(*args,**kwargs)
+        self.fields['team'].choices = team_choices()
+
     query = forms.CharField()
-    team = forms.ChoiceField(choices=team_choices())
+    team = forms.CharField()
 
 
 class SqliView(LoginRequiredMixin, View):
