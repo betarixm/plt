@@ -8,9 +8,10 @@ from env.environ import ITEM_CATEGORY_SQLI, ITEM_CATEGORY_XSS, ITEM_CATEGORY_SST
 
 class ShopView(LoginRequiredMixin, View):
     def get(self, request):
-        items = Item.objects.all()
+        category_list = [ITEM_CATEGORY_SQLI, ITEM_CATEGORY_SSTI, ITEM_CATEGORY_XSS]
+        item_list = [(c.upper(), Item.objects.filter(category=c)) for c in category_list]
         return render(request, 'shop/shop.html', {
-            'items': items
+            'item_list': item_list
         })
 
 
@@ -29,6 +30,7 @@ class ItemView(LoginRequiredMixin, View):
         })
 
     def post(self, request, item_id):
+        result = lambda x: render(request, 'shop/result.html', {"msg": x})
         item = Item.objects.filter(id=item_id)
 
         if len(item) == 0:
@@ -38,13 +40,12 @@ class ItemView(LoginRequiredMixin, View):
         already_buyed = False if len(Item.objects.filter(id=item_id, teams__username=request.user.username)) == 0 else True
 
         if already_buyed:
-            print("ALREADY")
-            return redirect('shop')
+            return result("이미 구매한 아이템이다구리!")
 
         user = request.user
 
         if not item.buy(user):
-            print("BALANCE")
-            return redirect('shop')
+            return result("잔고가 모자라다구리...")
+
         print(user.xss_filter.max_len)
-        return redirect('shop')
+        return result("아이템 구매에 성공했다구리..!")

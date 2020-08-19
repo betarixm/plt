@@ -7,8 +7,18 @@
 {% endblock %}
 
 {% block body %}
-    {% for item in items %}
-        {% include "shop/item_block.html" with item=item %}
+    {% for category, items in item_list %}
+        <div class="box flex vertical color-light shadow-big padding-big margin-big"
+        style="width: 75vw;">
+            <div class="margin-small" style="font-size: 3vh; margin-top: 2vh; margin-bottom: 2vh;">{{ category }}</div>
+            <div>
+                {% for item in items %}
+                    {% include "shop/item_block.html" with item=item %}
+                {% endfor %}
+            </div>
+        </div>
+
     {% endfor %}
+
 
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Team, SqliFilter, SstiFilter, XssFilter
+from .models import Team, SqliFilter, SstiFilter, XssFilter, RegexRule, CspRule, LenRule
 
 # Register your models here.
 

@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Shop{% endblock %}
+
+{% block head %}
+    <meta http-equiv="refresh" content="2; url={% url 'shop' %}">
+{% endblock %}
+
+{% block body %}
+    <div class="flex center">
+        <img class="titleImg" src="{% static 'img/neogul.png' %}">
+        <div class="box margin-big padding-big color-white shadow-big arrow_box">
+            {{ msg }}
+        </div>
+    </div>
+
+{% endblock %}
