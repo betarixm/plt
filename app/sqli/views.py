@@ -35,5 +35,6 @@ class SqliView(LoginRequiredMixin, View):
         return render(request, 'sqli/sqli.html', {
             'form': form,
             'result': result,
-            'is_valid': is_valid
+            'is_valid': is_valid,
+            'size': len(result) if result is not None else None
         })
