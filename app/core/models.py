@@ -10,7 +10,10 @@ class Rule(models.Model):
         verbose_name_plural = "차단 규칙들"
 
     def __str__(self):
-        return self.name
+        try:
+            return self.name
+        except:
+            return "No name"
 
 
 class RegexRule(Rule):

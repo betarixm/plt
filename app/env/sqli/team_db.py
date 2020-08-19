@@ -165,8 +165,11 @@ def generate_db(conn: pymysql.connections.Connection, team_name: str):
         col.insert_flag(team_flag_set[idx])
         idx += 1
 
-    raw_query(sqli_db(), f"CREATE DATABASE {team_name};\n"
-                        + f"CREATE USER {team_name}@'%' IDENTIFIED BY '{MYSQL_PASS}';\n"
-                        + f"GRANT SELECT ON {team_name}.* TO {team_name}@'%';\n"
-                        + f"FLUSH privileges;")
-    raw_query(sqli_db(team_name, MYSQL_PASS), db.to_sql())
+
+    query = f"CREATE DATABASE {team_name};\n"
+    query += f"CREATE USER {team_name}@'%' IDENTIFIED BY '{MYSQL_PASS}';\n"
+    query += f"GRANT SELECT ON {team_name}.* TO {team_name}@'%';\n"
+    query += f"FLUSH privileges;"
+
+    raw_query(sqli_db(), query)
+    raw_query(sqli_db(), db.to_sql())
