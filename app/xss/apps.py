@@ -63,10 +63,6 @@ def get_time_passed_after_last_attack(attack_team, target_team):
 
 
 def attack_xss(attack_team, target_team, query, csp):
-    res, csp = prepare_xss(target_team, query)
-    if not res:
-        return "", False, False
-
     hash = str(binascii.hexlify(os.urandom(32)),'utf8')
     xss_log = XssLog.objects.create(hash=hash)
     xss_log.from_team = attack_team
