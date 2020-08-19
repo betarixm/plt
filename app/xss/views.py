@@ -8,7 +8,7 @@ from django.contrib.sites.shortcuts import get_current_site
 
 from .apps import prepare_xss, get_time_passed_after_last_attack, attack_xss
 from env.xss.xss_flag import get_flag
-from .models import XssTrial
+from .models import XssLog
 from .checkbot import check_alert
 
 # Create your views here.
@@ -53,15 +53,15 @@ class XssView(LoginRequiredMixin, View):
                 'failed': f"Next attack to Team [{form.cleaned_data['team']}] is available in {5*60 - time_passed_after_last_attack} seconds.",
             })
 
-        xss_trial = attack_xss(request.user.username, 
+        xss_log = attack_xss(request.user.username, 
                                 form.cleaned_data['team'],
                                 form.cleaned_data['query'],
                                 csp)
         
-        checked, succeed = check_alert(f'http://{get_current_site(request).domain}/xss/{xss_trial.hash}')
-        xss_trial.checked = checked
-        xss_trial.succeed = succeed
-        xss_trial.save()
+        checked, succeed = check_alert(f'http://{get_current_site(request).domain}/xss/{xss_log.hash}')
+        xss_log.checked = checked
+        xss_log.succeed = succeed
+        xss_log.save()
 
         if not checked:
             return render(request, 'xss/xss.html', {
@@ -86,7 +86,7 @@ class XssView(LoginRequiredMixin, View):
 
 class XssTestView(View):
     def get(self, request, hash):
-        data = XssTrial.objects.filter(hash = hash)
+        data = XssLog.objects.filter(hash = hash)
         if data:
             return render(request, 'xss/xss_test.html', {
                 'data': data[0],

@@ -6,7 +6,7 @@ from datetime import datetime
 from django.apps import AppConfig
 from django.contrib.auth import get_user_model
 
-from .models import XssTrial
+from .models import XssLog
 
 Team = get_user_model()
 
@@ -52,11 +52,11 @@ def is_valid_query(target_team: Team, query: str):
 def get_time_passed_after_last_attack(attack_team, target_team):
     last_attack_time = 0
     try:
-        last_attack = XssTrial.objects.filter(from_team=attack_team,
+        last_attack = XssLog.objects.filter(from_team=attack_team,
                                             to_team=target_team,
                                             succeed=True).latest()
         last_attack_time = int(last_attack.created_at.strftime("%Y%m%d%H%M%S"))
-    except XssTrial.DoesNotExist:
+    except XssLog.DoesNotExist:
         pass
     
     return int(datetime.now().strftime("%Y%m%d%H%M%S")) - last_attack_time
@@ -68,12 +68,12 @@ def attack_xss(attack_team, target_team, query, csp):
         return "", False, False
 
     hash = str(binascii.hexlify(os.urandom(32)),'utf8')
-    xss_trial = XssTrial.objects.create(hash=hash)
-    xss_trial.from_team = attack_team
-    xss_trial.to_team = target_team
-    xss_trial.csp.add(*csp.all())
-    xss_trial.query = query
-    xss_trial.save()
+    xss_log = XssLog.objects.create(hash=hash)
+    xss_log.from_team = attack_team
+    xss_log.to_team = target_team
+    xss_log.csp.add(*csp.all())
+    xss_log.query = query
+    xss_log.save()
 
-    return xss_trial
+    return xss_log
     

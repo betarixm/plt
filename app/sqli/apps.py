@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 import pymysql
 import re
 
+from .models import SqliLog
 from env.credential import MYSQL_PASS
 from utils.mysql import sqli_db
 from utils.mysql import raw_query
@@ -11,7 +12,7 @@ from utils.mysql import raw_query
 Team = get_user_model()
 
 
-def get_sql_query(target_team_name: str, query: str):
+def get_sql_query(attack_team_name: str, target_team_name: str, query: str):
     target_team_list = Team.objects.filter(username=target_team_name)
 
     if len(target_team_list) != 1:
@@ -22,7 +23,17 @@ def get_sql_query(target_team_name: str, query: str):
     if not is_valid_query(target_team, query):
         return False, None
 
-    return raw_query(sqli_db(target_team_name, MYSQL_PASS), query)
+    succeed, res = raw_query(sqli_db(target_team_name, MYSQL_PASS), query)
+
+    sqli_log = SqliLog.objects.create()
+    sqli_log.from_team = attack_team_name
+    sqli_log.to_team = target_team_name
+    sqli_log.query = query
+    sqli_log.succeed = succeed
+    sqli_log.return_value = res
+    sqli_log.save()
+
+    return succeed, res
 
 
 

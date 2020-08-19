@@ -30,7 +30,7 @@ class SqliView(LoginRequiredMixin, View):
                 'form': form
             })
 
-        is_valid, result = get_sql_query(form.cleaned_data['team'], form.cleaned_data['query'])
+        is_valid, result = get_sql_query(request.user.username, form.cleaned_data['team'], form.cleaned_data['query'])
 
         return render(request, 'sqli/sqli.html', {
             'form': form,
