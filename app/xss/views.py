@@ -38,6 +38,13 @@ class XssView(LoginRequiredMixin, View):
                 'failed': 'invalid form',
             })
 
+        if request.user.username == form.cleaned_data['team']:
+            return render(request, 'xss/xss.html', {
+                'from': form,
+                'failed': 'you cannot attack yourself.',
+            })
+
+
         ok, csp = prepare_xss(form.cleaned_data['team'],
                                     form.cleaned_data['query'])
         if not ok:

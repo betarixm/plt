@@ -20,8 +20,12 @@ def get_sql_query(attack_team_name: str, target_team_name: str, query: str):
 
     target_team = target_team_list[0]
 
-    if not is_valid_query(target_team, query):
-        return False, None
+    ok, msg = is_valid_query(target_team, query):
+    if not ok:
+        return False, msg
+
+    if attack_team_name == target_team_name:
+        return False, "앗! 실수로 주민님의 데이터베이스를 스스로 공격하신 것같아요!"
 
     succeed, res = raw_query(sqli_db(target_team_name, MYSQL_PASS), query)
 
@@ -40,19 +44,19 @@ def get_sql_query(attack_team_name: str, target_team_name: str, query: str):
 def is_valid_query(target_team: Team, query: str):
 
     if len(Team.objects.filter(username=target_team.username)) == 0:
-        return False
+        return False, "그런 이름을 가진 팀은 제 목록에는 없네요..."
 
     max_len = target_team.sqli_filter.max_len
 
     if max_len < len(query):
-        return False
+        return False, "쿼리가 너무 길어서 제가 보낼 수가 없네요 죄송해요..."
 
     regex_filter_list = target_team.sqli_filter.regex_rule_list.all()
 
     for r in regex_filter_list:
         p = re.compile(r.regexp)
         if p.match(query):
-            return False
+            return False, "제가 쿼리를 한번 읽어봤는데 금지된 문자열이 있네요, 수정해주세요!"
 
     return True
 
