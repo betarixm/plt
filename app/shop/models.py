@@ -59,9 +59,11 @@ class RegexItem(Item):
 
     def action(self, team: Team):
         f = self.get_filter(team)
-        f.regex_rule_list.add(*self.regex_rule.all())
-        f.save()
+        rules = self.regex_rule.all()
 
+        for rule in rules:
+            f.regex_rule_list.add(rule)
+            f.save()
 
     class Meta:
         verbose_name = "차단 규칙 아이템"
@@ -87,8 +89,10 @@ class CspItem(Item):
 
     def action(self, team: Team):
         f = self.get_filter(team)
-        f.csp_rule_list.add(*self.csp_rule.all())
-        f.save()
+        rules = self.csp_rule.all()
+        for rule in rules:
+            f.csp_rule_list.add(rule)
+            f.save()
 
     class Meta:
         verbose_name = "CSP 아이템"
