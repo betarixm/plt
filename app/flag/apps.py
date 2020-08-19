@@ -6,21 +6,14 @@ Team = get_user_model()
 
 
 def check_flag(team: Team, flag_str: str):
-    f = Flag.objects.filter(flag=flag_str)
-    if len(f) == 0:
+    flag = Flag.objects.filter(flag=flag_str).exclude(teams__username=team.username)[0]
+    if not flag:
         return False, None
 
-    f = f[0]
-    print(team.username)
-    result = f.objects.filter(teams__username=team.username)
+    team.add_score(flag.score)
+    flag.teams.add(team)
 
-    if len(result) != 0:
-        return False, None
-
-    team.add_score(f.score)
-    f.teams.add(team)
-
-    return True, f
+    return True, flag
 
 
 class FlagConfig(AppConfig):
