@@ -13,15 +13,18 @@
     <div class="box margin-big padding-big color-white shadow-big arrow_box">
         {% if is_valid is not None %}
             {% if is_valid %}
-                {% if result is not None %}
-                    결과가 왔어요! <br>
-                    {{ result }}
+                {% if size == 0 %}
+                    이런... 쿼리 결과가 아무 것도 없네요...
                 {% else %}
-                    에러가 있었어요ㅠ
+                    {% if result is not None %}
+                        결과가 있어요!
+                    {% else %}
+                        에러가 있었어요ㅠ
+                    {% endif %}
                 {% endif %}
             {% else %}
                 엥? 그건 올바르지 않은 쿼리잖아요! <br>
-                우리가 모르는 필터가 있는걸까요..?<br>
+                {{ result }}<br>
             {% endif %}
         {% else %}
             SQL Injection을 해보자구요!
