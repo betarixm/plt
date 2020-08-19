@@ -20,7 +20,7 @@ def get_sql_query(attack_team_name: str, target_team_name: str, query: str):
 
     target_team = target_team_list[0]
 
-    ok, msg = is_valid_query(target_team, query):
+    ok, msg = is_valid_query(target_team, query)
     if not ok:
         return False, msg
 
@@ -58,7 +58,7 @@ def is_valid_query(target_team: Team, query: str):
         if p.match(query):
             return False, "제가 쿼리를 한번 읽어봤는데 금지된 문자열이 있네요, 수정해주세요!"
 
-    return True
+    return True, ""
 
 
 class SqliConfig(AppConfig):
