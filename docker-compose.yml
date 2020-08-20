@@ -15,8 +15,8 @@ services:
     environment:
       MYSQL_DATABASE: "plt"
       MYSQL_USER: "beta"
-      MYSQL_PASSWORD: "kawai"
-      MYSQL_ROOT_PASSWORD: "betaiskawai"
+      MYSQL_PASSWORD: "kawaikawai"
+      MYSQL_ROOT_PASSWORD: "betaiskawaikawai"
 
   adminer:
     image: adminer:latest
@@ -27,8 +27,10 @@ services:
   ssti:
     build: ./app/env/ssti/
     container_name: plt-ssti
+    volumes:
+      - "./app/env/ssti/flag.txt:/app/flag.txt"
     ports:
-      - 37502:8080
+      - 37511:8080
 
   web:
     build: .

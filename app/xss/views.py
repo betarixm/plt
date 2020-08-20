@@ -40,7 +40,7 @@ class XssView(LoginRequiredMixin, View):
 
         if request.user.username == form.cleaned_data['team']:
             return render(request, 'xss/xss.html', {
-                'from': form,
+                'form': form,
                 'failed': 'you cannot attack yourself.',
             })
 

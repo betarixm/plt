@@ -18,12 +18,13 @@ def prepare_xss(target_team_name: str, query: str):
     target_team_list = Team.objects.filter(username=target_team_name)
 
     if len(target_team_list) != 1:
-        return False, False
+        return False, None
     
     target_team = target_team_list[0]
 
-    if not is_valid_query(target_team, query):
-        return False, False
+    ok, msg = is_valid_query(target_team, query)
+    if not ok:
+        return False, msg
 
     return True, target_team.xss_filter.csp_rule_list
 
@@ -32,21 +33,21 @@ def prepare_xss(target_team_name: str, query: str):
 def is_valid_query(target_team: Team, query: str):
 
     if len(Team.objects.filter(username=target_team.username)) == 0:
-        return False
+        return False, "그런 이름을 가진 팀은 이 마을에 없다냥"
     
     max_len = target_team.xss_filter.max_len
 
     if max_len < len(query):
-        return False
+        return False, "말을 좀 짧게 하라냥!"
 
     regex_filter_list = target_team.xss_filter.regex_rule_list.all()
 
     for r in regex_filter_list:
         p = re.compile(r.regexp)
         if p.match(query):
-            return False
+            return False, "그런 단어는 쓰지 말아달라냥.."
 
-    return True
+    return True, ""
 
 
 def get_time_passed_after_last_attack(attack_team, target_team):

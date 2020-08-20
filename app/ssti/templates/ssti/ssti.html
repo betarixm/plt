@@ -7,15 +7,29 @@
 {% endblock %}
 
 {% block body %}
-    {% if failed is not None %}
-        {% if not failed %}
-            <h2>Successfully Injected and Executed Script!!!</h2>
-            <h3>here is your flag > {{ flag }}</h3>
+
+<div class="flex center">
+    <img class="titleImg" src="{% static 'img/isabelle.png' %}">
+    <div class="box margin-big padding-big color-white shadow-big arrow_box">
+        {% if is_valid is not None %}
+            {% if is_valid %}
+                일단 필터들에 걸리지는 않았습니다! 희망적이군요! <br>
+                당신이 원하는 결과가 밑에 있었으면 좋겠습니다! <br>
+                {{ result }}
+            {% else %}
+                앗, SSTI를 시도하기 전에 필터에 걸려버렸네요,,,, <br>
+                밑의 메시지를 참고해서 다음엔 더 좋은 결과를 얻어 봅시다! <br>
+                {{ result }}<br>
+            {% endif %}
         {% else %}
-            <h2>Failed to execute script...</h2>
-            <h3>FAILED BY: {{ failed|safe }}</h3>
+            SSTI에 대해서 아시나요? 설명을 들으시겠습니까?
         {% endif %}
-    {% endif %}
+    </div>
+</div>
+
+
+
+
     {% url 'ssti' as action_url %}
     {% include "core/attack_form.html" with form=form action=action_url%}
 

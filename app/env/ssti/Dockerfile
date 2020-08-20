@@ -9,5 +9,6 @@ RUN mkdir /app
 WORKDIR /app
 RUN pip install --no-cache-dir flask
 COPY app.py /app/
+COPY flag.txt /app/
 
 ENTRYPOINT ["python", "app.py"]

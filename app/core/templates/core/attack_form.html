@@ -1,6 +1,5 @@
 <div class="box color-light shadow-big margin-big padding-big vertical">
     <form action="{{ action }}" method="post">
-        {% csrf_token %}
         <div class="flex vertical">
             <input class="formInput box margin-small padding-small color-white shadow-small push" type="text"
                 name="query" placeholder="공격할 쿼리를 입력해라구리..." value="{{ form.query.data|default_if_none:'' }}">

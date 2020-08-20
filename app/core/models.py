@@ -47,7 +47,7 @@ class Filter(models.Model):
     teamname = models.CharField(max_length=20, default="NONAME")
     description = models.TextField()
     regex_rule_list = models.ManyToManyField(RegexRule, blank=True)
-    max_len = models.BigIntegerField(default=10000)
+    max_len = models.BigIntegerField(default=120)
 
     def __str__(self):
         try:

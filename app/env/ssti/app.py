@@ -1,19 +1,22 @@
 # -*- coding: utf-8 -*-
 
 import flask
-import os
 import sys
-reload(sys)
-sys.setdefaultencoding('UTF8')
+import os
 
 app = flask.Flask(__name__)
-app.secret_key = os.urandom(16)
+
+try:
+    FLAG = open('./flag.txt', 'r').read()
+except:
+    FLAG = "Failed to open flag.txt. please retry."
+app.secret_key = FLAG
 
 
 @app.route('/', methods=['GET'])
 def index():
-    flask.request.args.get('query','')
-    return flask.render_template_string("index.html")
+    query = flask.request.args.get('query','')
+    return flask.render_template_string("""%s""" % query)
 
 
 if __name__ == '__main__':
