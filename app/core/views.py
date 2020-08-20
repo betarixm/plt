@@ -4,7 +4,9 @@ from django import forms
 from django.views import View
 from utils.validator import unique_team_id
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .apps import create_team
+from .apps import create_team, get_latest_attack
+from env.environ import ITEM_CATEGORY_SSTI, ITEM_CATEGORY_SQLI, ITEM_CATEGORY_XSS
+import random
 
 Team = get_user_model()
 
@@ -50,8 +52,10 @@ class RegisterView(View):
 
 class DashboardView(View):
     def get(self, request):
+        cate = random.choice([ITEM_CATEGORY_SSTI, ITEM_CATEGORY_SQLI, ITEM_CATEGORY_XSS])
         teams = Team.objects.all().exclude(is_superuser=True)
-        teams = [(team.username, team.score) for team in teams]
+        teams = [(team.username, team.score, get_latest_attack(team, cate)) for team in teams]
         return render(request, 'core/dashboard.html', {
-            'score_info': sorted(teams, key=lambda x: x[1], reverse=True)
+            'score_info': sorted(teams, key=lambda x: x[1], reverse=True),
+            'category': cate
         })
