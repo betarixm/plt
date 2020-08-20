@@ -11,6 +11,7 @@ class ShopView(LoginRequiredMixin, View):
         category_list = [ITEM_CATEGORY_SQLI, ITEM_CATEGORY_SSTI, ITEM_CATEGORY_XSS]
         item_list = [(c.upper(), Item.objects.filter(category=c)) for c in category_list]
         return render(request, 'shop/shop.html', {
+            'money': request.user.balance,
             'item_list': item_list
         })
 

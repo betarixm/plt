@@ -29,6 +29,7 @@ urlpatterns = [
     path('xss/', include('xss.urls')),
     path('flag/', include('flag.urls')),
 
+    path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
     path('', views.HomeView.as_view(), name='home'),
     path('register/', views.RegisterView.as_view(), name='register'),
 

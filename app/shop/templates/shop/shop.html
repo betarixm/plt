@@ -7,10 +7,15 @@
 {% endblock %}
 
 {% block body %}
+    <div class="box flex row margin-big center"
+         style="width: 75vw; justify-content: space-between">
+        <div style="font-size: 3vh">Shop</div>
+        <div class="box flex padding-small color-red shadow-small" style="padding-left: 5vw; padding-right: 5vw;">{{ money }}벨</div>
+    </div>
     {% for category, items in item_list %}
         <div class="box flex vertical color-light shadow-big padding-big margin-big"
         style="width: 75vw;">
-            <div class="margin-small" style="font-size: 3vh; margin-top: 2vh; margin-bottom: 2vh;">{{ category }}</div>
+            <div class="margin-small" style="font-size: 2vh; margin-top: 2vh; margin-bottom: 2vh;">{{ category }}</div>
             <div>
                 {% for item in items %}
                     {% include "shop/item_block.html" with item=item %}

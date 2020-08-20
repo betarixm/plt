@@ -1,25 +1,21 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, get_user_model
 from django import forms
 from django.views import View
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-from django.contrib.auth import get_user_model
-from .models import SqliFilter
 from utils.validator import unique_team_id
-
-# use for check login...
-# if needed something else, wonderful(ex. check login and also email?),,, use latter.
 from django.contrib.auth.mixins import LoginRequiredMixin
-from utils.validator import LoginCheckMixin
 from .apps import create_team
 
-from shop.models import LenItem, CspItem, RegexItem, Item
+Team = get_user_model()
 
 
 class HomeView(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, 'core/index.html', {})
+        return render(request, 'core/index.html', {
+            'name': request.user.username,
+            'score': request.user.score,
+            'money': request.user.balance,
+        })
 
 
 class RegisterForm(forms.Form):
@@ -50,3 +46,12 @@ class RegisterView(View):
 
         login(request, team)
         return redirect('/')
+
+
+class DashboardView(View):
+    def get(self, request):
+        teams = Team.objects.all().exclude(is_superuser=True)
+        teams = [(team.username, team.score) for team in teams]
+        return render(request, 'core/dashboard.html', {
+            'score_info': sorted(teams, key=lambda x: x[1], reverse=True)
+        })

@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    <img class="title margin-big" src="{% static 'img/title.png' %}">
+    <div class="box flex center color-light shadow-big margin-small padding-big vertical">
+        <div class="padding-big" style="font-size: 3vh;">DashBoard</div>
+        {% for teamname, score in score_info %}
+            <div class="box flex row color-light shadow-small center listItem margin-small padding-small" style="justify-content: space-between">
+                <div style="margin-left: 1vw;">{{ teamname }}</div>
+                <div class="box flex row color-red shadow-small center padding-tiny" style="min-width: 5vw;">{{ score }}점</div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
