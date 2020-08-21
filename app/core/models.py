@@ -151,4 +151,5 @@ class Team(AbstractUser, PermissionsMixin):
         return self.username
 
     def add_score(self, d_score: int):
+        self.balance += d_score
         self.score += d_score

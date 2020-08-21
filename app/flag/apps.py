@@ -12,6 +12,7 @@ def check_flag(team: Team, flag_str: str):
     flag = flag[0]
     
     team.add_score(flag.score)
+    team.save()
     flag.teams.add(team)
 
     return True, flag

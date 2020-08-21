@@ -37,4 +37,4 @@ services:
     image: plt-django:0.1
     container_name: plt-django
     ports:
-      - 17534:8000
+      - 17354:8000

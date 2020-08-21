@@ -1,5 +1,4 @@
 {% extends 'core/base.html'%}
-
 {% block title %} SSTI {% endblock %}
 
 {% block head %}
@@ -9,7 +8,6 @@
 {% block body %}
 
 <div class="flex center">
-    <img class="titleImg" src="{% static 'img/isabelle.png' %}">
     <div class="box margin-big padding-big color-white shadow-big arrow_box">
         {% if is_valid is not None %}
             {% if is_valid %}
