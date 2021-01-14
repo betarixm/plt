@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/migrations/0002_auto_20200807_0230.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/migrations/0003_auto_20200813_0133.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/migrations/0004_filter_teamname.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/migrations/0005_auto_20200816_1420.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/migrations/0006_auto_20200816_1444.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/migrations/0007_auto_20200816_1445.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/migrations/0008_auto_20200816_1458.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/migrations/0009_auto_20200820_1838.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/font/sdnr_b.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/font/sdnr_m.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/img/isabelle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/img/jackson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/img/kongdol.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/img/neogul.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/img/title.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/templates/core/attack_form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/templates/core/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/templates/core/dashboard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/templates/core/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/templates/registration/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/templates/registration/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/env/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/env/environ.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/env/sqli/team_db.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/env/ssti/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/env/ssti/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/env/ssti/flag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/env/ssti/ssti_flag_pusher.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/env/xss/xss_flag.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/flag/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/flag/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/flag/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/flag/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/flag/migrations/0002_remove_flag_is_added.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/flag/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/flag/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/flag/templates/flag/auth.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/flag/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/flag/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/flag/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plt/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plt/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plt/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plt/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plt/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/migrations/0002_auto_20200819_2157.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/item_block.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/item_view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/result.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/templates/shop/shop.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shop/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sqli/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sqli/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sqli/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sqli/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sqli/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sqli/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sqli/templates/sqli/sqli.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sqli/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sqli/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sqli/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ssti/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ssti/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ssti/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ssti/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ssti/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ssti/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ssti/templates/ssti/ssti.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ssti/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ssti/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ssti/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/crawler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/dummy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/flag.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/mysql.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/sqli.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/checkbot.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/migrations/0002_xsstrial_created_at.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/migrations/0003_auto_20200814_1706.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/migrations/0004_auto_20200815_0209.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/migrations/0005_auto_20200820_0113.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/migrations/0006_auto_20200820_1838.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/templates/xss/xss.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/templates/xss/xss_test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/xss/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="v2" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\toothpaste\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\202.7660.26\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1n3hCnJhZnPeWMvefbwmN6mmT54" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.PYTHON_MODULE" value="Python 3.7 (calendar)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <module name="plt" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="core" type="Python.DjangoServer" factoryName="Django server">
+      <module name="core" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="" />
+      <created>1610624556844</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610624556844</updated>
+      <workItem from="1610624560597" duration="1028000" />
+      <workItem from="1610625676166" duration="532000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/v2" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
