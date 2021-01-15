@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="Core Init">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="Front Init">
+      <change afterPath="$PROJECT_DIR$/front/src/component/Loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/content/challenge/sqli.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/content/challenge/xss.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/env/api.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/env/path.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,18 +54,22 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="ts.external.directory.path" value="C:\Users\toothpaste\IdeaProjects\plt\front\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Debug Application">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\toothpaste\IdeaProjects\plt\front\src\content" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.start">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -112,6 +123,21 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/front/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Django Server.core" />
+      <item itemvalue="JavaScript Debug.Debug Application" />
+      <item itemvalue="npm.start" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -122,7 +148,8 @@
       <option name="presentableId" value="Default" />
       <updated>1610624556844</updated>
       <workItem from="1610624560597" duration="1028000" />
-      <workItem from="1610625676166" duration="1091000" />
+      <workItem from="1610625676166" duration="3016000" />
+      <workItem from="1610636975237" duration="5342000" />
     </task>
     <task id="LOCAL-00001" summary="Core Init">
       <created>1610626286984</created>
@@ -131,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610626286984</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Front Init">
+      <created>1610626938192</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610626938192</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +197,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Core Init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Core Init" />
+    <MESSAGE value="Front Init" />
+    <option name="LAST_COMMIT_MESSAGE" value="Front Init" />
   </component>
 </project>
