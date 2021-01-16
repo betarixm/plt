@@ -7,7 +7,7 @@ import {
     Link
 } from "react-router-dom";
 
-import './App.css';
+import './App.scss';
 import {PATH_SQLI, PATH_XSS, PATH_LOGIN, PATH_REGISTER, PATH_SHOP, PATH_ITEM} from "./env/path";
 import Sqli from "./content/challenge/sqli";
 import Xss from "./content/challenge/xss";
