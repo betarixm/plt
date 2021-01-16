@@ -39,6 +39,21 @@ export const getItemList = () => {
         }])
     })
 }
+
+export const getItem = (id: number) => {
+    return new Promise<Item>((resolve, reject) => {
+        resolve({
+            id: 3, name: "item name", description: "item", type: "xss"
+        })
+    })
+}
+
+export const buyItem = (id: number) => {
+    return new Promise<any>((resolve, reject) => {
+        resolve("success");
+    })
+}
+
 export const querySql = (token: string, team: string, query: string) => {
     return new Promise<any>((resolve, reject) => {
         resolve("success");

@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="Register Page">
+    <list default="true" id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="config sanity">
       <change afterPath="$PROJECT_DIR$/front/src/content/shop/item.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/content/shop/shop.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/env/api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/env/api.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/env/path.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/env/path.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/types/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/types/types.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +135,7 @@
       <workItem from="1610624560597" duration="1028000" />
       <workItem from="1610625676166" duration="3016000" />
       <workItem from="1610636975237" duration="19400000" />
-      <workItem from="1610808323515" duration="1194000" />
+      <workItem from="1610808323515" duration="2624000" />
     </task>
     <task id="LOCAL-00001" summary="Core Init">
       <created>1610626286984</created>
@@ -225,7 +221,21 @@
       <option name="project" value="LOCAL" />
       <updated>1610801781191</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Shop Page">
+      <created>1610809549254</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1610809549254</updated>
+    </task>
+    <task id="LOCAL-00014" summary="config sanity">
+      <created>1610809584905</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1610809584905</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,6 +277,8 @@
     <MESSAGE value="Query Page" />
     <MESSAGE value="login formatting" />
     <MESSAGE value="Register Page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Register Page" />
+    <MESSAGE value="Shop Page" />
+    <MESSAGE value="config sanity" />
+    <option name="LAST_COMMIT_MESSAGE" value="config sanity" />
   </component>
 </project>

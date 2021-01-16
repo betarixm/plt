@@ -8,12 +8,13 @@ import {
 } from "react-router-dom";
 
 import './App.css';
-import {PATH_SQLI, PATH_XSS, PATH_LOGIN, PATH_REGISTER, PATH_SHOP} from "./env/path";
+import {PATH_SQLI, PATH_XSS, PATH_LOGIN, PATH_REGISTER, PATH_SHOP, PATH_ITEM} from "./env/path";
 import Sqli from "./content/challenge/sqli";
 import Xss from "./content/challenge/xss";
 import Login from "./content/login";
 import Register from "./content/register";
 import Shop from "./content/shop/shop";
+import Item from "./content/shop/item";
 
 interface AppProps {
 
@@ -43,6 +44,9 @@ class App extends React.Component<AppProps, AppStates> {
                         </Route>
                         <Route exact path={PATH_SHOP}>
                             <Shop />
+                        </Route>
+                        <Route exact path={PATH_ITEM}>
+                            <Item />
                         </Route>
                     </Switch>
                 </div>
