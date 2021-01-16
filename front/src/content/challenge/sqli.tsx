@@ -10,9 +10,14 @@ interface SqliStates {
 }
 
 class Sqli extends React.Component<SqliProps, SqliStates> {
+    teams: Array<Team> = [];
     state: SqliStates = {
         status: "loading"
     };
+
+    componentDidMount() {
+        this.teams =
+    }
 
     componentWillUnmount() {
 

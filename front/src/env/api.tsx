@@ -1,8 +1,3 @@
-interface Team {
-    name: string,
-    score: number
-}
-
 export const login = (id: string, pw: string) => {
     return new Promise<string>((resolve, reject) => {
         resolve("token");
