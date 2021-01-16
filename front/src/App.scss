@@ -129,6 +129,11 @@ button {
       color: $color-red;
     }
   }
+  &.success {
+    span {
+      color: $color-blue;
+    }
+  }
 }
 .reserved {
   height: 15vh;
@@ -255,6 +260,24 @@ button {
       justify-content: space-between;
       min-width: 50vw;
       height: unset;
+    }
+  }
+}
+
+.itemBox{
+  @extend .inputBox;
+  min-width: 50vw;
+  .description {
+    margin-bottom: $margin-medium;
+  }
+  .chips {
+    @include flex-center-row;
+    margin-bottom: $margin-medium;
+    .chip {
+      background-color: black;
+      margin-right: $margin-small;
+      padding: $margin-tiny $margin-medium;
+      border-radius: $margin-medium;
     }
   }
 }

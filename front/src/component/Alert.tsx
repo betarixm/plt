@@ -14,7 +14,7 @@ class Alert extends React.Component<AlertProps, AlertStates> {
         return (
             <div className={"alert " + this.props.type}>
                 <span className={"material-icons-round"}>
-                    {this.props.type === "warning" ? "warning" : ""}
+                    {this.props.type === "warning" ? "warning" : "done"}
                 </span>
                 <div className={"message"}>
                     {this.props.message}
