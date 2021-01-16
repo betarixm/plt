@@ -2,7 +2,7 @@ import React from "react";
 
 interface AlertProps {
     type: "success"|"warning";
-    message: string;
+    message?: string;
 }
 
 interface AlertStates {
