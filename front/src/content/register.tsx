@@ -66,11 +66,11 @@ class Register extends React.Component<RegisterProps, RegisterStates> {
 
     Input = () => {
         return (
-            <div>
-                <input type={"text"} onChange={this.onIdChange} value={this.state.id}/>
-                <input type={"password"} onChange={this.onPwChange} value={this.state.pw}/>
-                <input type={"text"} onChange={this.onNameChange} value={this.state.name}/>
-                <button onClick={this.onSubmit}>회원가입</button>
+            <div className={"inputBox"}>
+                <input type={"text"} placeholder={"ID"} onChange={this.onIdChange} value={this.state.id}/>
+                <input type={"password"} placeholder={"PASSWORD"} onChange={this.onPwChange} value={this.state.pw}/>
+                <input type={"text"} placeholder={"TEAM NAME"} onChange={this.onNameChange} value={this.state.name}/>
+                <button className={this.state.status === "querying" ? "disabled" : ""} onClick={this.onSubmit}>{this.state.status === "querying" ? "지구-" + this.state.id + " 생성 요청 중..." : "SUBMIT"}</button>
             </div>
         );
     }
@@ -80,10 +80,6 @@ class Register extends React.Component<RegisterProps, RegisterStates> {
             return (
                 <Loading description={"BnL 지구 생성 도우미 불러오는 중..."}/>
             );
-        } else if (this.state.status === "querying") {
-            return (
-                <Loading description={"지구-" + this.state.name + " 생성 요청 중..."}/>
-            )
         } else {
             return (
                 <>
@@ -101,7 +97,7 @@ class Register extends React.Component<RegisterProps, RegisterStates> {
         }
 
         return (
-            <div>
+            <div className={"register"}>
                 <div className={"title"}>REGISTER</div>
                 {this.state.status === "error" && <Alert type={"warning"} message={this.state.error} /> }
                 {this.content()}
