@@ -9,14 +9,14 @@ interface LoginProps {
 }
 
 interface LoginStates {
-    status: "loading"|"input"|"querying"|"done"|"error";
+    status: "loading" | "input" | "querying" | "done" | "error";
     id: string;
     pw: string;
     error?: string;
 }
 
 class Login extends React.Component<LoginProps, LoginStates> {
-    state: LoginStates ={
+    state: LoginStates = {
         id: "",
         pw: "",
         status: "loading"
@@ -32,12 +32,15 @@ class Login extends React.Component<LoginProps, LoginStates> {
 
     }
 
-    onIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {this.setState({id: e.target.value})}
+    onIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({id: e.target.value})
+    }
 
-    onPwChange = (e: React.ChangeEvent<HTMLInputElement>) => {this.setState({pw: e.target.value})}
+    onPwChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({pw: e.target.value})
+    }
 
     onSubmit = () => {
-        console.log("Asdf")
         this.setState({
             status: "querying"
         })
@@ -59,21 +62,21 @@ class Login extends React.Component<LoginProps, LoginStates> {
     Input = () => {
         return (
             <div>
-                <input type={"text"} onChange={this.onIdChange} value={this.state.id} />
-                <input type={"password"} onChange={this.onPwChange} value={this.state.pw} />
+                <input type={"text"} onChange={this.onIdChange} value={this.state.id}/>
+                <input type={"password"} onChange={this.onPwChange} value={this.state.pw}/>
                 <button onClick={this.onSubmit}>로그인</button>
             </div>
         );
     }
 
     content = () => {
-        if(this.state.status === "loading") {
+        if (this.state.status === "loading") {
             return (
-                <Loading description={"BnL 인증 시스템 불러오는 중..."} />
+                <Loading description={"BnL 인증 시스템 불러오는 중..."}/>
             );
-        } else if(this.state.status === "querying") {
+        } else if (this.state.status === "querying") {
             return (
-                <Loading description={"지구-"+this.state.id + " 접근 가능성 조회 중..."} />
+                <Loading description={"지구-" + this.state.id + " 접근 가능성 조회 중..."}/>
             )
         } else {
             return (
@@ -85,15 +88,15 @@ class Login extends React.Component<LoginProps, LoginStates> {
     }
 
     render() {
-        if(this.state.status === "done") {
+        if (this.state.status === "done") {
             return (
-                <Redirect to={"/"} />
+                <Redirect to={"/"}/>
             )
         }
         return (
             <div>
                 <div className={"title"}>LOG-IN</div>
-                {this.state.status === "error" && <Alert type={"warning"} message={this.state.error} />}
+                {this.state.status === "error" && <Alert type={"warning"} message={this.state.error}/>}
                 {this.content()}
             </div>
         );
