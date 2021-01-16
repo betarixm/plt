@@ -19,6 +19,7 @@ $color-red: #e92123;
 $margin-big: 20px;
 $margin-medium: 14px;
 $margin-small: 10px;
+$margin-tiny: 5px;
 
 @mixin laptop {
   @media (max-width: #{$laptop}) {
@@ -59,6 +60,11 @@ $margin-small: 10px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
 }
 
 * {
@@ -121,6 +127,10 @@ button {
     }
   }
 }
+.reserved {
+  height: 15vh;
+}
+
 .inputBox {
   border-radius: $border-radius;
   background-color: rgba(255,255,255,0.1);
@@ -182,5 +192,51 @@ button {
   }
   @include mobile {
     width: 70vw;
+  }
+}
+
+.shopBox{
+  @extend .inputBox;
+  width: 70vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .item {
+    @include e-border-radius;
+    @include flex-center-column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: $margin-medium;
+    margin: $margin-small;
+    width: 20vmin;
+    height: 20vmin;
+    background-color: rgba(255,255,255, 0.5);
+    .info {
+      display: inline-block;
+    }
+    .name {
+      margin-top: $margin-small;
+      margin-bottom: $margin-tiny;
+      font-size: $font-subtitle;
+      color: black;
+    }
+    .type {
+      font-size: $font-small;
+      background-color: black;
+      border-radius: $margin-medium;
+      padding: $margin-tiny / 2 $margin-small;
+      width: max-content;
+    }
+  }
+  @include mobile {
+    flex-wrap: unset;
+    flex-direction: column;
+    .item {
+      @include flex-center-row;
+      justify-content: space-between;
+      min-width: 50vw;
+      height: unset;
+    }
   }
 }

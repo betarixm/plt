@@ -51,14 +51,18 @@ class Shop extends React.Component<ShopProps, ShopStates> {
             const Items = this.itemList.map((item, index) => {
                 return (
                     <div key={index} className={"item"}>
-                        <div className={"name"}>{item.name}</div>
+                        <div className={"info"}>
+                            <div className={"name"}>{item.name}</div>
+                            <div className={"type"}>{item.type}</div>
+                        </div>
+
                         <Link to={GET_PATH_ITEM(item.id)}>Go!</Link>
                     </div>
                 )
             })
 
             return(
-                <div>
+                <div className={"shopBox"}>
                     {Items}
                 </div>
             )
@@ -68,10 +72,12 @@ class Shop extends React.Component<ShopProps, ShopStates> {
 
     render = () => {
         return (
-            <>
+            <div className={"shop"}>
+                <div className={"reserved"}> </div>
                 <div className={"title"}>Shop</div>
                 {this.content()}
-            </>
+                <div className={"reserved"}> </div>
+            </div>
         )
     }
 }

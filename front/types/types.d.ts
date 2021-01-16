@@ -8,5 +8,6 @@ interface Item {
     id: number,
     name: string,
     type: "sqli"|"xss",
-    description: string
+    description: string,
+    price: number
 }

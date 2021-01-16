@@ -43,7 +43,29 @@ export const getTeamList = () => {
 export const getItemList = () => {
     return new Promise<Array<Item>>((resolve, reject) => {
         resolve([{
-            id: 3, name: "item name", description: "item des", type: "sqli"
+            id: 3, name: "iaaaatem name", description: "item des", type: "sqli", price: 3000
+        }, {
+            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
+        }, {
+            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
+        }, {
+            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
+        }, {
+            id: 3, name: "iaaaatem name", description: "item des", type: "sqli", price: 3000
+        }, {
+            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
+        }, {
+            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
+        }, {
+            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
+        }, {
+            id: 3, name: "iaaaatem name", description: "item des", type: "sqli", price: 3000
+        }, {
+            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
+        }, {
+            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
+        }, {
+            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
         }])
     })
 }
@@ -51,7 +73,7 @@ export const getItemList = () => {
 export const getItem = (id: number) => {
     return new Promise<Item>((resolve, reject) => {
         resolve({
-            id: 3, name: "item name", description: "item", type: "xss"
+            id: 3, name: "item name", description: "item", type: "xss", price: 3000
         })
     })
 }
