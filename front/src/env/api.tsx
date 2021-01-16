@@ -86,7 +86,7 @@ export const buyItem = (id: number) => {
 
 export const querySql = (token: string, team: string, query: string) => {
     return new Promise<any>((resolve, reject) => {
-        reject("해당 지구로 쓰레기를 투기하는데 실패했습니다.");
+        resolve("해당 지구로 쓰레기를 투기하는데 실패했습니다.");
     })
 }
 

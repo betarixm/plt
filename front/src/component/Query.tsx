@@ -11,11 +11,12 @@ interface QueryProps {
 }
 
 interface QueryStates {
-    status: "loading" | "error" | "input" | "querying" | "done";
+    status: "loading" | "error" | "input" | "querying" | "success";
     error?: string;
     target?: string;
     result?: string;
     query: string;
+    message?: string;
 }
 
 class Query extends React.Component<QueryProps, QueryStates> {
@@ -50,7 +51,8 @@ class Query extends React.Component<QueryProps, QueryStates> {
         this.props.onSubmit("", "", "")
             .then((res) => {
                 this.setState({
-                    status: "done"
+                    status: "success",
+                    message: res
                 });
             })
             .catch((err) => {
@@ -121,6 +123,7 @@ class Query extends React.Component<QueryProps, QueryStates> {
                     {this.props.title}
                 </div>
                 {this.state.status === "error" && <Alert type={"warning"} message={this.state.error}/>}
+                {this.state.status === "success" && <Alert type={"success"} message={this.state.message}/>}
                 {this.content()}
             </div>
         );
