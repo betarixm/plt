@@ -13,7 +13,7 @@ interface XssStates {
 class Xss extends React.Component<XssProps, XssStates> {
     render() {
         return (
-            <Query title={"XSS"} onSubmit={queryXss} />
+            <Query id="xss" title={"XSS"} onSubmit={queryXss} />
         )
     }
 }

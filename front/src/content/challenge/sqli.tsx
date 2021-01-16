@@ -13,7 +13,7 @@ interface SqliStates {
 class Sqli extends React.Component<SqliProps, SqliStates> {
     render() {
         return (
-            <Query title={"SQL Injection"} onSubmit={querySql} />
+            <Query id="sqli" title={"SQL Injection"} onSubmit={querySql} />
         )
     }
 }
