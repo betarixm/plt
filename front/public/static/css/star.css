@@ -14,7 +14,12 @@ body {
     overflow: hidden;
 }
 
+#root {
+    z-index: 1;
+}
+
 .star {
+    z-index: 0;
     width: 3px;
     height: 3px;
     border-radius: 50%;
@@ -25,17 +30,20 @@ body {
 }
 
 .star--medium {
+    z-index: 0;
     width: 6px;
     height: 6px;
 }
 
 .star--big {
+    z-index: 0;
     width: 9px;
     height: 9px;
     box-shadow: 0 0 40px 0 #EDCDA3, 0 0 20px 0 #FFFFFF, inset 0 0 4px #FFFFFF;
 }
 
 .comet {
+    z-index: 0;
     width: 5px;
     height: 5px;
     background-color: rgba(255, 255, 255, 0.6);
@@ -48,6 +56,7 @@ body {
 }
 
 .comet:after {
+    z-index: 0;
     content: '';
     width: 10vw;
     height: 4px;

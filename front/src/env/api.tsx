@@ -56,7 +56,7 @@ export const buyItem = (id: number) => {
 
 export const querySql = (token: string, team: string, query: string) => {
     return new Promise<any>((resolve, reject) => {
-        resolve("success");
+        reject("success");
     })
 }
 

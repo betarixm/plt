@@ -1,6 +1,7 @@
 import React from 'react'
 import Loading from "./Loading";
 import {getTeamList} from "../env/api";
+import Alert from "./Alert";
 
 interface QueryProps {
     title: string;
@@ -54,6 +55,7 @@ class Query extends React.Component<QueryProps, QueryStates> {
             })
             .catch((err) => {
                 this.setState({
+                    status: "error",
                     error: err.toString()
                 })
             })
@@ -95,6 +97,7 @@ class Query extends React.Component<QueryProps, QueryStates> {
             <div className={"queryForm"}>
                 <input className={"query"} type={"text"} onChange={this.onQueryChange} value={this.state.query}/>
                 {this.TeamSelector()}
+                <button onClick={this.onSubmit}>ATTACK</button>
             </div>
         );
     }
@@ -117,6 +120,7 @@ class Query extends React.Component<QueryProps, QueryStates> {
                 <div className={"title"}>
                     {this.props.title}
                 </div>
+                {this.state.status === "error" && <Alert type={"warning"} message={this.state.error}/>}
                 {this.content()}
             </>
         );

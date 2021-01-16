@@ -7,14 +7,14 @@ var domBody = document.body;
     var delayArr = [2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50];
 
     for (var i = 0; i < n; i++) {
-        var leftEle = leftArr[Math.floor(Math.random()*leftArr.length)] + parseFloat(Math.random().toFixed(2));
+        var leftEle = leftArr[Math.floor(Math.random()*leftArr.length)] + parseFloat(Math.random().toFixed(2)) + 10;
         var delayEle = delayArr[Math.floor(Math.random()*delayArr.length)] * 1000 + Math.round(Math.random() * 700);
         var div = document.createElement('div');
         div.className = 'star comet';
-        div.setAttribute('style', 'left:' + leftEle + '%;animation-delay:' + delayEle + 'ms;');
+        div.setAttribute('style', 'left:' + (Math.random() * 130 + 10) + 'vw;animation-delay:' + delayEle + 'ms;');
         domBody.appendChild(div);
     }
-})(20);
+})(70);
 
 (function(n) {
     for (var i = 0; i < n; i++) {
@@ -25,4 +25,4 @@ var domBody = document.body;
             + 'vw;animation-duration:' + (Math.round(Math.random() * 3000) + 3000) + 'ms;animation-delay:' + Math.round(Math.random() * 3000) + 'ms;');
         domBody.appendChild(div);
     }
-})(50);
+})(75);
