@@ -55,8 +55,10 @@ class Shop extends React.Component<ShopProps, ShopStates> {
                             <div className={"name"}>{item.name}</div>
                             <div className={"type"}>{item.type}</div>
                         </div>
-
-                        <Link to={GET_PATH_ITEM(item.id)}>Go!</Link>
+                        <div className={"wrapper"}>
+                            <div> </div>
+                            <Link to={GET_PATH_ITEM(item.id)}>{item.price} <span className={"material-icons-round"}>shopping_cart</span></Link>
+                        </div>
                     </div>
                 )
             })

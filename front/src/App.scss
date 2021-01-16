@@ -75,6 +75,9 @@ $margin-tiny: 5px;
   }
 }
 
+a {
+  text-decoration: none;
+}
 
 body {
   @include flex-center-column;
@@ -227,6 +230,21 @@ button {
       border-radius: $margin-medium;
       padding: $margin-tiny / 2 $margin-small;
       width: max-content;
+    }
+    .wrapper {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    a {
+      @include flex-center-row;
+      @include e-border-radius;
+      padding: $margin-small;
+      background-color: $color-blue;
+      span {
+        margin-left: $margin-tiny;
+        font-size: $font-body;
+      }
     }
   }
   @include mobile {
