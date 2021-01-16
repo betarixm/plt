@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="Class based Component">
-      <change afterPath="$PROJECT_DIR$/front/src/component/Query.tsx" afterDir="false" />
+    <list default="true" id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="Alert hotfix">
+      <change afterPath="$PROJECT_DIR$/front/src/content/login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/component/Query.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/component/Query.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/content/challenge/sqli.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/challenge/sqli.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/content/challenge/xss.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/challenge/xss.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/env/api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/env/api.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/env/path.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/env/path.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/types/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/types/types.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +150,7 @@
       <updated>1610624556844</updated>
       <workItem from="1610624560597" duration="1028000" />
       <workItem from="1610625676166" duration="3016000" />
-      <workItem from="1610636975237" duration="9387000" />
+      <workItem from="1610636975237" duration="16955000" />
     </task>
     <task id="LOCAL-00001" summary="Core Init">
       <created>1610626286984</created>
@@ -176,7 +180,35 @@
       <option name="project" value="LOCAL" />
       <updated>1610787239939</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Base Query Component">
+      <created>1610789659674</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610789659674</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Alert Component">
+      <created>1610795988983</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610795988983</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Alert hotfix">
+      <created>1610800096201</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1610800096201</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Alert hotfix">
+      <created>1610800141825</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1610800141825</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +243,9 @@
     <MESSAGE value="Front Init" />
     <MESSAGE value="checkpoint" />
     <MESSAGE value="Class based Component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Class based Component" />
+    <MESSAGE value="Base Query Component" />
+    <MESSAGE value="Alert Component" />
+    <MESSAGE value="Alert hotfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alert hotfix" />
   </component>
 </project>

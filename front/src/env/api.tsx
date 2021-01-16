@@ -1,12 +1,26 @@
+export const getSession = () => {
+    localStorage.getItem('token');
+}
+
+export const setSession = (token: string) => {
+   localStorage.setItem('token', token);
+}
+
 export const login = (id: string, pw: string) => {
     return new Promise<string>((resolve, reject) => {
-        resolve("token");
-    })
+        setTimeout(() => {
+            resolve("token")
+        }, 2000);
+    });
 }
 
 export const getTeamList = () => {
     return new Promise<Array<Team>>((resolve, reject) => {
-        resolve([]);
+        resolve([{
+            id: "test1", name: "test1", score: 100
+        }, {
+            id: "test2", name: "test2", score: 200
+        }]);
     })
 }
 
