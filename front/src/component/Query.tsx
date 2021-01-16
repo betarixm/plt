@@ -14,12 +14,13 @@ interface QueryStates {
     error?: string;
     target?: string;
     result?: string;
-    query?: string;
+    query: string;
 }
 
 class Query extends React.Component<QueryProps, QueryStates> {
     state: QueryStates = {
-        status: "loading"
+        status: "loading",
+        query: ""
     };
 
     teamList: Array<Team> = [];
