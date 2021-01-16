@@ -110,7 +110,9 @@ button {
     margin-right: $margin-medium;
   }
   &.warning {
-    border: solid 1px darken($color-red, 10%);
+    span {
+      color: $color-red;
+    }
   }
 }
 .inputBox {

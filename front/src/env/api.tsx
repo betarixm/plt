@@ -9,7 +9,7 @@ export const setSession = (token: string) => {
 export const login = (id: string, pw: string) => {
     return new Promise<string>((resolve, reject) => {
         setTimeout(() => {
-            reject("token")
+            reject("해당 지구에는 접근할 수 없습니다!")
         }, 2000);
     });
 }

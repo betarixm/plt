@@ -64,7 +64,7 @@ class Login extends React.Component<LoginProps, LoginStates> {
             <div className={"inputBox"}>
                 <input type={"text"} placeholder={"ID"} onChange={this.onIdChange} value={this.state.id}/>
                 <input type={"password"} placeholder={"PASSWORD"} onChange={this.onPwChange} value={this.state.pw}/>
-                <button className={this.state.status === "querying" ? "disabled" : ""} onClick={this.onSubmit}>{this.state.status === "querying" ? "지구-" + this.state.id + " 접근 가능성 조회 중..." : "로그인"}</button>
+                <button className={this.state.status === "querying" ? "disabled" : ""} onClick={this.onSubmit}>{this.state.status === "querying" ? "지구-" + this.state.id + " 접근 가능성 조회 중..." : "SUBMIT"}</button>
             </div>
         );
     }
@@ -91,7 +91,7 @@ class Login extends React.Component<LoginProps, LoginStates> {
         }
         return (
             <div className={"Login"}>
-                <div className={"title"}>LOG-IN</div>
+                <div className={"title"}>LOGIN</div>
                 {this.state.status === "error" && <Alert type={"warning"} message={this.state.error}/>}
                 {this.content()}
             </div>

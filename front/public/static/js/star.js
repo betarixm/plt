@@ -14,7 +14,7 @@ var domBody = document.body;
         div.setAttribute('style', 'left:' + leftEle + '%;animation-delay:' + delayEle + 'ms;');
         domBody.appendChild(div);
     }
-})(25);
+})(20);
 
 (function(n) {
     for (var i = 0; i < n; i++) {
@@ -25,4 +25,4 @@ var domBody = document.body;
             + 'vw;animation-duration:' + (Math.round(Math.random() * 3000) + 3000) + 'ms;animation-delay:' + Math.round(Math.random() * 3000) + 'ms;');
         domBody.appendChild(div);
     }
-})(125);
+})(50);
