@@ -61,10 +61,10 @@ class Login extends React.Component<LoginProps, LoginStates> {
 
     Input = () => {
         return (
-            <div>
-                <input type={"text"} onChange={this.onIdChange} value={this.state.id}/>
-                <input type={"password"} onChange={this.onPwChange} value={this.state.pw}/>
-                <button onClick={this.onSubmit}>로그인</button>
+            <div className={"inputBox"}>
+                <input type={"text"} placeholder={"ID"} onChange={this.onIdChange} value={this.state.id}/>
+                <input type={"password"} placeholder={"PASSWORD"} onChange={this.onPwChange} value={this.state.pw}/>
+                <button className={this.state.status === "querying" ? "disabled" : ""} onClick={this.onSubmit}>{this.state.status === "querying" ? "지구-" + this.state.id + " 접근 가능성 조회 중..." : "로그인"}</button>
             </div>
         );
     }
@@ -74,10 +74,6 @@ class Login extends React.Component<LoginProps, LoginStates> {
             return (
                 <Loading description={"BnL 인증 시스템 불러오는 중..."}/>
             );
-        } else if (this.state.status === "querying") {
-            return (
-                <Loading description={"지구-" + this.state.id + " 접근 가능성 조회 중..."}/>
-            )
         } else {
             return (
                 <>
@@ -94,7 +90,7 @@ class Login extends React.Component<LoginProps, LoginStates> {
             )
         }
         return (
-            <div>
+            <div className={"Login"}>
                 <div className={"title"}>LOG-IN</div>
                 {this.state.status === "error" && <Alert type={"warning"} message={this.state.error}/>}
                 {this.content()}

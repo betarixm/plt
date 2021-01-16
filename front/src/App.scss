@@ -1,0 +1,132 @@
+$font-title: 32px;
+$font-subtitle: 24px;
+$font-icon: 20px;
+$font-body: 14px;
+$font-small: 12px;
+$font-tiny: 10px;
+
+$laptop: 1023px;
+$tablet: 767px;
+$mobile: 639px;
+
+$border-radius: 10px;
+
+$color-blue: #3490ce;
+$color-red: #e92123;
+
+$margin-big: 20px;
+$margin-medium: 14px;
+
+@mixin laptop {
+  @media (max-width: #{$laptop}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin e-border-radius {
+  border-radius: $border-radius;
+}
+
+@mixin e-font-size ($s) {
+  font-size: $s;
+}
+
+@mixin flex-center-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-center-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+*:focus {
+  outline: none;
+  @include e-font-size($font-body);
+}
+
+
+body {
+  @include flex-center-column;
+}
+
+.App {
+  @include flex-center-column;
+}
+
+input {
+  @include e-border-radius;
+
+  color: $color-blue;
+  background-color: black;
+  border: none;
+  padding: $margin-medium;
+  margin-bottom: $margin-medium;
+}
+
+button {
+  @include e-border-radius;
+  background-color: $color-blue;
+  border: none;
+  padding: $margin-medium;
+  &.disabled {
+    pointer-events: none;
+    background-color: $color-red;
+  }
+}
+
+.title {
+  margin-bottom: $margin-medium;
+  font-size: $font-title;
+  font-weight: bold;
+  text-align: center;
+}
+
+.alert {
+  @include flex-center-row;
+  background-color: black;
+  border-radius: $border-radius;
+  padding: $margin-big;
+  margin-bottom: $margin-medium;
+  span {
+    margin-right: $margin-medium;
+  }
+  &.warning {
+    border: solid 1px darken($color-red, 10%);
+  }
+}
+.inputBox {
+  border-radius: $border-radius;
+  background-color: white;
+  padding: $margin-big;
+  @include flex-center-column;
+
+  input {
+    min-width: 300px;
+    @include mobile {
+      min-width: 70vw;
+    }
+  }
+
+  button {
+    width: 100%;
+  }
+}

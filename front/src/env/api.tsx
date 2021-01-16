@@ -9,7 +9,7 @@ export const setSession = (token: string) => {
 export const login = (id: string, pw: string) => {
     return new Promise<string>((resolve, reject) => {
         setTimeout(() => {
-            resolve("token")
+            reject("token")
         }, 2000);
     });
 }
