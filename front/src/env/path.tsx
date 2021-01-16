@@ -5,3 +5,4 @@ export const PATH_REGISTER = "/register";
 export const PATH_SHOP = "/shop";
 export const PATH_ITEM = "/shop/:id";
 export const GET_PATH_ITEM = (id: number) => "/shop/"+id.toString();
+export const PATH_DASHBOARD = "/";

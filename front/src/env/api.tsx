@@ -95,3 +95,11 @@ export const queryXss = (token: string, team: string, query: string) => {
         resolve("success");
     })
 }
+
+export const getUserInfo = () => {
+    return new Promise<Team>((resolve, reject) => {
+        resolve({
+            name: "팀 이름", score: 50000, id: "id"
+        })
+    })
+}

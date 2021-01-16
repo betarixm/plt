@@ -3,9 +3,9 @@
 $font-title: 32px;
 $font-subtitle: 24px;
 $font-icon: 20px;
-$font-body: 14px;
-$font-small: 12px;
-$font-tiny: 10px;
+$font-body: 16px;
+$font-small: 14px;
+$font-tiny: 12px;
 
 $laptop: 1023px;
 $tablet: 767px;
@@ -69,9 +69,9 @@ $margin-tiny: 5px;
 
 * {
   transition: all 0.5s;
+  @include e-font-size($font-body);
   &:focus {
     outline: none;
-    @include e-font-size($font-body);
   }
 }
 
@@ -139,6 +139,38 @@ button {
   height: 15vh;
 }
 
+.navigation {
+  width: 100vw;
+  padding: $margin-big;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .title {
+    img {
+      height: $font-title;
+    }
+  }
+  .links {
+    a {
+      font-weight: 100;
+      margin-right: $margin-big;
+      font-size: $font-icon;
+    }
+  }
+  @include mobile {
+    .title {
+      display: none;
+    }
+    a {
+      font-size: $font-tiny;
+    }
+  }
+}
 .inputBox {
   border-radius: $border-radius;
   background-color: rgba(255,255,255,0.1);
