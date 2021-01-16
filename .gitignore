@@ -2,10 +2,10 @@
 core/.env/
 
 # django
-core/*.log
-core/*.pot
-core/*.pyc
-core/__pycache__/
+core/**/*.log
+core/**/*.pot
+core/**/*.pyc
+core/**/*__pycache__/
 core/local_settings.py
 core/db.sqlite3
 core/media
