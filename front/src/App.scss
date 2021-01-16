@@ -18,6 +18,7 @@ $color-red: #e92123;
 
 $margin-big: 20px;
 $margin-medium: 14px;
+$margin-small: 10px;
 
 @mixin laptop {
   @media (max-width: #{$laptop}) {
@@ -60,9 +61,12 @@ $margin-medium: 14px;
   align-items: center;
 }
 
-*:focus {
-  outline: none;
-  @include e-font-size($font-body);
+* {
+  transition: all 0.5s;
+  &:focus {
+    outline: none;
+    @include e-font-size($font-body);
+  }
 }
 
 
@@ -133,5 +137,50 @@ button {
 
   button {
     width: 100%;
+  }
+}
+
+.queryBox{
+  @extend .inputBox;
+  min-width: 650px;
+  input {
+    min-width: 650px;
+    @include mobile{
+      min-width: 70vw;
+    }
+  }
+  @include mobile {
+    min-width: unset;
+  }
+  button {
+    @include mobile{
+      width: 50vw;
+    }
+  }
+}
+
+.teamSelector {
+  @include flex-center-row;
+  flex-wrap: wrap;
+  margin: $margin-medium;
+  .radio {
+    margin: 0 $margin-small $margin-medium;
+    label {
+      padding: $margin-small / 2 $margin-small;
+      border-radius: $margin-medium;
+      border: solid 1px white;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + label {
+      background-color: rgba(255,255,255, 0.4);
+      color: black;
+    }
+  }
+  @include mobile {
+    width: 70vw;
   }
 }

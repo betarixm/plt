@@ -94,8 +94,8 @@ class Query extends React.Component<QueryProps, QueryStates> {
 
     Input = () => {
         return (
-            <div className={"queryForm"}>
-                <input className={"query"} type={"text"} onChange={this.onQueryChange} value={this.state.query}/>
+            <div className={"queryBox"}>
+                <input placeholder={this.props.title + " Query"} className={"query"} type={"text"} onChange={this.onQueryChange} value={this.state.query}/>
                 {this.TeamSelector()}
                 <button onClick={this.onSubmit}>ATTACK</button>
             </div>
@@ -116,13 +116,13 @@ class Query extends React.Component<QueryProps, QueryStates> {
 
     render() {
         return (
-            <>
+            <div className={"query"}>
                 <div className={"title"}>
                     {this.props.title}
                 </div>
                 {this.state.status === "error" && <Alert type={"warning"} message={this.state.error}/>}
                 {this.content()}
-            </>
+            </div>
         );
     }
 }

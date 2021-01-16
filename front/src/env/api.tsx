@@ -28,6 +28,14 @@ export const getTeamList = () => {
             id: "test1", name: "test1", score: 100
         }, {
             id: "test2", name: "test2", score: 200
+        }, {
+            id: "test3", name: "test3", score: 200
+        }, {
+            id: "test4", name: "test4", score: 200
+        }, {
+            id: "test5", name: "test5", score: 200
+        }, {
+            id: "test6", name: "test6", score: 200
         }]);
     })
 }
@@ -56,7 +64,7 @@ export const buyItem = (id: number) => {
 
 export const querySql = (token: string, team: string, query: string) => {
     return new Promise<any>((resolve, reject) => {
-        reject("success");
+        reject("해당 지구로 쓰레기를 투기하는데 실패했습니다.");
     })
 }
 
