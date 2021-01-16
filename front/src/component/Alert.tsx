@@ -23,3 +23,5 @@ class Alert extends React.Component<AlertProps, AlertStates> {
         )
     }
 }
+
+export default Alert;
