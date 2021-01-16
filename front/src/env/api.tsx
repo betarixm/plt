@@ -14,6 +14,14 @@ export const login = (id: string, pw: string) => {
     });
 }
 
+export const register = (id: string, pw: string, name: string) => {
+    return new Promise<any>((resolve, reject) => {
+        setTimeout(() => {
+            reject("token")
+        }, 2000);
+    });
+}
+
 export const getTeamList = () => {
     return new Promise<Array<Team>>((resolve, reject) => {
         resolve([{
