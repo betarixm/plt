@@ -32,6 +32,13 @@ export const getTeamList = () => {
     })
 }
 
+export const getItemList = () => {
+    return new Promise<Array<Item>>((resolve, reject) => {
+        resolve([{
+            id: 3, name: "item name", description: "item des", type: "sqli"
+        }])
+    })
+}
 export const querySql = (token: string, team: string, query: string) => {
     return new Promise<any>((resolve, reject) => {
         resolve("success");
