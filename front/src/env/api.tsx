@@ -103,3 +103,9 @@ export const getUserInfo = () => {
         })
     })
 }
+
+export const authFlag = (flag: string) => {
+    return new Promise<any>((resolve, reject) => {
+        resolve("success");
+    })
+}
