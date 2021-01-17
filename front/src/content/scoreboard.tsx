@@ -19,7 +19,7 @@ class Scoreboard extends React.Component<ScoreboardProps, ScoreboardStates> {
 
     timer?: NodeJS.Timeout;
     isMount: boolean = false;
-    teamList: Array<Team> = [];
+    teamList: Array<TeamInfo> = [];
 
     componentDidMount() {
         this.isMount = true;
@@ -61,6 +61,24 @@ class Scoreboard extends React.Component<ScoreboardProps, ScoreboardStates> {
             })
     }
 
+    Attack = (team: TeamInfo) => {
+        return (
+            <div className={"attackBox"}>
+                <div className={"attack"}>
+                    <div className={"key"}>SQLi</div>
+                    <div className={"value"}>
+                        {team.attacks.SQLi ? "공격 있음" : "최근 공격 없음"}
+                    </div>
+                </div>
+                <div className={"attack"}>
+                    <div className={"key"}>XSS</div>
+                    <div className={"value"}>
+                        {team.attacks.XSS ? "공격 있음" : "최근 공격 없음"}
+                    </div>
+                </div>
+            </div>
+        )
+    }
     List = () => {
         this.teamList.sort((a, b) => {
             // @ts-ignore
@@ -68,9 +86,12 @@ class Scoreboard extends React.Component<ScoreboardProps, ScoreboardStates> {
         })
         const scoreList = this.teamList.map((team, index) => {
             return (
-                <div key={index} className={"tag"}>
-                    <div className={"name"}>{team.name}</div>
-                    <div className={"score"}>{team.score}</div>
+                <div key={index} className={"scoreEle"}>
+                    <div className={"row"}>
+                        <div className={"name"}>{team.teamname}</div>
+                        <div className={"score"}>{team.score}</div>
+                    </div>
+                    {this.Attack(team)}
                 </div>
             )
         })
@@ -82,17 +103,11 @@ class Scoreboard extends React.Component<ScoreboardProps, ScoreboardStates> {
     }
 
     content = () => {
-        if(this.state.status === "loading") {
-            return (
-                <Loading description={"다른 지구의 정보 불러오는 중..."} />
-            )
-        } else {
-            return (
+        return (
                 <>
                     {this.List()}
                 </>
             )
-        }
     }
 
     render() {
