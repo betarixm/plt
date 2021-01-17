@@ -8,7 +8,16 @@ import {
 } from "react-router-dom";
 
 import './App.scss';
-import {PATH_SQLI, PATH_XSS, PATH_LOGIN, PATH_REGISTER, PATH_SHOP, PATH_ITEM, PATH_DASHBOARD} from "./env/path";
+import {
+    PATH_SQLI,
+    PATH_XSS,
+    PATH_LOGIN,
+    PATH_REGISTER,
+    PATH_SHOP,
+    PATH_ITEM,
+    PATH_DASHBOARD,
+    PATH_SCOREBOARD
+} from "./env/path";
 import Sqli from "./content/challenge/sqli";
 import Xss from "./content/challenge/xss";
 import Login from "./content/login";
@@ -17,6 +26,7 @@ import Shop from "./content/shop/shop";
 import Item from "./content/shop/item";
 import Dashboard from "./content/Dashboard";
 import Navigation from "./component/Navigation";
+import Scoreboard from "./content/scoreboard";
 
 interface AppProps {
 
@@ -50,6 +60,9 @@ class App extends React.Component<AppProps, AppStates> {
                         </Route>
                         <Route exact path={PATH_ITEM}>
                             <Item />
+                        </Route>
+                        <Route exact path={PATH_SCOREBOARD}>
+                            <Scoreboard />
                         </Route>
                         <Route exact path={PATH_DASHBOARD}>
                             <Dashboard />
