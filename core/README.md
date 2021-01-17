@@ -45,8 +45,11 @@ POST /login
 - Invalid Form : 400
 - Login Failed : 401
 - Success : 200
-
-See `Set-Cookie` header!
+```javascript
+{
+  "sessionid" : string
+}
+```
 
 
 ### Dashboard
