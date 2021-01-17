@@ -69,7 +69,7 @@ class Scoreboard extends React.Component<ScoreboardProps, ScoreboardStates> {
         const scoreList = this.teamList.map((team, index) => {
             return (
                 <div key={index} className={"tag"}>
-                    <div className={"name"}>{team.name}</div>
+                    <div className={"name"}>{team.username}</div>
                     <div className={"score"}>{team.score}</div>
                 </div>
             )

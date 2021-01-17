@@ -1,7 +1,7 @@
 interface Team {
-    id: string,
-    name: string,
-    score?: number
+    username: string,
+    score: number,
+    money?: number
 }
 
 interface Item {

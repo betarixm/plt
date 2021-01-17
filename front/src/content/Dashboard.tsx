@@ -47,7 +47,7 @@ class Dashboard extends React.Component<DashboardProps, DashboardStates> {
                     <div className={"info"}>
                         <div className={"tag"}>
                             <div className={"key"}>TEAM NAME</div>
-                            <div className={"value"}>{this.team.name}</div>
+                            <div className={"value"}>{this.team.username}</div>
                         </div>
                         <div className={"tag"}>
                             <div className={"key"}>FIREWALL-ECHO-SCORE</div>

@@ -79,10 +79,10 @@ class Query extends React.Component<QueryProps, QueryStates> {
         const teamRadio = this.teamList.map((team, index) => {
             const id = "teamRadio" + index.toString();
             return (
-                <div key={team.id} className={"radio"}>
-                    <input type={"radio"} id={id} name="team" value={team.id} onChange={this.onTeamSelect}
-                           checked={this.state.target === team.id}/>
-                    <label htmlFor={id}>{team.name}</label>
+                <div key={team.username} className={"radio"}>
+                    <input type={"radio"} id={id} name="team" value={team.username} onChange={this.onTeamSelect}
+                           checked={this.state.target === team.username}/>
+                    <label htmlFor={id}>{team.username}</label>
                 </div>
             )
         });
