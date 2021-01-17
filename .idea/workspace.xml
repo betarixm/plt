@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="Class based Component">
-      <change afterPath="$PROJECT_DIR$/front/src/component/Query.tsx" afterDir="false" />
+    <list default="true" id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="Item Page">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/content/challenge/sqli.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/challenge/sqli.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/content/challenge/xss.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/challenge/xss.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/env/api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/env/api.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,17 +57,6 @@
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -146,7 +132,8 @@
       <updated>1610624556844</updated>
       <workItem from="1610624560597" duration="1028000" />
       <workItem from="1610625676166" duration="3016000" />
-      <workItem from="1610636975237" duration="9387000" />
+      <workItem from="1610636975237" duration="19400000" />
+      <workItem from="1610808323515" duration="3399000" />
     </task>
     <task id="LOCAL-00001" summary="Core Init">
       <created>1610626286984</created>
@@ -176,7 +163,84 @@
       <option name="project" value="LOCAL" />
       <updated>1610787239939</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Base Query Component">
+      <created>1610789659674</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610789659674</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Alert Component">
+      <created>1610795988983</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610795988983</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Alert hotfix">
+      <created>1610800096201</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1610800096201</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Alert hotfix">
+      <created>1610800141825</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1610800141825</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Login">
+      <created>1610800756795</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1610800756795</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Query Page">
+      <created>1610800787292</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1610800787292</updated>
+    </task>
+    <task id="LOCAL-00011" summary="login formatting">
+      <created>1610801127894</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1610801127895</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Register Page">
+      <created>1610801781191</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1610801781191</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Shop Page">
+      <created>1610809549254</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1610809549254</updated>
+    </task>
+    <task id="LOCAL-00014" summary="config sanity">
+      <created>1610809584905</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1610809584905</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Item Page">
+      <created>1610810972265</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1610810972265</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +275,16 @@
     <MESSAGE value="Front Init" />
     <MESSAGE value="checkpoint" />
     <MESSAGE value="Class based Component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Class based Component" />
+    <MESSAGE value="Base Query Component" />
+    <MESSAGE value="Alert Component" />
+    <MESSAGE value="Alert hotfix" />
+    <MESSAGE value="Login" />
+    <MESSAGE value="Query Page" />
+    <MESSAGE value="login formatting" />
+    <MESSAGE value="Register Page" />
+    <MESSAGE value="Shop Page" />
+    <MESSAGE value="config sanity" />
+    <MESSAGE value="Item Page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Item Page" />
   </component>
 </project>
