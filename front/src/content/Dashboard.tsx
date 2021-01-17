@@ -1,6 +1,7 @@
 import React from "react";
 import {getUserInfo} from "../env/api";
 import Loading from "../component/Loading";
+import Flag from "../component/Flag";
 
 interface DashboardProps {
 
@@ -67,6 +68,7 @@ class Dashboard extends React.Component<DashboardProps, DashboardStates> {
             return (
                 <>
                     {this.TeamInfo()}
+                    <Flag />
                 </>
             )
         }

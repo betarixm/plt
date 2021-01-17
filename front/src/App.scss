@@ -331,6 +331,7 @@ button {
     @include flex-center-row;
     @include blur-box;
     padding: $margin-big * 2;
+    margin-bottom: $margin-big;
     img {
       opacity: 0.6;
       height: 20vmin;
@@ -349,6 +350,10 @@ button {
       }
     }
   }
+  .alert {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 .scoreBox {
@@ -362,5 +367,15 @@ button {
       font-size: $font-subtitle;
     }
 
+  }
+}
+
+.flagBox {
+  @extend .inputBox;
+  width: 100%;
+  box-sizing: border-box;
+  input {
+    box-sizing: border-box;
+    width: 100%;
   }
 }
