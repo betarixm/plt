@@ -21,6 +21,8 @@ class NavigationInner extends React.Component<NavigationProps, NavigationStates>
                     nav.style.backdropFilter = "blur(5px)";
                 } else {
                     nav.style.background = "";
+                    // @ts-ignore
+                    nav.style.backdropFilter = "";
                 }
             }
         })
