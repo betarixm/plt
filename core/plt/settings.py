@@ -34,11 +34,18 @@ AUTH_USER_MODEL='base.Team'
 
 CORS_ORIGIN_WHITELIST = [
     "https://firewall.postech.studio",
+    "http://plus.or.kr:19190",
+    "http://plus.or.kr:3000",
     "http://localhost:3000"
 ]
 CORS_ALLOW_CREDENTIALS = True
 
 ALLOWED_HOSTS = ["plus.or.kr"]
+
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_HTTPONLY = False  # False since we will grab it via universal-cookies
+SESSION_COOKIE_HTTPONLY = False
 
 # Application definition
 
@@ -138,6 +145,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+
+STATIC_ROOT=os.path.join(BASE_DIR, 'static')

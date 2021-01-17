@@ -64,7 +64,9 @@ class LoginView(View):
 
         if team is not None:
             login(request, team)
-            return HttpResponse(status=200)
+            return JsonResponse({
+                'sessionid': request.session.session_key
+            }, status=200)
         else:
             return HttpResponse(status=401)
 
