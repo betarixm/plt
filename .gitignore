@@ -1,6 +1,9 @@
 # virtualenv
 core/.env/
 
+# volume
+core/data
+
 # django
 core/**/*.log
 core/**/*.pot

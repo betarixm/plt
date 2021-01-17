@@ -12,7 +12,7 @@ need token
 **Response:** 
 ```javascript
 {
-  "username" : string,
+  "name" : string,
   "score" : int,
   "money" : int
 }
@@ -34,7 +34,7 @@ POST /register
 
 ### Login
 ```http
-POST /Login
+POST /login
 ```
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
@@ -130,3 +130,50 @@ needs token
 - Already Bought : 409
 - Not Enough balance : 402
 - Success : 200
+
+
+## Flag
+### Auth
+```http
+POST /flag/
+```
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `flag` | `string` |  |
+
+needs token
+**Response:** 
+- Invalid Form : 400
+- No Such Flag : 404
+- Success : 200
+```javascript
+{
+    "score" : int
+}
+```
+
+
+## Sqli
+### Query
+```http
+POST /sqli/
+```
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `flag` | `string` |  |
+
+needs token
+**Response:** 
+- Invalid Form : 400
+- "Attacked yourself", 400
+- "No Such Team", 404
+- "Too Long Query", 400
+- "Blocked by Regex", 400
+- Success : 200 -> with results!
+```javascript
+{
+    'success': success,
+    'message': result
+}
+```
+
