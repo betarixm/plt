@@ -11,18 +11,18 @@ interface RegisterProps {
 
 interface RegisterStates {
     status: "loading" | "input" | "querying" | "done" | "error";
-    id: string;
+    email: string;
     pw: string;
-    name: string;
+    username: string;
     error?: string;
 }
 
 class Register extends React.Component<RegisterProps, RegisterStates> {
     state: RegisterStates = {
         status: "loading",
-        id: "",
+        email: "",
         pw: "",
-        name: ""
+        username: ""
     }
 
     componentDidMount() {
@@ -35,14 +35,14 @@ class Register extends React.Component<RegisterProps, RegisterStates> {
 
     }
 
-    onIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({id: e.target.value})
+    onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({email: e.target.value})
     }
     onPwChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({pw: e.target.value})
     }
-    onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({name: e.target.value})
+    onUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({username: e.target.value})
     }
 
     onSubmit = () => {
@@ -50,7 +50,7 @@ class Register extends React.Component<RegisterProps, RegisterStates> {
             status: "querying"
         });
 
-        register(this.state.id, this.state.pw, this.state.name)
+        register(this.state.email, this.state.pw, this.state.username)
             .then((res) => {
                 this.setState({
                     status: "done"
@@ -67,10 +67,10 @@ class Register extends React.Component<RegisterProps, RegisterStates> {
     Input = () => {
         return (
             <div className={"inputBox"}>
-                <input type={"text"} placeholder={"ID"} onChange={this.onIdChange} value={this.state.id}/>
+                <input type={"text"} placeholder={"EMAIL"} onChange={this.onEmailChange} value={this.state.email}/>
                 <input type={"password"} placeholder={"PASSWORD"} onChange={this.onPwChange} value={this.state.pw}/>
-                <input type={"text"} placeholder={"TEAM NAME"} onChange={this.onNameChange} value={this.state.name}/>
-                <button className={this.state.status === "querying" ? "disabled" : ""} onClick={this.onSubmit}>{this.state.status === "querying" ? "지구-" + this.state.id + " 생성 요청 중..." : "SUBMIT"}</button>
+                <input type={"text"} placeholder={"TEAM NAME"} onChange={this.onUsernameChange} value={this.state.username}/>
+                <button className={this.state.status === "querying" ? "disabled" : ""} onClick={this.onSubmit}>{this.state.status === "querying" ? "지구-" + this.state.email + " 생성 요청 중..." : "SUBMIT"}</button>
             </div>
         );
     }

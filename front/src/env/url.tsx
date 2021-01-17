@@ -1,0 +1,1 @@
+export const BACKEND = "http://plus.or.kr:17354"
