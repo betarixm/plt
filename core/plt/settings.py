@@ -28,11 +28,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["plus.or.kr"]
 
 
 AUTH_USER_MODEL='base.Team'
 
+CORS_ORIGIN_WHITELIST = [
+    "https://firewall.postech.studio",
+    "http://localhost:3000"
+]
+CORS_ALLOW_CREDENTIALS = True
+
+ALLOWED_HOSTS = ["plus.or.kr"]
 
 # Application definition
 
@@ -47,6 +53,7 @@ INSTALLED_APPS = [
     'sqli',
     'xss',
     'shop',
+    'flag'
 ]
 
 MIDDLEWARE = [
@@ -57,6 +64,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'plt.urls'
@@ -114,9 +123,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 

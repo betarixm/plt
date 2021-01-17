@@ -1,18 +1,21 @@
 version: '3.3'
 
-volumes:
-  plt-mysql-data:
-
 services:
+  nginx:
+    build: ./nginx
+    restart: always
+    links:
+      - core
+    ports:
+      - 17354:17354
+
   db:
     image: mysql:latest
-    volumes:
-      - "plt-mysql-data:/var/lib/mysql"
     restart: always
-    ports:
-      - 37500:3306
+    expose:
+      - 3306
     environment:
-      MYSQL_DATABASE: "plt"
+      #MYSQL_DATABASE: "plt"
       MYSQL_USER: "beta"
       MYSQL_PASSWORD: "kawaikawai"
       MYSQL_ROOT_PASSWORD: "betaiskawaikawai"
@@ -25,5 +28,11 @@ services:
 
   core:
     build: core
-    ports:
-      - 17354:8000
+    links:
+      - db
+    depends_on: 
+      - db
+    volumes:
+      - "./core/data/db.sqlite3:/app/db.sqlite3"
+    expose:
+      - 8000
