@@ -33,9 +33,7 @@ export const login = (id: string, pw: string) => {
             password: pw
         }).then((res) => {
             setSession(res.data.sessionid);
-            cookies.set("sessionid", res.data.sessionid, {
-                domain: ".postech.studio"
-            });
+            cookies.set("sessionid", res.data.sessionid);
             resolve(res)
         }).catch((err) => {
             if(!err) {
