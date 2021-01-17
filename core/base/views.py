@@ -77,6 +77,6 @@ class DashboardView(View):
         for team in teams:
             ret[team.username] = {"score": team.score}
             for cate in CATEGORY:
-                ret[team.username]["attacks"] = dict([(cate, get_latest_attack(team, cate[0])) for cate in CATEGORY])
+                ret[team.username]["attacks"] = dict([(cate[1], get_latest_attack(team, cate[0])) for cate in CATEGORY])
             
         return JsonResponse(ret, status=200)

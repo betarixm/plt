@@ -7,8 +7,8 @@ GET /
 ```
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `token` | `string` | Your token |
 
+need token
 **Response:** 
 ```javascript
 {
@@ -29,7 +29,8 @@ POST /register
 | `email` | `string` |  |
 
 **Response:** 
-201 / 400
+- Invalid Form : 400
+- Success : 201
 
 ### Login
 ```http
@@ -41,7 +42,9 @@ POST /Login
 | `password` | `string` |  |
 
 **Response:** 
-200 / 400, 401
+- Invalid Form : 400
+- Login Failed : 401
+- Success : 200
 
 See `Set-Cookie` header!
 
@@ -52,9 +55,78 @@ GET /dashboard
 ```
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `username` | `string` |  |
-| `password` | `string` |  |
 
 **Response:** 
-200 / 400, 401
+```javascript
+{
+  "<teamname1>" : {
+      "score" : int
+      "attacks" : {
+          "SQLi" : {
+              "to_team" : string,
+              "is_success" : bool
+          }
+          "XSS" : {
+              "to_team" : string,
+              "is_success" : bool
+          }
+      }
+  },
+  ...
+}
+```
 
+
+## Shop
+### Shop
+```http
+GET /shop
+```
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+
+needs token
+**Response:** 
+```javascript
+{
+    "money" : int,
+    "item_list" : {
+        "SQLi" : array
+        "XSS" : array
+    }
+}
+```
+
+### Item_Info
+```http
+GET /shop/<item_id>
+```
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+
+needs token
+**Response:** 
+```javascript
+{
+    "id" : int,
+    "name" : string,
+    "description" : string,
+    "type" : string,
+    "price" : int,
+    "already_bought" : bool
+}
+```
+
+### Item_Buy
+```http
+POST /shop/<item_id>
+```
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+
+needs token
+**Response:** 
+- No Such Item : 404
+- Already Bought : 409
+- Not Enough balance : 402
+- Success : 200
