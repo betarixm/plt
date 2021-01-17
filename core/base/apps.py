@@ -24,3 +24,4 @@ def get_latest_attack(team, category):
         "to_team": latest.to_team,
         "is_success": latest.succeed
     }
+

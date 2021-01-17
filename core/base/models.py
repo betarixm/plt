@@ -2,15 +2,22 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
-
 class Team(AbstractUser):
     balance = models.BigIntegerField(default=0)
     score = models.BigIntegerField(default=0)
+
+    actions = ['create_new_database', ]
 
     class Meta:
         verbose_name = '팀'
         verbose_name_plural = '팀들'
 
+
+from sqli.apps import generate_db
+
+def create_new_database(Team, request, queryset):
+    for team in queryset:
+        generate_db(team.username)
 
 
 class Rule(models.Model):
