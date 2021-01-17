@@ -11,9 +11,24 @@ interface NavigationStates {
 }
 
 class NavigationInner extends React.Component<NavigationProps, NavigationStates> {
+    componentDidMount() {
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById("nav");
+            if(nav) {
+                if(window.scrollY > nav.clientHeight){
+                    nav.style.background = "linear-gradient(#05003dff, #05003d66)"
+                    // @ts-ignore
+                    nav.style.backdropFilter = "blur(5px)";
+                } else {
+                    nav.style.background = "";
+                }
+            }
+        })
+    }
+
     render() {
         return (
-            <div className={"navigation"}>
+            <div id="nav" className={"navigation"}>
                 <Link to={PATH_DASHBOARD} className={"title"}>
                     <img src={"/static/img/logo-white.png"} />
                 </Link>

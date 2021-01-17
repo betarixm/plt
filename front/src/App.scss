@@ -158,6 +158,9 @@ button {
   flex-direction: row;
   justify-content: space-between;
   .title {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
     img {
       height: $font-title;
     }
