@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'base',
     'sqli',
     'xss',
+    'shop',
 ]
 
 MIDDLEWARE = [
