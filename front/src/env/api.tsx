@@ -64,17 +64,17 @@ export const register = (email: string, password: string, username: string) => {
 export const getTeamList = () => {
     return new Promise<Array<Team>>((resolve, reject) => {
         resolve([{
-            username: "test1", score: 100
+            name: "test1", score: 100
         }, {
-            username: "test2", score: 200
+            name: "test2", score: 200
         }, {
-            username: "test3", score: 200
+            name: "test3", score: 200
         }, {
-            username: "test4", score: 200
+            name: "test4", score: 200
         }, {
-            username: "test5", score: 200
+            name: "test5", score: 200
         }, {
-            username: "test6", score: 200
+            name: "test6", score: 200
         }]);
     })
 }

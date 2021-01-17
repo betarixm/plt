@@ -1,5 +1,5 @@
 interface Team {
-    username: string,
+    name: string,
     score: number,
     money?: number
 }
