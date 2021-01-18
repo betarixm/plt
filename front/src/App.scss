@@ -357,16 +357,47 @@ button {
 }
 
 .scoreBox {
-  .tag {
-    @include flex-center-row;
+  .scoreEle {
+    @include flex-center-column;
     justify-content: space-between;
     @include blur-box;
     margin-bottom: $margin-medium;
     min-width: 25vw;
-    * {
-      font-size: $font-subtitle;
+    .row {
+      @include flex-center-row;
+      justify-content: space-between;
+      width: 100%;
+      box-sizing: border-box;
+      * {
+        font-size: $font-subtitle;
+      }
     }
+  }
+}
 
+.attackBox {
+  @include flex-center-column;
+  margin-top: $margin-medium;
+  width: 100%;
+  .attack {
+    @include flex-row;
+    @include e-border-radius;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: black;
+    margin: $margin-tiny;
+    padding: $margin-tiny $margin-small;
+    * {
+      font-size: $font-small;
+    }
+    .key {
+      margin: $margin-tiny;
+      padding: $margin-tiny $margin-small;
+      border-radius: $margin-small;
+      border: solid 1px white;
+    }
   }
 }
 

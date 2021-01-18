@@ -5,9 +5,24 @@ interface Team {
 }
 
 interface Item {
-    id: number,
-    name: string,
-    type: "sqli"|"xss",
-    description: string,
+    id: number
+    name: string
+    type: string
+    description: string
     price: number
+    already_bought: boolean
+}
+
+interface AttackLog {
+    to_team: string;
+    is_success: boolean
+}
+
+interface TeamInfo {
+    teamname: string;
+    score: number;
+    attacks: {
+        SQLi: AttackLog | null;
+        XSS: AttackLog | null;
+    }
 }

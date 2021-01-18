@@ -62,76 +62,76 @@ export const register = (email: string, password: string, username: string) => {
 }
 
 export const getTeamList = () => {
-    return new Promise<Array<Team>>((resolve, reject) => {
-        resolve([{
-            name: "test1", score: 100
-        }, {
-            name: "test2", score: 200
-        }, {
-            name: "test3", score: 200
-        }, {
-            name: "test4", score: 200
-        }, {
-            name: "test5", score: 200
-        }, {
-            name: "test6", score: 200
-        }]);
+    return new Promise<Array<TeamInfo>>((resolve, reject) => {
+        GET_API("/dashboard/")
+            .then((res) => {
+                resolve(res.data);
+            })
+            .catch((err) => {
+                reject(err);
+            })
     })
 }
 
 export const getItemList = () => {
     return new Promise<Array<Item>>((resolve, reject) => {
-        resolve([{
-            id: 3, name: "iaaaatem name", description: "item des", type: "sqli", price: 3000
-        }, {
-            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
-        }, {
-            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
-        }, {
-            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
-        }, {
-            id: 3, name: "iaaaatem name", description: "item des", type: "sqli", price: 3000
-        }, {
-            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
-        }, {
-            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
-        }, {
-            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
-        }, {
-            id: 3, name: "iaaaatem name", description: "item des", type: "sqli", price: 3000
-        }, {
-            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
-        }, {
-            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
-        }, {
-            id: 3, name: "item name", description: "item des", type: "sqli", price: 3000
-        }])
+       GET_API("/shop/")
+           .then((res) => {
+               resolve(res.data.item_list.SQLi + res.data.item_list.XSS);
+           })
+           .catch((err) => {
+               reject(err.toString());
+           })
     })
 }
 
 export const getItem = (id: number) => {
     return new Promise<Item>((resolve, reject) => {
-        resolve({
-            id: 3, name: "item name", description: "item", type: "xss", price: 3000
-        })
+        GET_API(`/shop/${id}/`)
+            .then((res) => {
+                resolve(res.data)
+            })
+            .catch((err) => {
+                reject(err.toString());
+            })
     })
 }
 
 export const buyItem = (id: number) => {
     return new Promise<any>((resolve, reject) => {
-        resolve("success");
+        API(`/shop/${id}/`, {})
+            .then((res) => {
+                resolve(res);
+            })
+            .catch((err) => {
+                reject(err.toString())
+            })
     })
 }
 
-export const querySql = (token: string, team: string, query: string) => {
+export const querySql = (team: string, query: string) => {
     return new Promise<any>((resolve, reject) => {
-        resolve("해당 지구로 쓰레기를 투기하는데 실패했습니다.");
+        API("/sqli/", {
+            query: query,
+            team: team
+        }).then((res) => {
+            resolve(res.data)
+        }).catch((err) => {
+            reject(err.toString())
+        })
     })
 }
 
-export const queryXss = (token: string, team: string, query: string) => {
+export const queryXss = (team: string, query: string) => {
     return new Promise<any>((resolve, reject) => {
-        resolve("success");
+        API("/xss/", {
+            query: query,
+            team: team
+        }).then((res) => {
+            resolve(res.data)
+        }).catch((err) => {
+            reject(err.toString())
+        })
     })
 }
 
@@ -149,6 +149,12 @@ export const getUserInfo = () => {
 
 export const authFlag = (flag: string) => {
     return new Promise<any>((resolve, reject) => {
-        resolve("success");
+        API("/flag/", {
+            flag: flag
+        }).then((res) => {
+            resolve(res);
+        }).catch((err) => {
+            reject(err.toString());
+        })
     })
 }

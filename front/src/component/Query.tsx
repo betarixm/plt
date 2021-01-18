@@ -7,13 +7,13 @@ interface QueryProps {
     title: string;
     id?: string;
 
-    onSubmit(token: string, team: string, query: string): Promise<any>;
+    onSubmit(team: string, query: string): Promise<any>;
 }
 
 interface QueryStates {
     status: "loading" | "error" | "input" | "querying" | "success";
     error?: string;
-    target?: string;
+    target: string;
     result?: string;
     query: string;
     message?: string;
@@ -22,10 +22,11 @@ interface QueryStates {
 class Query extends React.Component<QueryProps, QueryStates> {
     state: QueryStates = {
         status: "loading",
-        query: ""
+        query: "",
+        target: ""
     };
 
-    teamList: Array<Team> = [];
+    teamList: Array<TeamInfo> = [];
 
     componentDidMount() {
         getTeamList()
@@ -48,7 +49,7 @@ class Query extends React.Component<QueryProps, QueryStates> {
     }
 
     onSubmit = () => {
-        this.props.onSubmit("", "", "")
+        this.props.onSubmit(this.state.query, this.state.target)
             .then((res) => {
                 this.setState({
                     status: "success",
@@ -79,10 +80,10 @@ class Query extends React.Component<QueryProps, QueryStates> {
         const teamRadio = this.teamList.map((team, index) => {
             const id = "teamRadio" + index.toString();
             return (
-                <div key={team.name} className={"radio"}>
-                    <input type={"radio"} id={id} name="team" value={team.name} onChange={this.onTeamSelect}
-                           checked={this.state.target === team.name}/>
-                    <label htmlFor={id}>{team.name}</label>
+                <div key={team.teamname} className={"radio"}>
+                    <input type={"radio"} id={id} name="team" value={team.teamname} onChange={this.onTeamSelect}
+                           checked={this.state.target === team.teamname}/>
+                    <label htmlFor={id}>{team.teamname}</label>
                 </div>
             )
         });
