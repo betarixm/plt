@@ -190,7 +190,7 @@ def query_sql(attack_team_name: str, target_team_name: str, query: str):
     
     try:
         target_team = Team.objects.get(username=target_team_name)
-    except model.DoesNotExist:
+    except Team.DoesNotExist:
         return False, "No Such Team", 404
 
     ok, message, status_code = is_valid_query(target_team, query)

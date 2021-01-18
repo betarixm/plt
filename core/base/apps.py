@@ -11,9 +11,15 @@ class BaseConfig(AppConfig):
 
 def get_latest_attack(team, category):
     if category == ITEM_CATEGORY_SQLI:
-        latest = SqliLog.objects.filter(from_team=team).latest()
+        try:
+            latest = SqliLog.objects.filter(from_team=team).latest()
+        except SqliLog.DoesNotExist:
+            latest = ''
     elif category == ITEM_CATEGORY_XSS:
-        latest = XssLog.objects.filter(from_team=team).latest()
+        try:
+            latest = XssLog.objects.filter(from_team=team).latest()
+        except XssLog.DoesNotExist:
+            latest = ''
     else:
         return None
 

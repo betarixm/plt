@@ -61,22 +61,23 @@ GET /dashboard
 
 **Response:** 
 ```javascript
-{
-  "<teamname1>" : {
-      "score" : int
-      "attacks" : {
-          "SQLi" : {
-              "to_team" : string,
-              "is_success" : bool
-          }
-          "XSS" : {
-              "to_team" : string,
-              "is_success" : bool
-          }
-      }
-  },
-  ...
-}
+[
+    {
+        "teamname" : str,
+        "score" : int,
+        "attacks" : {
+            "SQLi" : {
+                "to_team" : string,
+                "is_success" : bool
+            }
+            "XSS" : {
+                "to_team" : string,
+                "is_success" : bool
+            }
+        }
+    },
+    ...
+]
 ```
 
 
@@ -99,6 +100,9 @@ needs token
     }
 }
 ```
+array of 
+```javascript
+{"name": x.title,"id": x.id, "price": x.price, "already_bought": x.already_bought}```
 
 ### Item_Info
 ```http
@@ -119,6 +123,7 @@ needs token
     "already_bought" : bool
 }
 ```
+type is... `sqli` or `xss`
 
 ### Item_Buy
 ```http
@@ -163,7 +168,8 @@ POST /sqli/
 ```
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `flag` | `string` |  |
+| `query` | `string` |  |
+| `username` | `string` |  |
 
 needs token
 **Response:** 

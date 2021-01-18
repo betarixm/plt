@@ -8,7 +8,7 @@ import json
 
 class SqlQueryForm(forms.Form):
     query = forms.CharField()
-    team = forms.CharField()
+    username = forms.CharField()
 
 
 class SqliView(LoginRequiredMixin, View):

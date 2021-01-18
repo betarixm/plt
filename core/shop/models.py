@@ -15,6 +15,13 @@ class Item(models.Model):
     category = models.CharField(max_length=20, choices=CATEGORY)
     price = models.IntegerField()
 
+    def already_bought(self, request):
+        try:
+            self.teams.get(username=request.user.username)
+            return True
+        except Team.DoesNotExist:
+            return False
+
     def get_filter(self, team: Team):
         if self.category == ITEM_CATEGORY_SQLI:
             return team.sqli_filter
@@ -33,7 +40,7 @@ class Item(models.Model):
             return True
         else:
             return False
-    '''
+    
     def cast(self):
         check_item_type = [
             RegexItem.objects.filter(id=self.id), 
@@ -48,12 +55,9 @@ class Item(models.Model):
     def action(self, team):
         self.cast().action(team)
         return
-    '''
+    
     def __str__(self):
         return '%s' % self.title
-
-    class Meta:
-        abstract = True
 
 
 
