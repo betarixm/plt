@@ -8,7 +8,7 @@ import json
 
 class SqlQueryForm(forms.Form):
     query = forms.CharField()
-    username = forms.CharField()
+    team = forms.CharField()
 
 
 class SqliView(LoginRequiredMixin, View):
@@ -25,5 +25,5 @@ class SqliView(LoginRequiredMixin, View):
 
         return JsonResponse({
             'success': success,
-            'message': result
+            'message': str(result)
         }, status=status_code)

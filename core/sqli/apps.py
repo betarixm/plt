@@ -9,19 +9,19 @@ from utils.mysql import sqli_db
 from utils.mysql import raw_query
 
 from flag.models import Flag
-from env.environ import ITEM_CATEGORY_SQLI
+from env.environ import ITEM_CATEGORY_SQLI, SQLI_SCORE
+import base.models
+from .models import SqliLog
 from env.credential import MYSQL_PASS
 
 
 Team = get_user_model()
 
 
-
 class SqliConfig(AppConfig):
     name = 'sqli'
 
 
-SCORE = 200
 
 NUM_TEAM = 6
 NUM_TABLE_FLAG = 1
@@ -144,7 +144,7 @@ class DB(Element):
 
 def add_flag(max_len):
     flag = random_flag(max_len)
-    Flag.objects.create(flag=flag, score=SCORE, category=ITEM_CATEGORY_SQLI)
+    Flag.objects.create(flag=flag, score=SQLI_SCORE, category=ITEM_CATEGORY_SQLI)
     return flag
 
 
@@ -212,11 +212,16 @@ def query_sql(attack_team_name: str, target_team_name: str, query: str):
 
 
 def is_valid_query(target_team: Team, query: str):
-    max_len = target_team.sqli_filter.max_len
+    try:
+        sqlifilter = base.models.SqliFilter.objects.get(owner=target_team)
+    except Team.DoesNotExist:
+        return False, "No Such Team", 404
+
+    max_len = sqlifilter.max_len
     if max_len < len(query):
         return False, "Too Long Query", 400
 
-    regex_filter_list = target_team.sqli_filter.regex_rule_list.all()
+    regex_filter_list = sqlifilter.regex_rule_list.all()
     for r in regex_filter_list:
         p = re.compile(r.regexp, re.I)
         if p.match(query):

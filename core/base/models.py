@@ -8,6 +8,11 @@ class Team(AbstractUser):
 
     actions = ['create_new_database', ]
 
+    def apply_score(self, _score: int):
+        self.balance += _score
+        self.score += _score
+        self.save()
+
     class Meta:
         verbose_name = '팀'
         verbose_name_plural = '팀들'

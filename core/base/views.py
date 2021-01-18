@@ -44,8 +44,8 @@ class RegisterView(View):
             email=form.cleaned_data['email'],
         )
 
-        SqliFilter.objects.create(owner__id=team)
-        XssFilter.objects.create(owner__id=team)
+        SqliFilter.objects.create(owner=team)
+        XssFilter.objects.create(owner=team)
         
         return HttpResponse(status=201)
 

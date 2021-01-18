@@ -161,7 +161,7 @@ needs token
 ```
 
 
-## Sqli
+## SQLi
 ### Query
 ```http
 POST /sqli/
@@ -169,16 +169,42 @@ POST /sqli/
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | `query` | `string` |  |
-| `username` | `string` |  |
+| `team` | `string` |  |
 
 needs token
 **Response:** 
-- Invalid Form : 400
-- "Attacked yourself", 400
-- "No Such Team", 404
-- "Too Long Query", 400
-- "Blocked by Regex", 400
+- "Invalid Form" : 400
+- "Attacked yourself" : 400
+- "No Such Team" : 404
+- "Too Long Query" : 400
+- "Blocked by Regex" : 400
 - Success : 200 -> with results!
+```javascript
+{
+    'success': success,
+    'message': result
+}
+```
+
+## XSS
+### Query
+```http
+POST /xss/
+```
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `query` | `string` |  |
+| `team` | `string` |  |
+
+needs token
+**Response:** 
+- "Invalid Form" : 400
+- "Please wait {sec}seconds" : 400
+- "Attacked yourself" : 400
+- "No Such Team" : 404
+- "Too Long Query" : 400
+- "Blocked by Regex" : 400
+- Success : 200 -> with FLAG!
 ```javascript
 {
     'success': success,

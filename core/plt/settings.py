@@ -40,7 +40,7 @@ CORS_ORIGIN_WHITELIST = [
 ]
 CORS_ALLOW_CREDENTIALS = True
 
-ALLOWED_HOSTS = ["plus.or.kr"]
+ALLOWED_HOSTS = ["plus.or.kr", "localhost"]
 
 CSRF_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SAMESITE = 'None'
