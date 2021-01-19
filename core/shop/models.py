@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models import F
 from django.contrib.auth import get_user_model
 
-from base.models import RegexRule, LenRule, CspRule
+from base.models import RegexRule, LenRule, CspRule, SqliFilter, XssFilter
 from env.environ import CATEGORY, ITEM_CATEGORY_SQLI, ITEM_CATEGORY_XSS
 Team = get_user_model()
 
@@ -24,9 +24,9 @@ class Item(models.Model):
 
     def get_filter(self, team: Team):
         if self.category == ITEM_CATEGORY_SQLI:
-            return team.sqli_filter
+            return SqliFilter.objects.get(owner=team)
         elif self.category == ITEM_CATEGORY_XSS:
-            return team.xss_filter
+            return XssFilter.objects.get(owner=team)
 
     def check_balance(self, team: Team):
         return team.balance >= self.price

@@ -18,7 +18,6 @@ def check_alert(URI):
         try:
             driver.implicitly_wait(2)
             alert = driver.switch_to_alert()
-            print(alert)
             alert.accept()
             driver.quit()
             return True, True

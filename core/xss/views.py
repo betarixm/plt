@@ -37,7 +37,7 @@ class XssView(LoginRequiredMixin, View):
         if not succeed:
             return JsonResponse({
                 'success': False,
-                'message': message,
+                'message': message
             }, status=status_code)
         
         flag = create_flag()
@@ -49,10 +49,10 @@ class XssView(LoginRequiredMixin, View):
 
 class XssTestView(View):
     def get(self, request, hash):
-        data = XssLog.objects.filter(hash = hash)
-        if data:
+        try:
+            data = XssLog.objects.get(hash = hash)
             return render(request, 'xss/xss_test.html', {
-                'data': data[0],
+                'data': data,
             })
-        else:
+        except XssLog.DoesNotExist:
             return HttpResponse(status=404)

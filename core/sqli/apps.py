@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 
 import pymysql
 import random
+import re
 
 from utils.generator import random_string, random_flag
 from utils.mysql import sqli_db

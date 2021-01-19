@@ -1,7 +1,7 @@
 import os
 import binascii
 import re
-from datetime import datetime
+from django.utils import timezone
 
 from django.apps import AppConfig
 from django.contrib.auth import get_user_model
@@ -27,15 +27,20 @@ def create_flag():
 
 
 def get_time_passed_after_last_attack(attack_team, target_team):
+    now_time = int(timezone.localtime().strftime("%Y%m%d%H%M%S"))
     last_attack_time = 0
     try:
-        last_attack = XssLog.objects.filter(from_team=attack_team,
+        attacks = XssLog.objects.filter(from_team=attack_team,
                                             to_team=target_team,
-                                            succeed=True).latest()
-        last_attack_time = int(last_attack.created_at.strftime("%Y%m%d%H%M%S"))
+                                            succeed=True)
+        if len(attacks) == 0:
+            return now_time
+        last_attack = attacks.last()
+        last_attack_time = int(last_attack.created_at_korean_time.strftime("%Y%m%d%H%M%S"))
     except XssLog.DoesNotExist:
         pass
-    return int(datetime.now().strftime("%Y%m%d%H%M%S")) - last_attack_time
+    print(now_time - last_attack_time)
+    return now_time - last_attack_time
 
 
 def query_xss(attack_team_name: str, target_team_name: str, query: str):
@@ -60,7 +65,7 @@ def query_xss(attack_team_name: str, target_team_name: str, query: str):
     xss_log.query = query
     xss_log.save()
 
-    checked, succeed = check_alert(f'http://localhost:8000/xss/{xss_log.hash}')
+    checked, succeed = check_alert(f'http://plus.or.kr:17354/xss/{xss_log.hash}/')
     xss_log.checked = checked
     xss_log.succeed = succeed
     xss_log.save()
