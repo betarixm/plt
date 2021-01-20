@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login
 from django.views.decorators.csrf import csrf_protect
 import json
 
+from .models import Item
 from env.environ import CATEGORY
 
 Team = get_user_model()
@@ -14,7 +15,10 @@ Team = get_user_model()
 
 class ShopView(LoginRequiredMixin, View):
     def get(self, request):
-        item_list = [(cate[1], Item.objects.filter(category=cate[0])) for cate in CATEGORY]
+        item_list = {}
+        for cate in CATEGORY:
+            item_list[cate[1]] = [{"name": x.title,"id": x.id, "price": x.price, "already_bought": x.already_bought(request)} for x in Item.objects.filter(category=cate[0])]
+
         return JsonResponse({
             'money': request.user.balance,
             'item_list': item_list
@@ -25,35 +29,26 @@ class ItemView(LoginRequiredMixin, View):
     def get(self, request, item_id):
         try:
             item = Item.objects.get(id=item_id)
-        except model.DoesNotExist:
+        except Item.DoesNotExist:
             return HttpResponse(status=404)
         
-        try:
-            item.get(teams__username=request.user.username)
-            already_bought = True
-        except model.DoesNotExist:
-            already_bought = False
-                  
         return JsonResponse({
             'id': item_id,
-            'name': item,
+            'name': str(item),
             'description': getattr(item, 'description'),
             'type': getattr(item, 'category'),
             'price': getattr(item, 'price'),
-            'already_bought': already_bought
-        })
+            'already_bought': item.already_bought(request)
+        }, status=200)
 
     def post(self, request, item_id):
         try:
             item = Item.objects.get(id=item_id)
-        except model.DoesNotExist:
+        except Item.DoesNotExist:
             return HttpResponse(status=404)
         
-        try:
-            item.get(teams__username=request.user.username)
+        if item.already_bought(request):
             return HttpResponse(status=409)
-        except model.DoesNotExist:
-            pass
 
         if not item.buy(request.user):
             return HttpResponse(status=402)

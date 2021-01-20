@@ -14,16 +14,16 @@ class SqlQueryForm(forms.Form):
 class SqliView(LoginRequiredMixin, View):
     def post(self, request):
         form = SqlQueryForm(json.loads(request.body.decode("utf-8")))
-
         if not form.is_valid():
-            return JsonResponse({
-                'success': False,
-                'message': 'Invalid Form'
-            }, status=400)
+            form = SqlQueryForm(request.POST)
+            if not form.is_valid():
+                return JsonResponse({
+                    'success': False,
+                    'message': '공격을 시도할 지구를 선택해야합니다.'
+                }, status=400)
 
         success, result, status_code = query_sql(request.user.username, form.cleaned_data['team'], form.cleaned_data['query'])
-
         return JsonResponse({
             'success': success,
-            'message': result
+            'message': str(result)
         }, status=status_code)

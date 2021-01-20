@@ -3,25 +3,26 @@ from django.contrib.auth import get_user_model
 
 import pymysql
 import random
+import re
 
 from utils.generator import random_string, random_flag
 from utils.mysql import sqli_db
 from utils.mysql import raw_query
 
 from flag.models import Flag
-from env.environ import ITEM_CATEGORY_SQLI
+from env.environ import ITEM_CATEGORY_SQLI, SQLI_SCORE
+import base.models
+from .models import SqliLog
 from env.credential import MYSQL_PASS
 
 
 Team = get_user_model()
 
 
-
 class SqliConfig(AppConfig):
     name = 'sqli'
 
 
-SCORE = 200
 
 NUM_TEAM = 6
 NUM_TABLE_FLAG = 1
@@ -144,7 +145,7 @@ class DB(Element):
 
 def add_flag(max_len):
     flag = random_flag(max_len)
-    Flag.objects.create(flag=flag, score=SCORE, category=ITEM_CATEGORY_SQLI)
+    Flag.objects.create(flag=flag, score=SQLI_SCORE, category=ITEM_CATEGORY_SQLI)
     return flag
 
 
@@ -186,12 +187,12 @@ def generate_db(team_name: str):
 
 def query_sql(attack_team_name: str, target_team_name: str, query: str):
     if attack_team_name == target_team_name:
-        return False, "Attacked yourself", 400
+        return False, "자기자신은 공격할 수 없습니다.", 400
     
     try:
         target_team = Team.objects.get(username=target_team_name)
-    except model.DoesNotExist:
-        return False, "No Such Team", 404
+    except Team.DoesNotExist:
+        return False, "그런 이름의 지구는 존재하지 않습니다.", 404
 
     ok, message, status_code = is_valid_query(target_team, query)
     if not ok:
@@ -207,19 +208,28 @@ def query_sql(attack_team_name: str, target_team_name: str, query: str):
     sqli_log.return_value = res
     sqli_log.save()
 
-    return succeed, res, 200
+    if not succeed:
+        return False, "SQL 실행 중 오류가 발생했습니다.", 400 
+    if not res:
+        return False, "정상적으로 실행되었으나 아무 값도 가져오지 않았습니다.", 200
+    return True, "정상적으로 실행되고 특정한 값을 가져왔습니다. 그러나 내용을 알아보기는 힘듭니다.", 200
 
 
 
 def is_valid_query(target_team: Team, query: str):
-    max_len = target_team.sqli_filter.max_len
-    if max_len < len(query):
-        return False, "Too Long Query", 400
+    try:
+        sqlifilter = base.models.SqliFilter.objects.get(owner=target_team)
+    except Team.DoesNotExist:
+        return False, "그런 이름의 지구는 존재하지 않습니다.", 404
 
-    regex_filter_list = target_team.sqli_filter.regex_rule_list.all()
+    max_len = sqlifilter.max_len
+    if max_len < len(query):
+        return False, "쿼리가 너무 길어서 상대 지구에게 들킬 것입니다.", 400
+
+    regex_filter_list = sqlifilter.regex_rule_list.all()
     for r in regex_filter_list:
         p = re.compile(r.regexp, re.I)
         if p.match(query):
-            return False, "Blocked by Regex", 400
+            return False, "해당 지구가 차단한 문자열이 포함되어있습니다.", 400
 
     return True, "", 200

@@ -51,6 +51,20 @@ POST /login
 }
 ```
 
+### Ping
+```http
+GET /ping
+```
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+
+**Response:** 
+It will return nothing, if your session doesn't valid.
+```javascript
+{
+  "ok" : bool //true
+}
+```
 
 ### Dashboard
 ```http
@@ -61,22 +75,23 @@ GET /dashboard
 
 **Response:** 
 ```javascript
-{
-  "<teamname1>" : {
-      "score" : int
-      "attacks" : {
-          "SQLi" : {
-              "to_team" : string,
-              "is_success" : bool
-          }
-          "XSS" : {
-              "to_team" : string,
-              "is_success" : bool
-          }
-      }
-  },
-  ...
-}
+[
+    {
+        "teamname" : str,
+        "score" : int,
+        "attacks" : {
+            "SQLi" : {
+                "to_team" : string,
+                "is_success" : bool
+            }
+            "XSS" : {
+                "to_team" : string,
+                "is_success" : bool
+            }
+        }
+    },
+    ...
+]
 ```
 
 
@@ -99,6 +114,9 @@ needs token
     }
 }
 ```
+array of 
+```javascript
+{"name": x.title,"id": x.id, "price": x.price, "already_bought": x.already_bought}```
 
 ### Item_Info
 ```http
@@ -119,6 +137,7 @@ needs token
     "already_bought" : bool
 }
 ```
+type is... `sqli` or `xss`
 
 ### Item_Buy
 ```http
@@ -156,23 +175,50 @@ needs token
 ```
 
 
-## Sqli
+## SQLi
 ### Query
 ```http
 POST /sqli/
 ```
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `flag` | `string` |  |
+| `query` | `string` |  |
+| `team` | `string` |  |
 
 needs token
 **Response:** 
-- Invalid Form : 400
-- "Attacked yourself", 400
-- "No Such Team", 404
-- "Too Long Query", 400
-- "Blocked by Regex", 400
+- "Invalid Form" : 400
+- "Attacked yourself" : 400
+- "No Such Team" : 404
+- "Too Long Query" : 400
+- "Blocked by Regex" : 400
 - Success : 200 -> with results!
+```javascript
+{
+    'success': success,
+    'message': result
+}
+```
+
+## XSS
+### Query
+```http
+POST /xss/
+```
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `query` | `string` |  |
+| `team` | `string` |  |
+
+needs token
+**Response:** 
+- "Invalid Form" : 400
+- "Please wait {sec}seconds" : 400
+- "Attacked yourself" : 400
+- "No Such Team" : 404
+- "Too Long Query" : 400
+- "Blocked by Regex" : 400
+- Success : 200 -> with FLAG!
 ```javascript
 {
     'success': success,

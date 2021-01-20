@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models import F
 from django.contrib.auth import get_user_model
 
-from base.models import RegexRule, LenRule, CspRule
+from base.models import RegexRule, LenRule, CspRule, SqliFilter, XssFilter
 from env.environ import CATEGORY, ITEM_CATEGORY_SQLI, ITEM_CATEGORY_XSS
 Team = get_user_model()
 
@@ -15,11 +15,18 @@ class Item(models.Model):
     category = models.CharField(max_length=20, choices=CATEGORY)
     price = models.IntegerField()
 
+    def already_bought(self, request):
+        try:
+            self.teams.get(username=request.user.username)
+            return True
+        except Team.DoesNotExist:
+            return False
+
     def get_filter(self, team: Team):
         if self.category == ITEM_CATEGORY_SQLI:
-            return team.sqli_filter
+            return SqliFilter.objects.get(owner=team)
         elif self.category == ITEM_CATEGORY_XSS:
-            return team.xss_filter
+            return XssFilter.objects.get(owner=team)
 
     def check_balance(self, team: Team):
         return team.balance >= self.price
@@ -33,7 +40,7 @@ class Item(models.Model):
             return True
         else:
             return False
-    '''
+    
     def cast(self):
         check_item_type = [
             RegexItem.objects.filter(id=self.id), 
@@ -48,12 +55,9 @@ class Item(models.Model):
     def action(self, team):
         self.cast().action(team)
         return
-    '''
+    
     def __str__(self):
         return '%s' % self.title
-
-    class Meta:
-        abstract = True
 
 
 

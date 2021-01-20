@@ -1,5 +1,8 @@
 version: '3.3'
 
+volumes:
+  static_volume:
+
 services:
   nginx:
     build: ./nginx
@@ -7,15 +10,13 @@ services:
     links:
       - core
     volumes:
-      - "static_volume:/static"
+      - static_volume:/static
     ports:
       - 17354:17354
 
   db:
     image: mysql:latest
     restart: always
-    volumes:
-      - "static_volume:/app/static"
     expose:
       - 3306
     environment:
@@ -37,10 +38,7 @@ services:
     depends_on: 
       - db
     volumes:
+      - static_volume:/app/static
       - "./core/data/db.sqlite3:/app/db.sqlite3"
     expose:
       - 8000
-
-
-volumes:
-  static_volume:

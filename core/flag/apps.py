@@ -2,6 +2,7 @@ from django.apps import AppConfig
 from django.contrib.auth import get_user_model
 
 from .models import Flag
+from base.models import Team
 
 
 class FlagConfig(AppConfig):
@@ -12,13 +13,16 @@ Team = get_user_model()
 
 
 def check_flag(team: Team, flag_str: str):
-    flag = Flag.objects.filter(flag=flag_str).exclude(teams__username=team.username)
-    if not flag:
+    try:
+        flag = Flag.objects.get(flag=flag_str)
+        team = flag.teams.get(username=team.username)
+    except Flag.DoesNotExist:
         return False, None
-    flag = flag[0]
+    except Team.DoesNotExist:
+        pass
+    else:
+        return False, None
     
-    team.add_score(flag.score)
-    team.save()
+    team.apply_score(flag.score)
     flag.teams.add(team)
-
     return True, flag

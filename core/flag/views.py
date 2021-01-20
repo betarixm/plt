@@ -17,12 +17,10 @@ class FlagAuthView(LoginRequiredMixin, View):
     def post(self, request):
         form = FlagAuthForm(json.loads(request.body.decode("utf-8")))
         user = request.user
-
         if not form.is_valid():
             return HttpResponse(status=400)
-
+        
         is_ok, flag = check_flag(user, form.cleaned_data['flag'])
-
         if is_ok:
             return JsonResponse({
                 'score': flag.score

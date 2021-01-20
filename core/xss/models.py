@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings  
+from pytz import timezone
 
 from base.models import CspRule
 
@@ -12,6 +14,11 @@ class XssLog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     checked = models.BooleanField(default=False)
     succeed = models.BooleanField(default=False)
+
+    @property
+    def created_at_korean_time(self):
+        korean_timezone = timezone(settings.TIME_ZONE)
+        return self.created_at.astimezone(korean_timezone)
 
     def __str__(self):
         return f"XSS query from {self.from_team} to {self.to_team} /{self.hash}"

@@ -11,6 +11,7 @@ import json
 
 from env.environ import CATEGORY
 from .apps import get_latest_attack
+from .models import SqliFilter, XssFilter
 
 Team = get_user_model()
 
@@ -37,11 +38,15 @@ class RegisterView(View):
         if not form.is_valid():
             return HttpResponse(status=400)
 
-        Team.objects.create_user(
+        team = Team.objects.create_user(
             username=form.cleaned_data['username'],
             password=form.cleaned_data['password'],
             email=form.cleaned_data['email'],
         )
+
+        SqliFilter.objects.create(owner=team)
+        XssFilter.objects.create(owner=team)
+        
         return HttpResponse(status=201)
 
 
@@ -71,14 +76,20 @@ class LoginView(View):
             return HttpResponse(status=401)
 
 
+class PingView(LoginRequiredMixin, View):
+    def get(self, request):
+        return JsonResponse({'ok':True}, status=200)
+
 
 class DashboardView(View):
     def get(self, request):
-        ret = {}
+        ret = []
         teams = Team.objects.all().exclude(is_superuser=True)
         for team in teams:
-            ret[team.username] = {"score": team.score}
+            tmp = {}
+            tmp["teamname"] = team.username
+            tmp["score"] = team.score
             for cate in CATEGORY:
-                ret[team.username]["attacks"] = dict([(cate[1], get_latest_attack(team, cate[0])) for cate in CATEGORY])
-            
-        return JsonResponse(ret, status=200)
+                tmp["attacks"] = dict([(cate[1], get_latest_attack(team, cate[0])) for cate in CATEGORY])
+            ret.append(tmp)
+        return JsonResponse(ret, status=200, safe=False)

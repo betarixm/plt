@@ -20,5 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('base.urls')),
     path('shop/', include('shop.urls')),
+    path('flag/', include('flag.urls')),
     path('sqli/', include('sqli.urls')),
+    path('xss/', include('xss.urls')),
 ]
