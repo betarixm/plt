@@ -76,6 +76,10 @@ class LoginView(View):
             return HttpResponse(status=401)
 
 
+class PingView(LoginRequiredMixin, View):
+    def get(self, request):
+        return JsonResponse({'ok':True}, status=200)
+
 
 class DashboardView(View):
     def get(self, request):

@@ -51,6 +51,20 @@ POST /login
 }
 ```
 
+### Ping
+```http
+GET /ping
+```
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+
+**Response:** 
+It will return nothing, if your session doesn't valid.
+```javascript
+{
+  "ok" : bool //true
+}
+```
 
 ### Dashboard
 ```http
