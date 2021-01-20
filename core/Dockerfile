@@ -13,4 +13,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ./ /app/
 RUN python manage.py collectstatic --noinput
 
-ENTRYPOINT ["gunicorn", "plt.wsgi", "--worker-class gevent", "--workers=8", "--threads=2", "-b", "0.0.0.0:8000"]
+ENTRYPOINT ["gunicorn", "plt.wsgi", "--worker-class gevent", "--workers=32", "--threads=16", "-b", "0.0.0.0:8000"]

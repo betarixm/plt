@@ -59,7 +59,7 @@ class CspRule(Rule):
 class Filter(models.Model):
     owner = models.ForeignKey(Team, on_delete=models.PROTECT)
     regex_rule_list = models.ManyToManyField(RegexRule, blank=True)
-    max_len = models.PositiveSmallIntegerField(default=120)
+    max_len = models.PositiveSmallIntegerField(default=150)
 
     class Meta:
         abstract = True
@@ -72,6 +72,11 @@ class SqliFilter(Filter):
 
 class XssFilter(Filter):
     csp_rule_list = models.ManyToManyField(CspRule, blank=True)
+
+    def __init__(self, *args, **kwargs):
+        self._meta.get_field('max_len').default = 50    
+        super(XssFilter, self).__init__(*args, **kwargs)
+
     class Meta:
         verbose_name = "XSS 필터"
         verbose_name_plural = "XSS 필터들"

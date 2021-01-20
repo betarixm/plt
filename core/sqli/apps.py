@@ -208,7 +208,11 @@ def query_sql(attack_team_name: str, target_team_name: str, query: str):
     sqli_log.return_value = res
     sqli_log.save()
 
-    return succeed, res, 200
+    if not succeed:
+        return False, "SQL 실행 중 오류가 발생했습니다.", 400 
+    if not res:
+        return False, "정상적으로 실행되었으나 아무 값도 가져오지 않았습니다.", 200
+    return True, "정상적으로 실행되고 특정한 값을 가져왔습니다. 그러나 내용을 알아보기는 힘듭니다.", 200
 
 
 
