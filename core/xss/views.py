@@ -19,18 +19,18 @@ class XssQueryForm(forms.Form):
 class XssView(LoginRequiredMixin, View):
     def post(self, request):
         form = XssQueryForm(json.loads(request.body.decode("utf-8")))
-        
         if not form.is_valid():
             return JsonResponse({
                 'success': False,
-                'message': 'Invalid Form',
+                'message': '공격을 시도할 지구를 선택해야합니다.',
             }, status=400)
+            
 
         time_passed_after_last_attack = get_time_passed_after_last_attack(request.user.username, form.cleaned_data['team'])
         if XSS_INTERVAL - time_passed_after_last_attack > 0:
             return JsonResponse({
                 'success': False,
-                'message': f"Please wait {XSS_INTERVAL - time_passed_after_last_attack} seconds",
+                'message': f"최근 당신에게 공격받은 해당 지구는, 비상 경계 태세를 발동했습니다. 추가적인 공격은 {XSS_INTERVAL - time_passed_after_last_attack} 초가 지난 후 가능할 것으로 예상합니다.",
             }, status=400)
 
         succeed, message, status_code = query_xss(request.user.username, form.cleaned_data['team'], form.cleaned_data['query'])

@@ -187,12 +187,12 @@ def generate_db(team_name: str):
 
 def query_sql(attack_team_name: str, target_team_name: str, query: str):
     if attack_team_name == target_team_name:
-        return False, "Attacked yourself", 400
+        return False, "자기자신은 공격할 수 없습니다.", 400
     
     try:
         target_team = Team.objects.get(username=target_team_name)
     except Team.DoesNotExist:
-        return False, "No Such Team", 404
+        return False, "그런 이름의 지구는 존재하지 않습니다.", 404
 
     ok, message, status_code = is_valid_query(target_team, query)
     if not ok:
@@ -216,16 +216,16 @@ def is_valid_query(target_team: Team, query: str):
     try:
         sqlifilter = base.models.SqliFilter.objects.get(owner=target_team)
     except Team.DoesNotExist:
-        return False, "No Such Team", 404
+        return False, "그런 이름의 지구는 존재하지 않습니다.", 404
 
     max_len = sqlifilter.max_len
     if max_len < len(query):
-        return False, "Too Long Query", 400
+        return False, "쿼리가 너무 길어서 상대 지구에게 들킬 것입니다.", 400
 
     regex_filter_list = sqlifilter.regex_rule_list.all()
     for r in regex_filter_list:
         p = re.compile(r.regexp, re.I)
         if p.match(query):
-            return False, "Blocked by Regex", 400
+            return False, "해당 지구가 차단한 문자열이 포함되어있습니다.", 400
 
     return True, "", 200
