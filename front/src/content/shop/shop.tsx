@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {getItemList} from "../../env/api";
+import {getItemList, ItemListResult} from "../../env/api";
 import {GET_PATH_ITEM} from "../../env/path";
 import Loading from "../../component/Loading";
 
@@ -17,7 +17,10 @@ class Shop extends React.Component<ShopProps, ShopStates> {
     state: ShopStates = {
         status: "loading"
     }
-    itemList: Array<Item> = [];
+    itemList: ItemListResult = {
+        XSS: [],
+        SQLi: []
+    };
 
     componentDidMount = () => {
         this.setState({
@@ -42,30 +45,33 @@ class Shop extends React.Component<ShopProps, ShopStates> {
 
     }
 
+    generateItemList = (key: "XSS" | "SQLi") => {
+        return this.itemList[key].map((item, index) => {
+            return (
+                <div key={index} className={"item"}>
+                    <div className={"info"}>
+                        <div className={"name"}>{item.name}</div>
+                        <div className={"type"}>{item.type}</div>
+                    </div>
+                    <div className={"wrapper"}>
+                        <div> </div>
+                        <Link to={GET_PATH_ITEM(item.id)} className={item.already_bought ? "disabled" : ""}>{item.price} <span className={"material-icons-round"}>shopping_cart</span></Link>
+                    </div>
+                </div>
+            )
+        })
+    }
+
     content = () => {
         if(this.state.status === "loading") {
             return (
                 <Loading description={"BnL 아이템 리스트를 불러오는 중..."} />
             )
         } else {
-            const Items = this.itemList.map((item, index) => {
-                return (
-                    <div key={index} className={"item"}>
-                        <div className={"info"}>
-                            <div className={"name"}>{item.name}</div>
-                            <div className={"type"}>{item.type}</div>
-                        </div>
-                        <div className={"wrapper"}>
-                            <div> </div>
-                            <Link to={GET_PATH_ITEM(item.id)}>{item.price} <span className={"material-icons-round"}>shopping_cart</span></Link>
-                        </div>
-                    </div>
-                )
-            })
-
             return(
                 <div className={"shopBox"}>
-                    {Items}
+                    {this.generateItemList("XSS")}
+                    {this.generateItemList("SQLi")}
                 </div>
             )
         }

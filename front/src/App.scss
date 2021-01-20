@@ -72,6 +72,22 @@ $margin-tiny: 5px;
   background-color: rgba(255,255,255,0.1);
   backdrop-filter: blur(5px);
   padding: $margin-big;
+  input {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 * {
@@ -124,6 +140,8 @@ button {
 
 .alert {
   @include flex-center-row;
+  animation-duration: 0.5s;
+  animation-name: slideUp;
   background-color: black;
   border-radius: $border-radius;
   padding: $margin-big;
@@ -293,6 +311,10 @@ button {
         margin-left: $margin-tiny;
         font-size: $font-body;
       }
+      &.disabled {
+        background-color: grey;
+        pointer-events: none;
+      }
     }
   }
   @include mobile {
@@ -311,6 +333,7 @@ button {
   @extend .inputBox;
   min-width: 50vw;
   .description {
+    font-size: $font-body;
     margin-bottom: $margin-medium;
   }
   .chips {
@@ -357,12 +380,15 @@ button {
 }
 
 .scoreBox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70vw;
+  justify-content: center;
   .scoreEle {
     @include flex-center-column;
     justify-content: space-between;
     @include blur-box;
-    margin-bottom: $margin-medium;
-    min-width: 25vw;
+    margin: $margin-medium;
     .row {
       @include flex-center-row;
       justify-content: space-between;
@@ -378,25 +404,44 @@ button {
 .attackBox {
   @include flex-center-column;
   margin-top: $margin-medium;
-  width: 100%;
+  width: 240px;
+  .keys {
+    display: flex;
+    flex-direction: row;
+  }
+  .row {
+    box-sizing: border-box;
+  }
   .attack {
     @include flex-row;
     @include e-border-radius;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
     box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
     background-color: black;
+
     margin: $margin-tiny;
     padding: $margin-tiny $margin-small;
     * {
-      font-size: $font-small;
+      font-size: $font-body;
     }
     .key {
-      margin: $margin-tiny;
+      margin: $margin-tiny $margin-tiny $margin-tiny 0;
       padding: $margin-tiny $margin-small;
       border-radius: $margin-small;
       border: solid 1px white;
+      font-size: $font-small;
+      &.success {
+        background-color: rgba(0,0,0,0);
+        color: $color-blue;
+        border: solid 1px $color-blue;
+      }
+      &.fail {
+        background-color: rgba(0,0,0,0);
+        color: $color-red;
+        border: solid 1px $color-red;
+      }
     }
   }
 }

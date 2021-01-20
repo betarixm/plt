@@ -4,7 +4,7 @@ import {authFlag} from "../env/api";
 import Alert from "./Alert";
 
 interface FlagProps {
-
+    onSuccess(score: number, point: number): void;
 }
 
 interface FlagStates {
@@ -41,9 +41,10 @@ class Flag extends React.Component<FlagProps, FlagStates> {
         })
         authFlag(this.state.flag)
             .then((res) => {
+                this.props.onSuccess(res, res);
                 this.setState({
                     status: "success",
-                    message: res
+                    message: `ECHO-INDEX/POINT: ${res} 상승`
                 });
             })
             .catch((err) => {

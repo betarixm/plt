@@ -27,24 +27,64 @@ import Item from "./content/shop/item";
 import Dashboard from "./content/Dashboard";
 import Navigation from "./component/Navigation";
 import Scoreboard from "./content/scoreboard";
+import {ping} from "./env/api";
+import Loading from "./component/Loading";
 
 interface AppProps {
 
 }
 
 interface AppStates {
-
+    status: "loading"|"login"|"logout"
 }
 
 class App extends React.Component<AppProps, AppStates> {
+    state: AppStates = {
+        status: "loading"
+    }
+
+    componentDidMount() {
+        console.log("wow")
+        ping().then((res) => {
+            this.setState({
+                status: "login"
+            })
+        }).catch((err) => {
+            this.setState({
+                status: "logout"
+            })
+        })
+    }
+
+    componentWillUnmount() {
+
+    }
+
+    onLoginSuccess = () => {
+        this.setState({
+            status: "login"
+        });
+    }
+
     render() {
+        if (this.state.status === "loading") {
+            return (
+                <Loading description={"지구 무결성 검증 중..."} />
+            )
+        }
+
         return (
             <Router>
                 <div className="App">
                     <Navigation />
                     <Switch>
+                        {this.state.status === "logout" && (
+                            <Route path={"*"}>
+                                <Login onLogin={this.onLoginSuccess}/>
+                            </Route>
+                        )}
                         <Route exact path={PATH_LOGIN}>
-                            <Login />
+                            <Login onLogin={this.onLoginSuccess}/>
                         </Route>
                         <Route exact path={PATH_SQLI}>
                             <Sqli />

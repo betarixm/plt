@@ -10,6 +10,8 @@ interface DashboardProps {
 interface DashboardStates {
     status: "loading"|"success"|"error";
     error?: string;
+    score?: number;
+    point?: number;
 }
 
 class Dashboard extends React.Component<DashboardProps, DashboardStates> {
@@ -24,7 +26,9 @@ class Dashboard extends React.Component<DashboardProps, DashboardStates> {
             .then((res) => {
                 this.team = res;
                 this.setState({
-                    status: "success"
+                    status: "success",
+                    score: this.team.score,
+                    point: this.team.money
                 })
             })
             .catch((err) => {
@@ -39,6 +43,13 @@ class Dashboard extends React.Component<DashboardProps, DashboardStates> {
 
     }
 
+    onAuthSuccess = (score: number, point: number) => {
+        this.setState({
+            score: (this.state.score ? this.state.score : 0) + score,
+            point: (this.state.point ? this.state.point : 0) + point
+        })
+    }
+
     TeamInfo = () => {
         if(this.team) {
             return (
@@ -51,11 +62,11 @@ class Dashboard extends React.Component<DashboardProps, DashboardStates> {
                         </div>
                         <div className={"tag"}>
                             <div className={"key"}>FIREWALL ECHO INDEX</div>
-                            <div className={"value"}>{this.team.score}</div>
+                            <div className={"value"}>{this.state.score}</div>
                         </div>
                         <div className={"tag"}>
                             <div className={"key"}>ECHO POINT</div>
-                            <div className={"value"}>{this.team.money}</div>
+                            <div className={"value"}>{this.state.point}</div>
                         </div>
                     </div>
                 </div>
@@ -72,7 +83,7 @@ class Dashboard extends React.Component<DashboardProps, DashboardStates> {
             return (
                 <>
                     {this.TeamInfo()}
-                    <Flag />
+                    <Flag onSuccess={this.onAuthSuccess} />
                 </>
             )
         }

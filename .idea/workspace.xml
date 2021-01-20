@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="cookie hotfix">
+    <list default="true" id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="react checkpoint">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/component/Flag.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/component/Flag.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/component/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/component/Navigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/component/Query.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/component/Query.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/content/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/content/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/content/scoreboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/scoreboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/content/shop/item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/shop/item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/content/shop/shop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/shop/shop.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/env/api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/env/api.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/types/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/types/types.d.ts" afterDir="false" />
     </list>
@@ -63,17 +69,6 @@
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -151,7 +146,9 @@
       <workItem from="1610625676166" duration="3016000" />
       <workItem from="1610636975237" duration="19400000" />
       <workItem from="1610808323515" duration="26710000" />
-      <workItem from="1610889637111" duration="15306000" />
+      <workItem from="1610889637111" duration="15410000" />
+      <workItem from="1611046657556" duration="7391000" />
+      <workItem from="1611171942226" duration="6535000" />
     </task>
     <task id="LOCAL-00001" summary="Core Init">
       <created>1610626286984</created>
@@ -447,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610902017879</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="react checkpoint">
+      <created>1610906605353</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1610906605353</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -478,7 +482,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="gitignore" />
     <MESSAGE value="scss init" />
     <MESSAGE value="package fix" />
     <MESSAGE value="hotfix" />
@@ -503,6 +506,19 @@
     <MESSAGE value="docker" />
     <MESSAGE value="resource" />
     <MESSAGE value="cookie hotfix" />
-    <option name="LAST_COMMIT_MESSAGE" value="cookie hotfix" />
+    <MESSAGE value="react checkpoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="react checkpoint" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/front/src/env/api.tsx</url>
+          <line>54</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -22,7 +22,7 @@ interface TeamInfo {
     teamname: string;
     score: number;
     attacks: {
-        SQLi: AttackLog | null;
-        XSS: AttackLog | null;
+        SQLi: AttackLog | undefined;
+        XSS: AttackLog | undefined;
     }
 }

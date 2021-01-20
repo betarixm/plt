@@ -5,7 +5,7 @@ import {login} from "../env/api";
 import Alert from "../component/Alert";
 
 interface LoginProps {
-
+    onLogin(): void;
 }
 
 interface LoginStates {
@@ -85,6 +85,7 @@ class Login extends React.Component<LoginProps, LoginStates> {
 
     render() {
         if (this.state.status === "done") {
+            this.props.onLogin();
             return (
                 <Redirect to={"/"}/>
             )

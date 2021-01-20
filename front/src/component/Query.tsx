@@ -49,7 +49,11 @@ class Query extends React.Component<QueryProps, QueryStates> {
     }
 
     onSubmit = () => {
-        this.props.onSubmit(this.state.query, this.state.target)
+        this.setState({
+            status: "querying"
+        })
+
+        this.props.onSubmit(this.state.target, this.state.query)
             .then((res) => {
                 this.setState({
                     status: "success",
@@ -100,7 +104,7 @@ class Query extends React.Component<QueryProps, QueryStates> {
             <div className={"queryBox"}>
                 <input placeholder={this.props.title + " Query"} className={"query"} type={"text"} onChange={this.onQueryChange} value={this.state.query}/>
                 {this.TeamSelector()}
-                <button onClick={this.onSubmit}>ATTACK</button>
+                <button className={this.state.status === "querying" ? "disabled" : ""} onClick={this.onSubmit}>{this.state.status === "querying" ? "지구-"+this.state.target+" 해킹 시도 중..." : "ATTACK"}</button>
             </div>
         );
     }

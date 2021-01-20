@@ -28,6 +28,10 @@ class NavigationInner extends React.Component<NavigationProps, NavigationStates>
         })
     }
 
+    scrollToTop = () => {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return (
             <div id="nav" className={"navigation"}>
@@ -35,11 +39,11 @@ class NavigationInner extends React.Component<NavigationProps, NavigationStates>
                     <img src={"/static/img/logo-white.png"} />
                 </Link>
                 <div className={"links"}>
-                    <Link className={this.props.location.pathname === PATH_DASHBOARD ? "selected" : ""} to={PATH_DASHBOARD}>Dashboard</Link>
-                    <Link className={this.props.location.pathname.startsWith(PATH_SCOREBOARD) ? "selected" : ""} to={PATH_SCOREBOARD}>Scoreboard</Link>
-                    <Link className={this.props.location.pathname.startsWith(PATH_SQLI) ? "selected" : ""} to={PATH_SQLI}>SQL Injection</Link>
-                    <Link className={this.props.location.pathname.startsWith(PATH_XSS) ? "selected" : ""} to={PATH_XSS}>XSS</Link>
-                    <Link className={this.props.location.pathname.startsWith(PATH_SHOP) ? "selected" : ""} to={PATH_SHOP}>Shop</Link>
+                    <Link onClick={this.scrollToTop} className={this.props.location.pathname === PATH_DASHBOARD ? "selected" : ""} to={PATH_DASHBOARD}>Dashboard</Link>
+                    <Link onClick={this.scrollToTop} className={this.props.location.pathname.startsWith(PATH_SCOREBOARD) ? "selected" : ""} to={PATH_SCOREBOARD}>Scoreboard</Link>
+                    <Link onClick={this.scrollToTop} className={this.props.location.pathname.startsWith(PATH_SQLI) ? "selected" : ""} to={PATH_SQLI}>SQL Injection</Link>
+                    <Link onClick={this.scrollToTop} className={this.props.location.pathname.startsWith(PATH_XSS) ? "selected" : ""} to={PATH_XSS}>XSS</Link>
+                    <Link onClick={this.scrollToTop} className={this.props.location.pathname.startsWith(PATH_SHOP) ? "selected" : ""} to={PATH_SHOP}>Shop</Link>
                 </div>
             </div>
         )

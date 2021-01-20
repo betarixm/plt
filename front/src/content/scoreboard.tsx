@@ -61,21 +61,30 @@ class Scoreboard extends React.Component<ScoreboardProps, ScoreboardStates> {
             })
     }
 
+    AttackInfo = (team: TeamInfo, type: "SQLi"|"XSS") => {
+        // @ts-ignore
+        if(team.attacks[type]) {
+            // @ts-ignore
+            const target = team.attacks[type];
+            return (
+                <div className={"attack"}>
+                    <div className={"keys"}>
+                        <div className={"key"}>{type}</div>
+                        <div className={"key " + (target?.is_success ? "success" : "fail")}>{target?.is_success ? "성공" : "실패"}</div>
+                    </div>
+                    <div className={"value"}>
+                        {team.attacks[type]?.to_team}
+                    </div>
+                </div>
+            )
+        }
+    }
+
     Attack = (team: TeamInfo) => {
         return (
             <div className={"attackBox"}>
-                <div className={"attack"}>
-                    <div className={"key"}>SQLi</div>
-                    <div className={"value"}>
-                        {team.attacks.SQLi ? "공격 있음" : "최근 공격 없음"}
-                    </div>
-                </div>
-                <div className={"attack"}>
-                    <div className={"key"}>XSS</div>
-                    <div className={"value"}>
-                        {team.attacks.XSS ? "공격 있음" : "최근 공격 없음"}
-                    </div>
-                </div>
+                {this.AttackInfo(team, "SQLi")}
+                {this.AttackInfo(team, "XSS")}
             </div>
         )
     }
@@ -113,9 +122,11 @@ class Scoreboard extends React.Component<ScoreboardProps, ScoreboardStates> {
     render() {
         return (
             <div className={"scoreboard"}>
+                <div className={"reserved"}> </div>
                 <div className={"title"}>Scoreboard</div>
                 {this.state.status === "error" && <Alert type={"warning"} message={this.state.error} />}
                 {this.content()}
+                <div className={"reserved"}> </div>
             </div>
         )
     }

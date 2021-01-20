@@ -80,11 +80,11 @@ class ItemInner extends React.Component<ItemProps, ItemStates> {
             return (
                 <div className={"itemBox"}>
                     <div className={"chips"}>
-                        <div className={"chip"}>{this.item.type}</div>
-                        <div className={"chip"}>{this.item.price}</div>
+                        <div className={"chip"}>{this.item.type.toUpperCase()}</div>
+                        <div className={"chip"}>{this.item.price} ECHO POINT</div>
                     </div>
                     <div className={"description"}>{this.item.description}</div>
-                    <button onClick={this.onSubmit}>구매</button>
+                    <button className={this.state.status === "querying" ? "disabled" : ""} onClick={this.onSubmit}>{this.state.status === "querying" ? this.item.name + " 다운로드 및 장착 시도 중..." : "구매"}</button>
                 </div>
             )
         }
