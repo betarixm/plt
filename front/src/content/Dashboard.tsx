@@ -61,11 +61,11 @@ class Dashboard extends React.Component<DashboardProps, DashboardStates> {
                             <div className={"value"}>{this.team.name}</div>
                         </div>
                         <div className={"tag"}>
-                            <div className={"key"}>FIREWALL ECHO INDEX</div>
+                            <div className={"key"}>FIREWALL ECO INDEX</div>
                             <div className={"value"}>{this.state.score}</div>
                         </div>
                         <div className={"tag"}>
-                            <div className={"key"}>ECHO POINT</div>
+                            <div className={"key"}>ECO POINT</div>
                             <div className={"value"}>{this.state.point}</div>
                         </div>
                     </div>
