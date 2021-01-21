@@ -1,1 +1,1 @@
-export const BACKEND = "http://plus.or.kr:17354"
+export const BACKEND = "https://firewallapi.postech.studio"
