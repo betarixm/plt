@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="react checkpoint">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/component/Flag.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/component/Flag.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/component/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/component/Navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/component/Query.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/component/Query.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/content/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/content/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/content/scoreboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/scoreboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/content/shop/item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/shop/item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/content/shop/shop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/content/shop/shop.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/env/api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/env/api.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/types/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/types/types.d.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="v2" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\toothpaste\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\202.7660.26\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1n3hCnJhZnPeWMvefbwmN6mmT54" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.PYTHON_MODULE" value="Python 3.7 (calendar)" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/front" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="ts.external.directory.path" value="C:\Users\toothpaste\IdeaProjects\plt\front\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\toothpaste\IdeaProjects\plt\front\src\content" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <module name="plt" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="core" type="Python.DjangoServer" factoryName="Django server">
+      <module name="core" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/front/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Django Server.core" />
+      <item itemvalue="JavaScript Debug.Debug Application" />
+      <item itemvalue="npm.start" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a0d579e6-5b4f-45db-b75b-0366b7868f6b" name="Default Changelist" comment="" />
+      <created>1610624556844</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610624556844</updated>
+      <workItem from="1610624560597" duration="1028000" />
+      <workItem from="1610625676166" duration="3016000" />
+      <workItem from="1610636975237" duration="19400000" />
+      <workItem from="1610808323515" duration="26710000" />
+      <workItem from="1610889637111" duration="15410000" />
+      <workItem from="1611046657556" duration="7391000" />
+      <workItem from="1611171942226" duration="6535000" />
+    </task>
+    <task id="LOCAL-00001" summary="Core Init">
+      <created>1610626286984</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610626286984</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Front Init">
+      <created>1610626938192</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610626938192</updated>
+    </task>
+    <task id="LOCAL-00003" summary="checkpoint">
+      <created>1610711001089</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1610711001092</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Class based Component">
+      <created>1610787239937</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1610787239939</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Base Query Component">
+      <created>1610789659674</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610789659674</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Alert Component">
+      <created>1610795988983</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610795988983</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Alert hotfix">
+      <created>1610800096201</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1610800096201</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Alert hotfix">
+      <created>1610800141825</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1610800141825</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Login">
+      <created>1610800756795</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1610800756795</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Query Page">
+      <created>1610800787292</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1610800787292</updated>
+    </task>
+    <task id="LOCAL-00011" summary="login formatting">
+      <created>1610801127894</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1610801127895</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Register Page">
+      <created>1610801781191</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1610801781191</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Shop Page">
+      <created>1610809549254</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1610809549254</updated>
+    </task>
+    <task id="LOCAL-00014" summary="config sanity">
+      <created>1610809584905</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1610809584905</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Item Page">
+      <created>1610810972265</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1610810972265</updated>
+    </task>
+    <task id="LOCAL-00016" summary="gitignore">
+      <created>1610817056306</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1610817056306</updated>
+    </task>
+    <task id="LOCAL-00017" summary="scss init">
+      <created>1610817958025</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1610817958025</updated>
+    </task>
+    <task id="LOCAL-00018" summary="package fix">
+      <created>1610818765771</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1610818765771</updated>
+    </task>
+    <task id="LOCAL-00019" summary="hotfix">
+      <created>1610819212699</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1610819212699</updated>
+    </task>
+    <task id="LOCAL-00020" summary="glowing background">
+      <created>1610820482525</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1610820482525</updated>
+    </task>
+    <task id="LOCAL-00021" summary="login styled">
+      <created>1610822490005</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1610822490005</updated>
+    </task>
+    <task id="LOCAL-00022" summary="futura">
+      <created>1610823177108</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1610823177108</updated>
+    </task>
+    <task id="LOCAL-00023" summary="register styled">
+      <created>1610823404529</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1610823404529</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Jetbrains Mono">
+      <created>1610824858890</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1610824858890</updated>
+    </task>
+    <task id="LOCAL-00025" summary="blur-star">
+      <created>1610828542212</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1610828542212</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Query Styled">
+      <created>1610830165546</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1610830165546</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Shop Styled">
+      <created>1610832438353</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1610832438353</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Shop Styled Fix">
+      <created>1610832941741</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1610832941741</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Item Styled">
+      <created>1610833692330</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1610833692331</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Query View Fix">
+      <created>1610833863868</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1610833863868</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Navigation">
+      <created>1610836862151</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1610836862151</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Navigation Select">
+      <created>1610841780956</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1610841780956</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Dashboard">
+      <created>1610843301540</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1610843301540</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Navigation with Scroll">
+      <created>1610844095142</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1610844095142</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Navigation with Scroll">
+      <created>1610844233262</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1610844233262</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Scoreboard">
+      <created>1610845480798</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1610845480798</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Scoreboard">
+      <created>1610845493204</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1610845493204</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Auth">
+      <created>1610892548721</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1610892548721</updated>
+    </task>
+    <task id="LOCAL-00039" summary="checkpoint">
+      <created>1610900352441</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1610900352441</updated>
+    </task>
+    <task id="LOCAL-00040" summary="docker">
+      <created>1610900651917</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1610900651917</updated>
+    </task>
+    <task id="LOCAL-00041" summary="resource">
+      <created>1610901984505</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1610901984505</updated>
+    </task>
+    <task id="LOCAL-00042" summary="cookie hotfix">
+      <created>1610902017879</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1610902017879</updated>
+    </task>
+    <task id="LOCAL-00043" summary="react checkpoint">
+      <created>1610906605353</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1610906605353</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/v2" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="scss init" />
+    <MESSAGE value="package fix" />
+    <MESSAGE value="hotfix" />
+    <MESSAGE value="glowing background" />
+    <MESSAGE value="login styled" />
+    <MESSAGE value="futura" />
+    <MESSAGE value="register styled" />
+    <MESSAGE value="Jetbrains Mono" />
+    <MESSAGE value="blur-star" />
+    <MESSAGE value="Query Styled" />
+    <MESSAGE value="Shop Styled" />
+    <MESSAGE value="Shop Styled Fix" />
+    <MESSAGE value="Item Styled" />
+    <MESSAGE value="Query View Fix" />
+    <MESSAGE value="Navigation" />
+    <MESSAGE value="Navigation Select" />
+    <MESSAGE value="Dashboard" />
+    <MESSAGE value="Navigation with Scroll" />
+    <MESSAGE value="Scoreboard" />
+    <MESSAGE value="Auth" />
+    <MESSAGE value="checkpoint" />
+    <MESSAGE value="docker" />
+    <MESSAGE value="resource" />
+    <MESSAGE value="cookie hotfix" />
+    <MESSAGE value="react checkpoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="react checkpoint" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/front/src/env/api.tsx</url>
+          <line>54</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,0 +1,457 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+$font-title: 32px;
+$font-subtitle: 24px;
+$font-icon: 20px;
+$font-body: 16px;
+$font-small: 14px;
+$font-tiny: 12px;
+
+$laptop: 1023px;
+$tablet: 767px;
+$mobile: 639px;
+
+$border-radius: 10px;
+
+$color-blue: #3490ce;
+$color-red: #e92123;
+
+$margin-big: 20px;
+$margin-medium: 14px;
+$margin-small: 10px;
+$margin-tiny: 5px;
+
+@mixin laptop {
+  @media (max-width: #{$laptop}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin e-border-radius {
+  border-radius: $border-radius;
+}
+
+@mixin e-font-size ($s) {
+  font-size: $s;
+}
+
+@mixin flex-center-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-center-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin blur-box {
+  border-radius: $border-radius;
+  background-color: rgba(255,255,255,0.1);
+  backdrop-filter: blur(5px);
+  padding: $margin-big;
+  input {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+* {
+  transition: all 0.5s;
+  @include e-font-size($font-body);
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  @include flex-center-column;
+}
+
+.App {
+  @include flex-center-column;
+}
+
+input {
+  @include e-border-radius;
+  font-family: 'JetBrains Mono', monospace;
+  color: $color-blue;
+  background-color: black;
+  border: none;
+  padding: $margin-medium;
+  margin-bottom: $margin-medium;
+}
+
+button {
+  @include e-border-radius;
+  background-color: $color-blue;
+  border: none;
+  padding: $margin-medium;
+  &.disabled {
+    pointer-events: none;
+    background-color: $color-red;
+  }
+}
+
+.title {
+  margin-bottom: $margin-medium;
+  font-size: $font-title;
+  font-weight: bold;
+  text-align: center;
+}
+
+.alert {
+  @include flex-center-row;
+  animation-duration: 0.5s;
+  animation-name: slideUp;
+  background-color: black;
+  border-radius: $border-radius;
+  padding: $margin-big;
+  margin-bottom: $margin-medium;
+  span {
+    margin-right: $margin-medium;
+  }
+  &.warning {
+    span {
+      color: $color-red;
+    }
+  }
+  &.success {
+    span {
+      color: $color-blue;
+    }
+  }
+}
+.reserved {
+  height: 15vh;
+}
+
+.navigation {
+  width: 100vw;
+  padding: $margin-big;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .title {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    img {
+      height: $font-title;
+    }
+  }
+  .links {
+    a {
+      font-weight: 100;
+      margin-right: $margin-big;
+      font-size: $font-icon;
+      opacity: 0.5;
+      &.selected {
+        opacity: 1;
+      }
+    }
+  }
+  @include mobile {
+    .title {
+      display: none;
+    }
+    a {
+      font-size: $font-tiny;
+    }
+  }
+}
+.inputBox {
+  @include blur-box;
+  @include flex-center-column;
+
+  input {
+    min-width: 300px;
+    @include mobile {
+      min-width: 70vw;
+    }
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+.queryBox{
+  @extend .inputBox;
+  min-width: 650px;
+  input {
+    min-width: 650px;
+    @include mobile{
+      min-width: 70vw;
+    }
+  }
+  @include mobile {
+    min-width: unset;
+  }
+  button {
+    @include mobile{
+      width: 50vw;
+    }
+  }
+}
+
+.teamSelector {
+  @include flex-center-row;
+  flex-wrap: wrap;
+  margin: $margin-medium;
+  .radio {
+    margin: 0 $margin-small $margin-medium;
+    label {
+      padding: $margin-small / 2 $margin-small;
+      border-radius: $margin-medium;
+      border: solid 1px white;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + label {
+      background-color: rgba(255,255,255, 1.0);
+      color: black;
+    }
+  }
+  @include mobile {
+    width: 70vw;
+  }
+}
+
+.shopBox{
+  @extend .inputBox;
+  width: 70vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .item {
+    @include e-border-radius;
+    @include flex-center-column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: $margin-medium;
+    margin: $margin-small;
+    width: 20vmin;
+    height: 20vmin;
+    background-color: rgba(255,255,255, 0.5);
+    .info {
+      display: inline-block;
+    }
+    .name {
+      margin-top: $margin-small;
+      margin-bottom: $margin-tiny;
+      font-size: $font-subtitle;
+      color: black;
+    }
+    .type {
+      font-size: $font-small;
+      background-color: black;
+      border-radius: $margin-medium;
+      padding: $margin-tiny / 2 $margin-small;
+      width: max-content;
+    }
+    .wrapper {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    a {
+      @include flex-center-row;
+      @include e-border-radius;
+      padding: $margin-small;
+      background-color: $color-blue;
+      span {
+        margin-left: $margin-tiny;
+        font-size: $font-body;
+      }
+      &.disabled {
+        background-color: grey;
+        pointer-events: none;
+      }
+    }
+  }
+  @include mobile {
+    flex-wrap: unset;
+    flex-direction: column;
+    .item {
+      @include flex-center-row;
+      justify-content: space-between;
+      min-width: 50vw;
+      height: unset;
+    }
+  }
+}
+
+.itemBox{
+  @extend .inputBox;
+  min-width: 50vw;
+  .description {
+    font-size: $font-body;
+    margin-bottom: $margin-medium;
+  }
+  .chips {
+    @include flex-center-row;
+    margin-bottom: $margin-medium;
+    .chip {
+      background-color: black;
+      margin-right: $margin-small;
+      padding: $margin-tiny $margin-medium;
+      border-radius: $margin-medium;
+    }
+  }
+}
+
+.dashboard {
+  @include flex-center-column;
+  .team{
+    @include flex-center-row;
+    @include blur-box;
+    padding: $margin-big * 2;
+    margin-bottom: $margin-big;
+    img {
+      opacity: 0.6;
+      height: 20vmin;
+      filter: drop-shadow(0px 5px 10px #21e900);
+    }
+    .info {
+      margin-left: $margin-big * 2;
+      .tag {
+        margin-bottom: $margin-big;
+        .key {
+
+        }
+        .value {
+          font-size: $font-title;
+        }
+      }
+    }
+  }
+  .alert {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.scoreBox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70vw;
+  justify-content: center;
+  .scoreEle {
+    @include flex-center-column;
+    justify-content: space-between;
+    @include blur-box;
+    margin: $margin-medium;
+    .row {
+      @include flex-center-row;
+      justify-content: space-between;
+      width: 100%;
+      box-sizing: border-box;
+      * {
+        font-size: $font-subtitle;
+      }
+    }
+  }
+}
+
+.attackBox {
+  @include flex-center-column;
+  margin-top: $margin-medium;
+  width: 240px;
+  .keys {
+    display: flex;
+    flex-direction: row;
+  }
+  .row {
+    box-sizing: border-box;
+  }
+  .attack {
+    @include flex-row;
+    @include e-border-radius;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+
+    margin: $margin-tiny;
+    padding: $margin-tiny $margin-small;
+    * {
+      font-size: $font-body;
+    }
+    .key {
+      margin: $margin-tiny $margin-tiny $margin-tiny 0;
+      padding: $margin-tiny $margin-small;
+      border-radius: $margin-small;
+      border: solid 1px white;
+      font-size: $font-small;
+      &.success {
+        background-color: rgba(0,0,0,0);
+        color: $color-blue;
+        border: solid 1px $color-blue;
+      }
+      &.fail {
+        background-color: rgba(0,0,0,0);
+        color: $color-red;
+        border: solid 1px $color-red;
+      }
+    }
+  }
+}
+
+.flagBox {
+  @extend .inputBox;
+  width: 100%;
+  box-sizing: border-box;
+  input {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}

@@ -1,0 +1,15 @@
+version: '3'
+
+networks:
+  reverse-proxy:
+    external:
+      name: reverse-proxy
+
+services:
+  web:
+    build:
+      context: .
+    networks:
+      - reverse-proxy
+    environment:
+      VIRTUAL_HOST: 'firewall.postech.studio'

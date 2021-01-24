@@ -1,0 +1,1 @@
+export const BACKEND = "https://firewallapi.postech.studio"

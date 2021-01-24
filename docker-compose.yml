@@ -1,40 +1,44 @@
 version: '3.3'
 
 volumes:
-  plt-mysql-data:
+  static_volume:
 
 services:
+  nginx:
+    build: ./nginx
+    restart: always
+    links:
+      - core
+    volumes:
+      - static_volume:/static
+    ports:
+      - 17354:17354
+
   db:
     image: mysql:latest
-    container_name: plt-mysql
-    volumes:
-      - "plt-mysql-data:/var/lib/mysql"
     restart: always
-    ports:
-      - 37500:3306
+    expose:
+      - 3306
     environment:
-      MYSQL_DATABASE: "plt"
+      #MYSQL_DATABASE: "plt"
       MYSQL_USER: "beta"
       MYSQL_PASSWORD: "kawaikawai"
       MYSQL_ROOT_PASSWORD: "betaiskawaikawai"
 
   adminer:
     image: adminer:latest
-    container_name: plt-mysql-adminer
     ports:
       - 37501:8080
 
-  ssti:
-    build: ./app/env/ssti/
-    container_name: plt-ssti
-    volumes:
-      - "./app/env/ssti/flag.txt:/app/flag.txt"
-    ports:
-      - 37511:8080
 
-  web:
-    build: .
-    image: plt-django:0.1
-    container_name: plt-django
-    ports:
-      - 17354:8000
+  core:
+    build: core
+    links:
+      - db
+    depends_on: 
+      - db
+    volumes:
+      - static_volume:/app/static
+      - "./core/data/db.sqlite3:/app/db.sqlite3"
+    expose:
+      - 8000
